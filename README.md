@@ -114,7 +114,11 @@
 11. merge `personal_product_usage` and `invoice_product_usage`
     into `invoice_product_usage_detail`
 
-## Accept Payment
+## Register Payment
 
 1. merge `personal_account` and `currency` into `payment`
 2. connect `cashbox_receipt` to `payment`
+
+## Data Source Diagram
+
+![Data Source Diagram](./docs/altogether.png "Data Source Diagram")
