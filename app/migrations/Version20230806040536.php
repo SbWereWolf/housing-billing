@@ -298,7 +298,8 @@ create unique index if not exists
 
 create table if not exists transit_metering_point
 (
-    id                          bigserial,
+    id                          bigserial
+    constraint transit_metering_point_pk primary key,
     primary_metering_point_id   bigint
         constraint transit_metering_point_metering_point_id_fk
             references metering_point,
@@ -478,7 +479,8 @@ create unique index if not exists
 
 create table if not exists device_model_scale
 (
-    id                       bigserial,
+    id                       bigserial
+    constraint device_model_scale_pk primary key,
     metering_device_model_id bigint
         constraint device_model_scale_metering_device_model_id_fk
             references metering_device_model,
@@ -517,6 +519,8 @@ create unique index if not exists
 
 create table if not exists metering_device
 (
+    id                       bigserial
+        constraint metering_device_pk primary key,
     metering_device_model_id bigint,
     start                    timestamp with time zone,
     finish                   timestamp with time zone,
@@ -524,8 +528,6 @@ create table if not exists metering_device
     product_id               bigint,
     distributor_id           bigint,
     distribution_point_id    bigint,
-    id                       bigserial
-        constraint metering_device_pk primary key,
     constraint
         metering_device_metering_device_model_product_product_model_fk
         foreign key (product_id, metering_device_model_id)
@@ -551,12 +553,12 @@ create unique index if not exists
 
 create table if not exists product_personal_account
 (
+    id                  bigserial
+        constraint product_personal_account_pk primary key,
     product_id          bigint
         constraint product_personal_account_product_id_fk
             references product,
     personal_account_id bigint,
-    id                  bigserial
-        constraint product_personal_account_pk primary key,
     customer_id         bigint,
     constraint
         product_personal_account_personal_account_customer_id_id_fk
