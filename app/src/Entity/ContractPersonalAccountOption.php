@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ContractPersonalAccountOption
  *
  * @ORM\Table(name="contract_personal_account_option")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ContractPersonalAccountOptionRepository")
  */
 class ContractPersonalAccountOption
 {

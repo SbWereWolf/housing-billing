@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Currency
  *
  * @ORM\Table(name="currency", uniqueConstraints={@ORM\UniqueConstraint(name="currency_units_of_measure_id_ux", columns={"units_of_measure_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CurrencyRepository")
  */
 class Currency
 {

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * InvoiceProductUsageDetail
  *
  * @ORM\Table(name="invoice_product_usage_detail")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvoiceProductUsageDetailRepository")
  */
 class InvoiceProductUsageDetail
 {

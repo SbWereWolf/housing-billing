@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DistributionPoint
  *
  * @ORM\Table(name="distribution_point")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DistributionPointRepository")
  */
 class DistributionPoint
 {

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * MeasuringScale
  *
  * @ORM\Table(name="measuring_scale", uniqueConstraints={@ORM\UniqueConstraint(name="measuring_scale_code_ux", columns={"code"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MeasuringScaleRepository")
  */
 class MeasuringScale
 {

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ConversionRatio
  *
  * @ORM\Table(name="conversion_ratio")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ConversionRatioRepository")
  */
 class ConversionRatio
 {

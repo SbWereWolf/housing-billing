@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TransitMeteringPoint
  *
  * @ORM\Table(name="transit_metering_point")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TransitMeteringPointRepository")
  */
 class TransitMeteringPoint
 {

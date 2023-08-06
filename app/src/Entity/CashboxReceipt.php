@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CashboxReceipt
  *
  * @ORM\Table(name="cashbox_receipt")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CashboxReceiptRepository")
  */
 class CashboxReceipt
 {

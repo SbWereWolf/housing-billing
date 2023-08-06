@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * AddressLocationOption
  *
  * @ORM\Table(name="address_location_option")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\AddressLocationOptionRepository")
  */
 class AddressLocationOption
 {

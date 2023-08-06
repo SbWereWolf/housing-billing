@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ControlPanel
  *
  * @ORM\Table(name="control_panel")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ControlPanelRepository")
  */
 class ControlPanel
 {

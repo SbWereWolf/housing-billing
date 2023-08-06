@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * AddressDistributionPoint
  *
  * @ORM\Table(name="address_distribution_point", uniqueConstraints={@ORM\UniqueConstraint(name="address_distribution_point_address_id_distribution_point_id_ux", columns={"address_id", "distribution_point_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\AddressDistributionPointRepository")
  */
 class AddressDistributionPoint
 {

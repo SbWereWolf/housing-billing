@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * RawReadings
  *
  * @ORM\Table(name="raw_readings", uniqueConstraints={@ORM\UniqueConstraint(name="raw_readings_product_id_distributor_id_point_id_id_ux", columns={"product_id", "distributor_id", "distribution_point_id", "id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RawReadingsRepository")
  */
 class RawReadings
 {

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DeviceModelScale
  *
  * @ORM\Table(name="device_model_scale", uniqueConstraints={@ORM\UniqueConstraint(name="device_model_scale_metering_device_model_id_id_ux", columns={"metering_device_model_id", "id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DeviceModelScaleRepository")
  */
 class DeviceModelScale
 {

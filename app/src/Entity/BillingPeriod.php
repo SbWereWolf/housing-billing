@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BillingPeriod
  *
  * @ORM\Table(name="billing_period", uniqueConstraints={@ORM\UniqueConstraint(name="billing_period_year_month_ux", columns={"year", "month"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\BillingPeriodRepository")
  */
 class BillingPeriod
 {

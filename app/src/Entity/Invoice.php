@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Invoice
  *
  * @ORM\Table(name="invoice", uniqueConstraints={@ORM\UniqueConstraint(name="invoice_personal_account_id_units_of_measure_id_year_month_ux", columns={"personal_account_id", "units_of_measure_id", "year", "month"}), @ORM\UniqueConstraint(name="invoice_personal_account_id_year_month_ux", columns={"personal_account_id", "year", "month"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
  */
 class Invoice
 {

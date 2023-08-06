@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BillingOption
  *
  * @ORM\Table(name="billing_option", uniqueConstraints={@ORM\UniqueConstraint(name="billing_option_code_ux", columns={"code"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\BillingOptionRepository")
  */
 class BillingOption
 {

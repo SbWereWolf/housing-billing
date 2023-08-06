@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TestingRuleSet
  *
  * @ORM\Table(name="testing_rule_set", uniqueConstraints={@ORM\UniqueConstraint(name="testing_set_testing_rule_testing_set_id_testing_rule_id_ux", columns={"testing_set_id", "testing_rule_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TestingRuleSetRepository")
  */
 class TestingRuleSet
 {

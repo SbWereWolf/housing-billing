@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * WeedOutMeterReadings
  *
  * @ORM\Table(name="weed_out_meter_readings")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\WeedOutMeterReadingsRepository")
  */
 class WeedOutMeterReadings
 {

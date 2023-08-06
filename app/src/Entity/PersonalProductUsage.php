@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PersonalProductUsage
  *
  * @ORM\Table(name="personal_product_usage", uniqueConstraints={@ORM\UniqueConstraint(name="personal_product_usage_product_address_customer_account_ux", columns={"product_id", "distributor_id", "address_id", "distribution_point_id", "customer_id", "personal_account_id", "year", "month"}), @ORM\UniqueConstraint(name="personal_product_usage_product_address_account_year_month_ux", columns={"product_id", "distributor_id", "address_id", "personal_account_id", "distribution_point_id", "year", "month"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\PersonalProductUsageRepository")
  */
 class PersonalProductUsage
 {

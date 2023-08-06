@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ContractControlPanel
  *
  * @ORM\Table(name="contract_control_panel")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ContractControlPanelRepository")
  */
 class ContractControlPanel
 {

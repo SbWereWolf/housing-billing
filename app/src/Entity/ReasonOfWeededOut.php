@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReasonOfWeededOut
  *
  * @ORM\Table(name="reason_of_weeded_out", uniqueConstraints={@ORM\UniqueConstraint(name="reason_for_weed_out_testing_run_id_testing_set_id_rule_id_ux", columns={"testing_run_id", "testing_set_id", "testing_rule_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ReasonOfWeededOutRepository")
  */
 class ReasonOfWeededOut
 {

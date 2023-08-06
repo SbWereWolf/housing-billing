@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReadingsWay
  *
  * @ORM\Table(name="readings_way", uniqueConstraints={@ORM\UniqueConstraint(name="readings_way_code_ux", columns={"code"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ReadingsWayRepository")
  */
 class ReadingsWay
 {

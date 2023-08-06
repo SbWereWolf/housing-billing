@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ReadingsSender
  *
  * @ORM\Table(name="readings_sender", uniqueConstraints={@ORM\UniqueConstraint(name="readings_sender_code_ux", columns={"code"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ReadingsSenderRepository")
  */
 class ReadingsSender
 {

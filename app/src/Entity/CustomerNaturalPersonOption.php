@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CustomerNaturalPersonOption
  *
  * @ORM\Table(name="customer_natural_person_option")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CustomerNaturalPersonOptionRepository")
  */
 class CustomerNaturalPersonOption
 {

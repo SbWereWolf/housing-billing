@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * SharedProduct
  *
  * @ORM\Table(name="shared_product")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\SharedProductRepository")
  */
 class SharedProduct
 {

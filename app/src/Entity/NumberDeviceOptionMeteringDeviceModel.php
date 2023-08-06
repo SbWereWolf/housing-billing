@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * NumberDeviceOptionMeteringDeviceModel
  *
  * @ORM\Table(name="number_device_option_metering_device_model")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\NumberDeviceOptionMeteringDeviceModelRepository")
  */
 class NumberDeviceOptionMeteringDeviceModel
 {
