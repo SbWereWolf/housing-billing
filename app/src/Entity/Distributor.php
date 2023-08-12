@@ -24,23 +24,23 @@ class Distributor
     private $id;
 
     /**
-     * @var int|null
+     * @var string|null
      *
-     * @ORM\Column(name="title", type="bigint", nullable=true)
+     * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
 
     /**
-     * @var int
+     * @var string|null
      *
-     * @ORM\Column(name="code", type="bigint", nullable=false)
+     * @ORM\Column(name="code", type="text", nullable=false)
      */
     private $code;
 
     /**
-     * @var int|null
+     * @var string|null
      *
-     * @ORM\Column(name="remark", type="bigint", nullable=true)
+     * @ORM\Column(name="remark", type="text", nullable=true)
      */
     private $remark;
 

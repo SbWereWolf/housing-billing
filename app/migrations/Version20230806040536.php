@@ -104,9 +104,9 @@ create table if not exists distributor
 (
     id     bigserial
         constraint distributor_pk primary key,
-    title  bigint,
-    code   bigint not null,
-    remark bigint
+    title  text,
+    code   text not null,
+    remark text
 );
 
 create unique index if not exists
@@ -422,11 +422,11 @@ create unique index if not exists
 
 create table if not exists device_option
 (
-    id     serial
+    id     bigserial
         constraint device_option_pk primary key,
-    title  integer,
-    code   integer,
-    remark integer
+    title  text,
+    code   text,
+    remark text
 );
 
 create unique index if not exists

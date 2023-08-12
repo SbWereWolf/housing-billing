@@ -99,24 +99,24 @@ class MeasuringScale
         return $this;
     }
 
-    public function getReadingsLimit(): ?string
+    public function getReadingsLimit(): ?int
     {
         return $this->readingsLimit;
     }
 
-    public function setReadingsLimit(?string $readingsLimit): static
+    public function setReadingsLimit(?int $readingsLimit): static
     {
         $this->readingsLimit = $readingsLimit;
 
         return $this;
     }
 
-    public function getReadingsResolution(): ?string
+    public function getReadingsResolution(): ?int
     {
         return $this->readingsResolution;
     }
 
-    public function setReadingsResolution(?string $readingsResolution): static
+    public function setReadingsResolution(?int $readingsResolution): static
     {
         $this->readingsResolution = $readingsResolution;
 

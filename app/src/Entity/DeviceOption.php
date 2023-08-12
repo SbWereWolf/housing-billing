@@ -15,7 +15,7 @@ class DeviceOption
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="device_option_id_seq", allocationSize=1, initialValue=1)
@@ -23,61 +23,61 @@ class DeviceOption
     private $id;
 
     /**
-     * @var int|null
+     * @var string|null
      *
-     * @ORM\Column(name="title", type="integer", nullable=true)
+     * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
 
     /**
-     * @var int|null
+     * @var string|null
      *
-     * @ORM\Column(name="code", type="integer", nullable=true)
+     * @ORM\Column(name="code", type="text", nullable=true)
      */
     private $code;
 
     /**
-     * @var int|null
+     * @var string|null
      *
-     * @ORM\Column(name="remark", type="integer", nullable=true)
+     * @ORM\Column(name="remark", type="text", nullable=true)
      */
     private $remark;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getTitle(): ?int
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(?int $title): static
+    public function setTitle(?string $title): static
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getCode(): ?int
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
-    public function setCode(?int $code): static
+    public function setCode(?string $code): static
     {
         $this->code = $code;
 
         return $this;
     }
 
-    public function getRemark(): ?int
+    public function getRemark(): ?string
     {
         return $this->remark;
     }
 
-    public function setRemark(?int $remark): static
+    public function setRemark(?string $remark): static
     {
         $this->remark = $remark;
 
