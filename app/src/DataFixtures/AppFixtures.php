@@ -39,6 +39,7 @@ use App\Entity\Product;
 use App\Entity\ProductDistributor;
 use App\Entity\ProductPersonalAccount;
 use App\Entity\ProductUnitsOfMeasure;
+use App\Entity\RawReadings;
 use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
 use App\Entity\ReadingsSenderReadingsWay;
@@ -62,6 +63,7 @@ class AppFixtures extends Fixture
 
         /** @var Product[] $products */
         $products = [];
+        $productsWithDigitIndex = [];
         foreach (
             [
                 'product1',
@@ -76,6 +78,7 @@ class AppFixtures extends Fixture
 
             $manager->persist($product);
             $products[$code] = $product;
+            $productsWithDigitIndex[] = $product;
         }
 
         $obj = new RelatedProduct();
@@ -150,7 +153,7 @@ class AppFixtures extends Fixture
 
         /** @var MeteringDeviceModel[] $models */
         $models = [];
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $model = new MeteringDeviceModel();
             $model->setCode('model' . $i);
 
@@ -158,17 +161,19 @@ class AppFixtures extends Fixture
             $models[] = $model;
         }
 
+        $productsTotal = count($productsWithDigitIndex);
         /** @var MeteringDeviceModelProduct[] $modelsProduct */
         $modelsProduct = [];
-        foreach ($models as $model) {
-            foreach ($products as $product) {
-                $modelProduct = new MeteringDeviceModelProduct();
-                $modelProduct->setMeteringDeviceModelId($model->getId());
-                $modelProduct->setProductId($product->getId());
+        foreach ($models as $index => $model) {
+            $productIndex = $index % $productsTotal;
+            $product = $productsWithDigitIndex[$productIndex];
 
-                $manager->persist($modelProduct);
-                $modelsProduct[] = $modelProduct;
-            }
+            $modelProduct = new MeteringDeviceModelProduct();
+            $modelProduct->setMeteringDeviceModelId($model->getId());
+            $modelProduct->setProductId($product->getId());
+
+            $manager->persist($modelProduct);
+            $modelsProduct[] = $modelProduct;
         }
 
         /** @var DeviceOption[] $deviceOptions */
@@ -204,7 +209,7 @@ class AppFixtures extends Fixture
 
         /** @var MeasuringScale[] $measuringScales */
         $measuringScales = [];
-        for ($i = 0; $i < count($readingsPurposes); $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $scale = new MeasuringScale();
             $scale->setCode('scale' . $i);
             $scale->setReadingsLimit(random_int(999999, 999999999));
@@ -214,27 +219,35 @@ class AppFixtures extends Fixture
             $measuringScales[] = $scale;
         }
 
+        $deviceScales = [];
         $unitsNumber = count($productUnits);
         /** @var DeviceModelScale[] $modelScales */
         $modelScales = [];
+        $index = 0;
+        $purposesTotal = count($readingsPurposes);
         foreach ($models as $model) {
-            foreach ($measuringScales as $index => $scale) {
+            foreach ($measuringScales as $scale) {
                 $modelScale = new DeviceModelScale();
                 $modelScale->setMeteringDeviceModelId($model->getId());
                 $modelScale->setMeasuringScaleId($scale->getId());
-                $modelScale->setReadingsPurposeId($readingsPurposes[$index]->getId());
+
+                $purposesIndex = $index % $purposesTotal;
+                $modelScale->setReadingsPurposeId($readingsPurposes[$purposesIndex]->getId());
 
                 $unitIndex = $index % $unitsNumber;
                 $modelScale->setUnitsOfMeasureId($productUnits[$unitIndex]->getUnitsOfMeasureId());
 
                 $manager->persist($modelScale);
                 $modelScales[] = $modelScale;
+                $deviceScales[$model->getId()][] = $modelScale;
             }
+
+            $index++;
         }
 
         /** @var ReadingsSender[] $senders */
         $senders = [];
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $sender = new ReadingsSender();
             $sender->setCode('sender' . $i);
 
@@ -244,7 +257,7 @@ class AppFixtures extends Fixture
 
         /** @var ReadingsWay[] $ways */
         $ways = [];
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $way = new ReadingsWay();
             $way->setCode('way' . $i);
 
@@ -417,7 +430,7 @@ class AppFixtures extends Fixture
 
         /** @var Distributor[] $distributors */
         $distributors = [];
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $distributor = new Distributor();
             $distributor->setCode('distributor' . $i);
 
@@ -427,15 +440,16 @@ class AppFixtures extends Fixture
 
         /** @var ProductDistributor[] $productDistributors */
         $productDistributors = [];
-        foreach ($products as $product) {
-            foreach ($distributors as $distributor) {
-                $productDistributor = new ProductDistributor();
-                $productDistributor->setProductId($product->getId());
-                $productDistributor->setDistributorId($distributor->getId());
+        $distributorsTotal = count($distributors);
+        foreach ($productsWithDigitIndex as $index => $product) {
+            $productDistributor = new ProductDistributor();
+            $productDistributor->setProductId($product->getId());
 
-                $manager->persist($productDistributor);
-                $productDistributors[] = $productDistributor;
-            }
+            $distributorIndex = $index % $distributorsTotal;
+            $productDistributor->setDistributorId($distributors[$distributorIndex]->getId());
+
+            $manager->persist($productDistributor);
+            $productDistributors[] = $productDistributor;
         }
 
         /** @var Contract[] $contracts */
@@ -503,7 +517,7 @@ class AppFixtures extends Fixture
 
         /** @var PersonalAccount[] $accounts */
         foreach ($contracts as $contract) {
-            for ($i = 0; $i < 3; $i++) {
+            for ($i = 0; $i < 2; $i++) {
                 $account = new PersonalAccount();
                 $account->setCustomerId($contract->getCustomerId());
                 $account->setContractId($contract->getId());
@@ -540,7 +554,7 @@ class AppFixtures extends Fixture
         $addressesPoints = [];
         /** @var Address[] $addresses */
         $addresses = [];
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $address = new Address();
             $address->setCode(md5(microtime()));
             $address->setRegion(random_int(1, 9));
@@ -609,8 +623,8 @@ class AppFixtures extends Fixture
             $accountsShares[] = $share;
         }
 
-        /** @var MeteringDevice[] $meteringDevices */
-        $meteringDevices = [];
+        /** @var MeteringDevice[] $devices */
+        $devices = [];
         foreach ($meteringPoints as $point) {
             foreach ($models as $model) {
                 $meteringDevice = new MeteringDevice();
@@ -628,8 +642,56 @@ class AppFixtures extends Fixture
                 $meteringDevice->setFinish((new DateTimeImmutable())->add(new DateInterval($add)));
 
                 $manager->persist($meteringDevice);
-                $meteringDevices[] = $meteringDevice;
+                $devices[] = $meteringDevice;
             }
+        }
+
+        $manager->flush();
+
+        ## Collect Readings
+
+        $current = (new DateTimeImmutable())->sub(new DateInterval('P1D'));
+        $end = (new DateTimeImmutable())->add(new DateInterval('P1D'));
+
+        $start = 999_000;
+
+        while ($current < $end) {
+            $current = $current->add(new DateInterval('P1D'));
+
+            if (random_int(0, 2) === 0) {
+                foreach ($sendersWays as $senderWay) {
+                    foreach ($devices as $device) {
+                        foreach ($deviceScales[$device->getMeteringDeviceModelId()] as $scale) {
+                            $readings = new RawReadings();
+                            $readings->setMeteringDeviceModelId($scale->getMeteringDeviceModelId());
+                            $readings->setDeviceModelScaleId($scale->getId());
+
+                            $readings->setProductId($device->getProductId());
+                            $readings->setDistributorId($device->getDistributorId());
+                            $readings->setDistributionPointId($device->getDistributionPointId());
+                            $readings->setStart($device->getStart());
+
+                            $readings->setReadingsWayId($senderWay->getReadingsWayId());
+                            $readings->setReadingsSenderId($senderWay->getReadingsSenderId());
+
+                            $readings->setReadings(random_int($start, $start + 100));
+
+                            $isOverflow = 0;
+                            if (random_int(0, 99) === 99) {
+                                $isOverflow = 1;
+                            }
+                            $readings->setIsScaleOverflow($isOverflow);
+                            $readings->setUploadTime($current);
+
+                            $manager->persist($readings);
+                        }
+                    }
+
+                    $manager->flush();
+                }
+            }
+
+            $start += 100;
         }
 
 
