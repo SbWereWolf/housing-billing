@@ -87,9 +87,9 @@ class RawReadings
     private $distributionPointId;
 
     /**
-     * @var \DateTime|null
+     * @var int|null
      *
-     * @ORM\Column(name="start", type="datetime", nullable=true)
+     * @ORM\Column(name="start", type="bigint", nullable=true)
      */
     private $start;
 
@@ -213,12 +213,12 @@ class RawReadings
         return $this;
     }
 
-    public function getStart(): ?\DateTimeInterface
+    public function getStart(): ?int
     {
         return $this->start;
     }
 
-    public function setStart(?\DateTimeInterface $start): static
+    public function setStart(?int $start): static
     {
         $this->start = $start;
 

@@ -31,9 +31,9 @@ class MeteringDevice
     private $meteringDeviceModelId;
 
     /**
-     * @var \DateTime|null
+     * @var int|null
      *
-     * @ORM\Column(name="start", type="datetimetz", nullable=true)
+     * @ORM\Column(name="start", type="bigint", nullable=true)
      */
     private $start;
 
@@ -89,12 +89,12 @@ class MeteringDevice
         return $this;
     }
 
-    public function getStart(): ?\DateTimeInterface
+    public function getStart(): ?int
     {
         return $this->start;
     }
 
-    public function setStart(?\DateTimeInterface $start): static
+    public function setStart(?int $start): static
     {
         $this->start = $start;
 
