@@ -626,23 +626,26 @@ class AppFixtures extends Fixture
         /** @var MeteringDevice[] $devices */
         $devices = [];
         foreach ($meteringPoints as $point) {
-            foreach ($models as $model) {
-                $meteringDevice = new MeteringDevice();
-                $meteringDevice->setProductId($point->getProductId());
-                $meteringDevice->setDistributorId($point->getDistributorId());
-                $meteringDevice->setDistributionPointId($point->getDistributionPointId());
-                $meteringDevice->setMeteringDeviceModelId($model->getId());
+            foreach ($modelsProduct as $model) {
+                $isSameProduct = $point->getProductId() == $model->getProductId();
+                if ($isSameProduct) {
+                    $meteringDevice = new MeteringDevice();
+                    $meteringDevice->setProductId($point->getProductId());
+                    $meteringDevice->setDistributorId($point->getDistributorId());
+                    $meteringDevice->setDistributionPointId($point->getDistributionPointId());
+                    $meteringDevice->setMeteringDeviceModelId($model->getId());
 
-                $meteringDevice->setSerial(md5(microtime()));
+                    $meteringDevice->setSerial(md5(microtime()));
 
-                $sub = 'P' . random_int(0, 2) . 'Y';
-                $add = 'P' . random_int(1, 2) . 'Y';
+                    $sub = 'P' . random_int(0, 2) . 'Y';
+                    $add = 'P' . random_int(1, 2) . 'Y';
 
-                $meteringDevice->setStart((new DateTimeImmutable())->sub(new DateInterval($sub)));
-                $meteringDevice->setFinish((new DateTimeImmutable())->add(new DateInterval($add)));
+                    $meteringDevice->setStart((new DateTimeImmutable())->sub(new DateInterval($sub))->getTimestamp());
+                    $meteringDevice->setFinish((new DateTimeImmutable())->add(new DateInterval($add)));
 
-                $manager->persist($meteringDevice);
-                $devices[] = $meteringDevice;
+                    $manager->persist($meteringDevice);
+                    $devices[] = $meteringDevice;
+                }
             }
         }
 
@@ -650,44 +653,49 @@ class AppFixtures extends Fixture
 
         ## Collect Readings
 
-        $current = (new DateTimeImmutable())->sub(new DateInterval('P1D'));
-        $end = (new DateTimeImmutable())->add(new DateInterval('P1D'));
+        $current = (new DateTimeImmutable())->sub(new DateInterval('P3M'));
+        $end = (new DateTimeImmutable())->add(new DateInterval('P3M'));
 
         $start = 999_000;
 
+        $intervals = ['P1D','P1M','P1D','P1M','P1D','P1M','P1D','P1M',];
         while ($current < $end) {
-            $current = $current->add(new DateInterval('P1D'));
+            foreach ($intervals as $interval) {
+                $current = $current->add(new DateInterval($interval));
 
-            if (random_int(0, 2) === 0) {
-                foreach ($sendersWays as $senderWay) {
-                    foreach ($devices as $device) {
-                        foreach ($deviceScales[$device->getMeteringDeviceModelId()] as $scale) {
-                            $readings = new RawReadings();
-                            $readings->setMeteringDeviceModelId($scale->getMeteringDeviceModelId());
-                            $readings->setDeviceModelScaleId($scale->getId());
+                if (random_int(0, 2) === 0) {
+                    foreach ($sendersWays as $senderWay) {
+                        foreach ($devices as $device) {
+                            foreach ($deviceScales[$device->getMeteringDeviceModelId()] as $scale) {
+                                /** @var DeviceModelScale $scale */
 
-                            $readings->setProductId($device->getProductId());
-                            $readings->setDistributorId($device->getDistributorId());
-                            $readings->setDistributionPointId($device->getDistributionPointId());
-                            $readings->setStart($device->getStart());
+                                $readings = new RawReadings();
+                                $readings->setMeteringDeviceModelId($scale->getMeteringDeviceModelId());
+                                $readings->setDeviceModelScaleId($scale->getId());
 
-                            $readings->setReadingsWayId($senderWay->getReadingsWayId());
-                            $readings->setReadingsSenderId($senderWay->getReadingsSenderId());
+                                $readings->setProductId($device->getProductId());
+                                $readings->setDistributorId($device->getDistributorId());
+                                $readings->setDistributionPointId($device->getDistributionPointId());
+                                $readings->setStart($device->getStart());
 
-                            $readings->setReadings(random_int($start, $start + 100));
+                                $readings->setReadingsWayId($senderWay->getReadingsWayId());
+                                $readings->setReadingsSenderId($senderWay->getReadingsSenderId());
 
-                            $isOverflow = 0;
-                            if (random_int(0, 99) === 99) {
-                                $isOverflow = 1;
+                                $readings->setReadings(random_int($start, $start + 100));
+
+                                $isOverflow = 0;
+                                if (random_int(0, 99) === 99) {
+                                    $isOverflow = 1;
+                                }
+                                $readings->setIsScaleOverflow($isOverflow);
+                                $readings->setUploadTime($current);
+
+                                $manager->persist($readings);
                             }
-                            $readings->setIsScaleOverflow($isOverflow);
-                            $readings->setUploadTime($current);
-
-                            $manager->persist($readings);
                         }
-                    }
 
-                    $manager->flush();
+                        $manager->flush();
+                    }
                 }
             }
 
