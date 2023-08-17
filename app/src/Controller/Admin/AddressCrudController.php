@@ -2,13 +2,16 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Base\EntityWithIdController;
 use App\Entity\Address;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 
-class AddressCrudController extends AbstractCrudController
+class AddressCrudController extends EntityWithIdController
 {
     public static function getEntityFqcn(): string
     {
@@ -39,19 +42,28 @@ class AddressCrudController extends AbstractCrudController
 
     public function configureFilters(Filters $filters): Filters
     {
-        return $filters
-            ->add(TextFilter::new('title','Название'))
-            ->add(TextFilter::new('code','Мнемоника'));
+        return parent::configureFilters($filters)
+            ->add(NumericFilter::new('region', 'Код региона'))
+            ->add(TextFilter::new('title', 'Название'))
+            ->add(TextFilter::new('code', 'Мнемоника'));
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        $fields = $this->getBaseFields($pageName);
+        foreach ($fields as $field) {
+            yield $field;
+        }
+
+        yield NumberField::new('region', 'Код региона');
+        yield NumberField::new('level5ObjectId', 'Город');
+        yield NumberField::new('level6ObjectId', 'Населенный пункт');
+        yield NumberField::new('level7ObjectId', 'Микрорайон');
+        yield NumberField::new('level8ObjectId', 'Улица');
+        yield TextField::new('housesObjectguid', 'Дом');
+        yield TextField::new('apartmentsObjectguid', 'Квартира');
+        yield TextField::new('roomsObjectguid', 'Помещение');
+        yield TextField::new('title', 'Название');
+        yield TextField::new('code', 'Мнемоника');
     }
-    */
 }
