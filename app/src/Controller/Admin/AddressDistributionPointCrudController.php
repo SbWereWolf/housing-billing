@@ -2,17 +2,15 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Base\EntityWithIdController;
+use App\Controller\Fields\AddressField;
+use App\Controller\Fields\DistributionPointField;
 use App\Entity\AddressDistributionPoint;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 
-class AddressDistributionPointCrudController extends AbstractCrudController
+class AddressDistributionPointCrudController
+    extends EntityWithIdController
 {
     public static function getEntityFqcn(): string
     {
@@ -32,38 +30,19 @@ class AddressDistributionPointCrudController extends AbstractCrudController
 
     public function configureFilters(Filters $filters): Filters
     {
-        return $filters
-            ->add(NumericFilter::new('id', '№'))
-            ->add(EntityFilter::new('address', 'Адреса'))
-            ->add(EntityFilter::new('distributionPoint', 'Точка поставки'));
+        return parent::configureFilters($filters)
+            ->add(AddressField::getFilter())
+            ->add(DistributionPointField::getFilter());
     }
 
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('id', '№');
-        yield AssociationField::
-        new(
-            'address',
-            'Адрес'
-        )
-            ->setCrudController(AddressCrudController::class);
-        yield AssociationField::
-        new(
-            'distributionPoint',
-            'Точка поставки'
-        )
-            ->setCrudController(DistributionPointCrudController::class);
-    }
+        $fields = $this->getBaseFields($pageName);
+        foreach ($fields as $field) {
+            yield $field;
+        }
 
-
-    /*
-    public function configureFields(string $pageName): iterable
-    {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield AddressField::getField();
+        yield DistributionPointField::getField();
     }
-    */
 }
