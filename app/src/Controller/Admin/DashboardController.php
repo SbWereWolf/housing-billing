@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Address;
 use App\Entity\AddressDistributionPoint;
+use App\Entity\AddressLocationOption;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -53,6 +54,11 @@ class DashboardController extends AbstractDashboardController
             'AddressDistributionPoint',
             'fas fa-list',
             AddressDistributionPoint::class
+        );
+        yield MenuItem::linkToCrud(
+            'AddressLocationOption',
+            'fas fa-list',
+            AddressLocationOption::class
         );
     }
 }
