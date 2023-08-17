@@ -2,10 +2,10 @@
 
 namespace App\Entity\Primitive;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
-class EntityWithCode implements \Stringable
+trait HasCode
 {
     /**
      * @var string|null
@@ -64,8 +64,9 @@ class EntityWithCode implements \Stringable
         return $this;
     }
 
+    #[Pure]
     public function __toString(): string
     {
-        return $this->getTitle(). ' '. $this->getCode();
+        return "{$this->title}, {$this->code}";
     }
 }
