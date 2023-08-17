@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasAddress;
+use App\Entity\Column\HasBillingOption;
+use App\Entity\Column\HasLocationOption;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,8 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="address_location_option")
  * @ORM\Entity(repositoryClass="App\Repository\AddressLocationOptionRepository")
  */
-class AddressLocationOption
+class AddressLocationOption implements \Stringable
 {
+    use HasAddress;
+    use HasBillingOption;
+    use HasLocationOption;
+
     /**
      * @var int
      *
@@ -23,67 +29,13 @@ class AddressLocationOption
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="billing_option_id", type="bigint", nullable=true)
-     */
-    private $billingOptionId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="location_option_id", type="bigint", nullable=true)
-     */
-    private $locationOptionId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="address_id", type="bigint", nullable=true)
-     */
-    private $addressId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getBillingOptionId(): ?string
+    public function __toString(): string
     {
-        return $this->billingOptionId;
+        return "{$this->address} {$this->locationOption} {$this->billingOption}";
     }
-
-    public function setBillingOptionId(?string $billingOptionId): static
-    {
-        $this->billingOptionId = $billingOptionId;
-
-        return $this;
-    }
-
-    public function getLocationOptionId(): ?string
-    {
-        return $this->locationOptionId;
-    }
-
-    public function setLocationOptionId(?string $locationOptionId): static
-    {
-        $this->locationOptionId = $locationOptionId;
-
-        return $this;
-    }
-
-    public function getAddressId(): ?string
-    {
-        return $this->addressId;
-    }
-
-    public function setAddressId(?string $addressId): static
-    {
-        $this->addressId = $addressId;
-
-        return $this;
-    }
-
-
 }
