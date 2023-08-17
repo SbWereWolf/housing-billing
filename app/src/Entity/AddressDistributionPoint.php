@@ -26,4 +26,9 @@ class AddressDistributionPoint
      * @ORM\SequenceGenerator(sequenceName="address_distribution_point_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
+
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
 }
