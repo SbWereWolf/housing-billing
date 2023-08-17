@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Primitive\CaptionWithCode;
 use Doctrine\ORM\Mapping as ORM;
-use Stringable;
 
 /**
  * Address
@@ -11,7 +11,7 @@ use Stringable;
  * @ORM\Table(name="address", uniqueConstraints={@ORM\UniqueConstraint(name="address_code_ux", columns={"code"})})
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
  */
-class Address implements Stringable
+class Address extends CaptionWithCode
 {
     /**
      * @var int
@@ -22,27 +22,6 @@ class Address implements Stringable
      * @ORM\SequenceGenerator(sequenceName="address_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="title", type="text", nullable=true)
-     */
-    private $title;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="code", type="text", nullable=true)
-     */
-    private $code;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="remark", type="text", nullable=true)
-     */
-    private $remark;
 
     /**
      * @var int
@@ -145,42 +124,6 @@ class Address implements Stringable
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): static
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    public function setCode(?string $code): static
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    public function getRemark(): ?string
-    {
-        return $this->remark;
-    }
-
-    public function setRemark(?string $remark): static
-    {
-        $this->remark = $remark;
-
-        return $this;
     }
 
     public function getRegion(): ?int
@@ -351,8 +294,8 @@ class Address implements Stringable
         return $this;
     }
 
-    public function __toString()
+    public function __toString():string
     {
-        return "{$this->region}, {$this->title}";
+        return "{$this->getRegion()}, {$this->getTitle()}";
     }
 }

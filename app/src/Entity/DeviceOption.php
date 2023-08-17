@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Primitive\CaptionWithCode;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="device_option", uniqueConstraints={@ORM\UniqueConstraint(name="device_option_code_ux", columns={"code"})})
  * @ORM\Entity(repositoryClass="App\Repository\DeviceOptionRepository")
  */
-class DeviceOption
+class DeviceOption extends CaptionWithCode
 {
     /**
      * @var int
@@ -22,67 +23,8 @@ class DeviceOption
      */
     private $id;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="title", type="text", nullable=true)
-     */
-    private $title;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="code", type="text", nullable=true)
-     */
-    private $code;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="remark", type="text", nullable=true)
-     */
-    private $remark;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): static
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    public function setCode(?string $code): static
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    public function getRemark(): ?string
-    {
-        return $this->remark;
-    }
-
-    public function setRemark(?string $remark): static
-    {
-        $this->remark = $remark;
-
-        return $this;
-    }
-
-
 }

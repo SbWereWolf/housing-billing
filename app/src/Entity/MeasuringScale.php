@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Primitive\CaptionWithCode;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="measuring_scale", uniqueConstraints={@ORM\UniqueConstraint(name="measuring_scale_code_ux", columns={"code"})})
  * @ORM\Entity(repositoryClass="App\Repository\MeasuringScaleRepository")
  */
-class MeasuringScale
+class MeasuringScale extends CaptionWithCode
 {
     /**
      * @var int
@@ -22,27 +22,6 @@ class MeasuringScale
      * @ORM\SequenceGenerator(sequenceName="measuring_scale_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="title", type="text", nullable=true)
-     */
-    private $title;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="code", type="text", nullable=true)
-     */
-    private $code;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="remark", type="text", nullable=true)
-     */
-    private $remark;
 
     /**
      * @var int|null
@@ -61,42 +40,6 @@ class MeasuringScale
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): static
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    public function setCode(?string $code): static
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    public function getRemark(): ?string
-    {
-        return $this->remark;
-    }
-
-    public function setRemark(?string $remark): static
-    {
-        $this->remark = $remark;
-
-        return $this;
     }
 
     public function getReadingsLimit(): ?int
@@ -122,6 +65,4 @@ class MeasuringScale
 
         return $this;
     }
-
-
 }
