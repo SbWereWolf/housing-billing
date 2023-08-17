@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="distribution_point")
  * @ORM\Entity(repositoryClass="App\Repository\DistributionPointRepository")
  */
-class DistributionPoint
+class DistributionPoint implements \Stringable
 {
     /**
      * @var int
@@ -28,5 +28,8 @@ class DistributionPoint
         return $this->id;
     }
 
-
+    public function __toString()
+    {
+        return $this->id;
+    }
 }

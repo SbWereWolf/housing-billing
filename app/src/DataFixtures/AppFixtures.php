@@ -568,8 +568,8 @@ class AppFixtures extends Fixture
                 $manager->persist($point);
 
                 $addressPoint = new AddressDistributionPoint();
-                $addressPoint->setAddressId($address->getId());
-                $addressPoint->setDistributionPointId($point->getId());
+                $addressPoint->setAddress($address);
+                $addressPoint->setDistributionPoint($point);
 
                 $manager->persist($addressPoint);
                 $addressesPoints[] = $addressPoint;
@@ -594,8 +594,8 @@ class AppFixtures extends Fixture
                 $meteringPoint = new MeteringPoint();
                 $meteringPoint->setProductId($distributor->getProductId());
                 $meteringPoint->setDistributorId($distributor->getDistributorId());
-                $meteringPoint->setAddressId($point->getAddressId());
-                $meteringPoint->setDistributionPointId($point->getDistributionPointId());
+                $meteringPoint->setAddressId($point->getAddress()->getId());
+                $meteringPoint->setDistributionPointId($point->getDistributionPoint()->getId());
 
                 $manager->persist($meteringPoint);
                 $meteringPoints[] = $meteringPoint;

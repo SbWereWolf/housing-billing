@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 /**
  * Address
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="address", uniqueConstraints={@ORM\UniqueConstraint(name="address_code_ux", columns={"code"})})
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
  */
-class Address
+class Address implements Stringable
 {
     /**
      * @var int
@@ -351,5 +351,8 @@ class Address
         return $this;
     }
 
-
+    public function __toString()
+    {
+        return "{$this->region}, {$this->title}";
+    }
 }

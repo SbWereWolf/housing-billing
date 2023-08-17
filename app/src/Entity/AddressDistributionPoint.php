@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * AddressDistributionPoint
@@ -24,44 +24,46 @@ class AddressDistributionPoint
     private $id;
 
     /**
-     * @var int|null
+     * @var Address
      *
-     * @ORM\Column(name="address_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\Address")
+     * @JoinColumn(name="address_id")
      */
-    private $addressId;
+    private Address $address;
 
     /**
-     * @var int|null
+     * @var DistributionPoint
      *
-     * @ORM\Column(name="distribution_point_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\DistributionPoint")
+     * @JoinColumn(name="distribution_point_id")
      */
-    private $distributionPointId;
+    private DistributionPoint $distributionPoint;
 
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getAddressId(): ?string
+    public function getAddress(): Address
     {
-        return $this->addressId;
+        return $this->address;
     }
 
-    public function setAddressId(?string $addressId): static
+    public function setAddress(Address $address): static
     {
-        $this->addressId = $addressId;
+        $this->address = $address;
 
         return $this;
     }
 
-    public function getDistributionPointId(): ?string
+    public function getDistributionPoint(): DistributionPoint
     {
-        return $this->distributionPointId;
+        return $this->distributionPoint;
     }
 
-    public function setDistributionPointId(?string $distributionPointId): static
+    public function setDistributionPoint(DistributionPoint $distributionPoint): static
     {
-        $this->distributionPointId = $distributionPointId;
+        $this->distributionPoint = $distributionPoint;
 
         return $this;
     }
