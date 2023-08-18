@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Address;
 use App\Entity\AddressDistributionPoint;
 use App\Entity\AddressLocationOption;
+use App\Entity\ApprovedMeterReadings;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -46,19 +47,24 @@ class DashboardController extends AbstractDashboardController
             'fa fa-home'
         );
         yield MenuItem::linkToCrud(
-            'Address',
+            'Адреса обслуживания',
             'fas fa-list',
             Address::class
         );
         yield MenuItem::linkToCrud(
-            'AddressDistributionPoint',
+            'Точки поставки на адресах',
             'fas fa-list',
             AddressDistributionPoint::class
         );
         yield MenuItem::linkToCrud(
-            'AddressLocationOption',
+            'Параметры адресов',
             'fas fa-list',
             AddressLocationOption::class
+        );
+        yield MenuItem::linkToCrud(
+            'Одобренные показания',
+            'fas fa-list',
+            ApprovedMeterReadings::class
         );
     }
 }
