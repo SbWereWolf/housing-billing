@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="raw_readings", uniqueConstraints={@ORM\UniqueConstraint(name="raw_readings_product_id_distributor_id_point_id_id_ux", columns={"product_id", "distributor_id", "distribution_point_id", "id"})})
  * @ORM\Entity(repositoryClass="App\Repository\RawReadingsRepository")
  */
-class RawReadings
+class RawReadings implements \Stringable
 {
     /**
      * @var int
@@ -238,4 +238,8 @@ class RawReadings
     }
 
 
+    public function __toString(): string
+    {
+        return $this->readings;
+    }
 }
