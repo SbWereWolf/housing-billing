@@ -6,6 +6,7 @@ use App\Entity\Address;
 use App\Entity\AddressDistributionPoint;
 use App\Entity\AddressLocationOption;
 use App\Entity\ApprovedMeterReadings;
+use App\Entity\BillingOption;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -65,6 +66,11 @@ class DashboardController extends AbstractDashboardController
             'Одобренные показания',
             'fas fa-list',
             ApprovedMeterReadings::class
+        );
+        yield MenuItem::linkToCrud(
+            'Параметры начислений',
+            'fas fa-list',
+            BillingOption::class
         );
     }
 }
