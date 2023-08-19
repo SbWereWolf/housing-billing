@@ -7,6 +7,7 @@ use App\Entity\AddressDistributionPoint;
 use App\Entity\AddressLocationOption;
 use App\Entity\ApprovedMeterReadings;
 use App\Entity\BillingOption;
+use App\Entity\BillingPeriod;
 use App\Entity\Customer;
 use App\Entity\DeviceOption;
 use App\Entity\Distributor;
@@ -167,6 +168,11 @@ class DashboardController extends AbstractDashboardController
             'Параметры лицевых счетов',
             'fas fa-list',
             PersonalAccountOption::class
+        );
+        yield MenuItem::linkToCrud(
+            'Расчётные периоды',
+            'fas fa-list',
+            BillingPeriod::class
         );
     }
 }
