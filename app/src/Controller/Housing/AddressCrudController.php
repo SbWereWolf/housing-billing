@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Housing;
 
 use App\Controller\Base\EntityWithIdController;
 use App\Entity\Address;

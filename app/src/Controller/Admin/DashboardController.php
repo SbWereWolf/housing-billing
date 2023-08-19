@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Housing\AddressCrudController;
 use App\Entity\Address;
 use App\Entity\AddressDistributionPoint;
 use App\Entity\AddressLocationOption;
