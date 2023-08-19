@@ -9,6 +9,7 @@ use App\Entity\AddressLocationOption;
 use App\Entity\ApprovedMeterReadings;
 use App\Entity\BillingOption;
 use App\Entity\BillingPeriod;
+use App\Entity\Contract;
 use App\Entity\Customer;
 use App\Entity\DeviceOption;
 use App\Entity\Distributor;
@@ -174,6 +175,11 @@ class DashboardController extends AbstractDashboardController
             'Расчётные периоды',
             'fas fa-list',
             BillingPeriod::class
+        );
+        yield MenuItem::linkToCrud(
+            'Расчётные периоды',
+            'fas fa-list',
+            Contract::class
         );
     }
 }
