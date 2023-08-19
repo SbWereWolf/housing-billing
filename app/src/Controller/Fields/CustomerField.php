@@ -2,7 +2,7 @@
 
 namespace App\Controller\Fields;
 
-use App\Controller\Housing\ContractCrudController;
+use App\Controller\Housing\CustomerCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -18,6 +18,6 @@ class CustomerField
     public static function getField(): FieldInterface
     {
         return AssociationField::new('customer', 'Потребитель')
-            ->setCrudController(ContractCrudController::class);
+            ->setCrudController(CustomerCrudController::class);
     }
 }
