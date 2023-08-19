@@ -2,7 +2,7 @@
 
 namespace App\Controller\Fields;
 
-use App\Controller\Admin\LocationOptionCrudController;
+use App\Controller\Housing\LocationOptionCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;

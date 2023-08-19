@@ -2,8 +2,7 @@
 
 namespace App\Controller\Fields;
 
-use App\Controller\Admin\AddressCrudController;
-use App\Controller\Admin\RawReadingsCrudController;
+use App\Controller\Housing\RawReadingsCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
