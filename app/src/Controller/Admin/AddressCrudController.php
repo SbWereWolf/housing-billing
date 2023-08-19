@@ -47,23 +47,4 @@ class AddressCrudController extends EntityWithIdController
             ->add(TextFilter::new('title', 'Название'))
             ->add(TextFilter::new('code', 'Мнемоника'));
     }
-
-    public function configureFields(string $pageName): iterable
-    {
-        $fields = $this->getBaseFields($pageName);
-        foreach ($fields as $field) {
-            yield $field;
-        }
-
-        yield NumberField::new('region', 'Код региона');
-        yield NumberField::new('level5ObjectId', 'Город');
-        yield NumberField::new('level6ObjectId', 'Населенный пункт');
-        yield NumberField::new('level7ObjectId', 'Микрорайон');
-        yield NumberField::new('level8ObjectId', 'Улица');
-        yield TextField::new('housesObjectguid', 'Дом');
-        yield TextField::new('apartmentsObjectguid', 'Квартира');
-        yield TextField::new('roomsObjectguid', 'Помещение');
-        yield TextField::new('title', 'Название');
-        yield TextField::new('code', 'Мнемоника');
-    }
 }
