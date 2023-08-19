@@ -2,24 +2,23 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Base\EntityWithCaptionController;
 use App\Entity\PersonalAccountOption;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class PersonalAccountOptionCrudController extends AbstractCrudController
+class PersonalAccountOptionCrudController extends EntityWithCaptionController
 {
     public static function getEntityFqcn(): string
     {
         return PersonalAccountOption::class;
     }
 
-    /*
-    public function configureFields(string $pageName): iterable
+    public function configureCrud(Crud $crud): Crud
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        $crud = parent::configureCrud($crud);
+
+        return $crud
+            ->setEntityLabelInPlural('Параметры лицевых счетов')
+            ->setEntityLabelInSingular('Параметр лицевых счетов');
     }
-    */
 }

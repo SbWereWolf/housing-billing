@@ -2,24 +2,23 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Base\EntityWithCaptionController;
 use App\Entity\NaturalPersonOption;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class NaturalPersonOptionCrudController extends AbstractCrudController
+class NaturalPersonOptionCrudController extends EntityWithCaptionController
 {
     public static function getEntityFqcn(): string
     {
         return NaturalPersonOption::class;
     }
 
-    /*
-    public function configureFields(string $pageName): iterable
+    public function configureCrud(Crud $crud): Crud
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        $crud = parent::configureCrud($crud);
+
+        return $crud
+            ->setEntityLabelInPlural('Параметры физических лиц')
+            ->setEntityLabelInSingular('Параметр физических лиц');
     }
-    */
 }

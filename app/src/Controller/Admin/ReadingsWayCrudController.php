@@ -2,24 +2,23 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Base\EntityWithCaptionController;
 use App\Entity\ReadingsWay;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class ReadingsWayCrudController extends AbstractCrudController
+class ReadingsWayCrudController extends EntityWithCaptionController
 {
     public static function getEntityFqcn(): string
     {
         return ReadingsWay::class;
     }
 
-    /*
-    public function configureFields(string $pageName): iterable
+    public function configureCrud(Crud $crud): Crud
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        $crud = parent::configureCrud($crud);
+
+        return $crud
+            ->setEntityLabelInPlural('Каналы поступления показаний')
+            ->setEntityLabelInSingular('Канал поступления показаний');
     }
-    */
 }

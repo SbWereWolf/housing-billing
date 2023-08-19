@@ -2,24 +2,23 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Base\EntityWithCaptionController;
 use App\Entity\TestingRule;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class TestingRuleCrudController extends AbstractCrudController
+class TestingRuleCrudController extends EntityWithCaptionController
 {
     public static function getEntityFqcn(): string
     {
         return TestingRule::class;
     }
 
-    /*
-    public function configureFields(string $pageName): iterable
+    public function configureCrud(Crud $crud): Crud
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        $crud = parent::configureCrud($crud);
+
+        return $crud
+            ->setEntityLabelInPlural('Правила проверки показаний')
+            ->setEntityLabelInSingular('Правило проверки показаний');
     }
-    */
 }

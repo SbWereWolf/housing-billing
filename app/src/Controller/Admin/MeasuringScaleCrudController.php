@@ -2,24 +2,23 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Base\EntityWithCaptionController;
 use App\Entity\MeasuringScale;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class MeasuringScaleCrudController extends AbstractCrudController
+class MeasuringScaleCrudController extends EntityWithCaptionController
 {
     public static function getEntityFqcn(): string
     {
         return MeasuringScale::class;
     }
 
-    /*
-    public function configureFields(string $pageName): iterable
+    public function configureCrud(Crud $crud): Crud
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        $crud = parent::configureCrud($crud);
+
+        return $crud
+            ->setEntityLabelInPlural('Шкалы измерений')
+            ->setEntityLabelInSingular('Шкала измерения');
     }
-    */
 }
