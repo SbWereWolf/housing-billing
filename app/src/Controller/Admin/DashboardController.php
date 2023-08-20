@@ -12,6 +12,7 @@ use App\Entity\BillingPeriod;
 use App\Entity\Contract;
 use App\Entity\ContractPersonalAccountOption;
 use App\Entity\ConversionRatio;
+use App\Entity\Currency;
 use App\Entity\Customer;
 use App\Entity\DeviceOption;
 use App\Entity\Distributor;
@@ -198,6 +199,11 @@ class DashboardController extends AbstractDashboardController
             'Взаимосвязанные услуги',
             'fas fa-list',
             RelatedProduct::class
+        );
+        yield MenuItem::linkToCrud(
+            'Валюты',
+            'fas fa-list',
+            Currency::class
         );
     }
 }
