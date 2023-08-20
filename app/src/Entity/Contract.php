@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="contract", uniqueConstraints={@ORM\UniqueConstraint(name="contract_customer_id_id_ux", columns={"customer_id", "id"})})
  * @ORM\Entity(repositoryClass="App\Repository\ContractRepository")
  */
-class Contract
+class Contract implements \Stringable
 {
     use HasCustomer;
     /**
@@ -27,5 +27,10 @@ class Contract
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    public function __toString(): string
+    {
+        return "{$this->getCustomer()}, №{$this->id}";
     }
 }
