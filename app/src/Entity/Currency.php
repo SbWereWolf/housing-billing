@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasUnitsOfMeasure;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Currency
 {
+    use HasUnitsOfMeasure;
     /**
      * @var int
      *
@@ -23,28 +24,9 @@ class Currency
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="units_of_measure_id", type="bigint", nullable=true)
-     */
-    private $unitsOfMeasureId;
-
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function getUnitsOfMeasureId(): ?string
-    {
-        return $this->unitsOfMeasureId;
-    }
-
-    public function setUnitsOfMeasureId(?string $unitsOfMeasureId): static
-    {
-        $this->unitsOfMeasureId = $unitsOfMeasureId;
-
-        return $this;
     }
 
 
