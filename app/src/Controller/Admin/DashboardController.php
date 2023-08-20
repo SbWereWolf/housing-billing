@@ -15,6 +15,7 @@ use App\Entity\ConversionRatio;
 use App\Entity\Currency;
 use App\Entity\Customer;
 use App\Entity\CustomerLegalEntityOption;
+use App\Entity\CustomerNaturalPersonOption;
 use App\Entity\DeviceOption;
 use App\Entity\Distributor;
 use App\Entity\LegalEntityOption;
@@ -210,6 +211,11 @@ class DashboardController extends AbstractDashboardController
             'Параметры начислений для юридических лиц',
             'fas fa-list',
             CustomerLegalEntityOption::class
+        );
+        yield MenuItem::linkToCrud(
+            'Параметры начислений для физических лиц',
+            'fas fa-list',
+            CustomerNaturalPersonOption::class
         );
     }
 }
