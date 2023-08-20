@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasBillingOption;
+use App\Entity\Column\HasCustomer;
+use App\Entity\Column\HasEntityOption;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +15,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CustomerLegalEntityOption
 {
+    use HasCustomer;
+    use HasEntityOption;
+    use HasBillingOption;
+
     /**
      * @var int
      *
@@ -23,67 +29,8 @@ class CustomerLegalEntityOption
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="billing_option_id", type="bigint", nullable=true)
-     */
-    private $billingOptionId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="legal_entity_option_id", type="bigint", nullable=true)
-     */
-    private $legalEntityOptionId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="customer_id", type="bigint", nullable=true)
-     */
-    private $customerId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getBillingOptionId(): ?string
-    {
-        return $this->billingOptionId;
-    }
-
-    public function setBillingOptionId(?string $billingOptionId): static
-    {
-        $this->billingOptionId = $billingOptionId;
-
-        return $this;
-    }
-
-    public function getLegalEntityOptionId(): ?string
-    {
-        return $this->legalEntityOptionId;
-    }
-
-    public function setLegalEntityOptionId(?string $legalEntityOptionId): static
-    {
-        $this->legalEntityOptionId = $legalEntityOptionId;
-
-        return $this;
-    }
-
-    public function getCustomerId(): ?string
-    {
-        return $this->customerId;
-    }
-
-    public function setCustomerId(?string $customerId): static
-    {
-        $this->customerId = $customerId;
-
-        return $this;
-    }
-
-
 }
