@@ -24,44 +24,46 @@ class RelatedProduct
     private $id;
 
     /**
-     * @var int
+     * @var Product
      *
-     * @ORM\Column(name="parent_product_id", type="bigint", nullable=false)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
+     * @ORM\JoinColumn(name="parent_product_id")
      */
-    private $parentProductId;
+    private Product $parent;
 
     /**
-     * @var int|null
+     * @var Product
      *
-     * @ORM\Column(name="child_product_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
+     * @ORM\JoinColumn(name="child_product_id")
      */
-    private $childProductId;
+    private Product $child;
 
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getParentProductId(): ?string
+    public function getParent(): Product
     {
-        return $this->parentProductId;
+        return $this->parent;
     }
 
-    public function setParentProductId(string $parentProductId): static
+    public function setParent(Product $parent): static
     {
-        $this->parentProductId = $parentProductId;
+        $this->parent = $parent;
 
         return $this;
     }
 
-    public function getChildProductId(): ?string
+    public function getChild(): Product
     {
-        return $this->childProductId;
+        return $this->child;
     }
 
-    public function setChildProductId(?string $childProductId): static
+    public function setChild(Product $child): static
     {
-        $this->childProductId = $childProductId;
+        $this->child = $child;
 
         return $this;
     }

@@ -25,6 +25,7 @@ use App\Entity\Product;
 use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
 use App\Entity\ReadingsWay;
+use App\Entity\RelatedProduct;
 use App\Entity\TestingRule;
 use App\Entity\TestingSet;
 use App\Entity\UnitsOfMeasure;
@@ -192,6 +193,11 @@ class DashboardController extends AbstractDashboardController
             'Переводы для единиц измерения',
             'fas fa-list',
             ConversionRatio::class
+        );
+        yield MenuItem::linkToCrud(
+            'Взаимосвязанные услуги',
+            'fas fa-list',
+            RelatedProduct::class
         );
     }
 }
