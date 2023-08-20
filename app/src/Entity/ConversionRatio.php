@@ -24,44 +24,46 @@ class ConversionRatio
     private $id;
 
     /**
-     * @var int|null
+     * @var UnitsOfMeasure
      *
-     * @ORM\Column(name="source_units_of_measure_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\UnitsOfMeasure")
+     * @ORM\JoinColumn(name="source_units_of_measure_id")
      */
-    private $sourceUnitsOfMeasureId;
+    private UnitsOfMeasure $source;
 
     /**
-     * @var int|null
+     * @var UnitsOfMeasure
      *
-     * @ORM\Column(name="target_units_of_measure_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\UnitsOfMeasure")
+     * @ORM\JoinColumn(name="target_units_of_measure_id")
      */
-    private $targetUnitsOfMeasureId;
+    private UnitsOfMeasure $target;
 
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getSourceUnitsOfMeasureId(): ?string
+    public function getSource(): UnitsOfMeasure
     {
-        return $this->sourceUnitsOfMeasureId;
+        return $this->source;
     }
 
-    public function setSourceUnitsOfMeasureId(?string $sourceUnitsOfMeasureId): static
+    public function setSource(UnitsOfMeasure $source): static
     {
-        $this->sourceUnitsOfMeasureId = $sourceUnitsOfMeasureId;
+        $this->source = $source;
 
         return $this;
     }
 
-    public function getTargetUnitsOfMeasureId(): ?string
+    public function getTarget(): UnitsOfMeasure
     {
-        return $this->targetUnitsOfMeasureId;
+        return $this->target;
     }
 
-    public function setTargetUnitsOfMeasureId(?string $targetUnitsOfMeasureId): static
+    public function setTarget(UnitsOfMeasure $target): static
     {
-        $this->targetUnitsOfMeasureId = $targetUnitsOfMeasureId;
+        $this->target = $target;
 
         return $this;
     }

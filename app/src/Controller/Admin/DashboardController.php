@@ -11,6 +11,7 @@ use App\Entity\BillingOption;
 use App\Entity\BillingPeriod;
 use App\Entity\Contract;
 use App\Entity\ContractPersonalAccountOption;
+use App\Entity\ConversionRatio;
 use App\Entity\Customer;
 use App\Entity\DeviceOption;
 use App\Entity\Distributor;
@@ -186,6 +187,11 @@ class DashboardController extends AbstractDashboardController
             'Параметры лицевых счетов для начислений',
             'fas fa-list',
             ContractPersonalAccountOption::class
+        );
+        yield MenuItem::linkToCrud(
+            'Переводы для единиц измерения',
+            'fas fa-list',
+            ConversionRatio::class
         );
     }
 }
