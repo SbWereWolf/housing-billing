@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasModel;
+use App\Entity\Column\HasProduct;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MeteringDeviceModelProduct
 {
+    use HasProduct;
+    use HasModel;
+
     /**
      * @var int
      *
@@ -23,48 +27,8 @@ class MeteringDeviceModelProduct
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="metering_device_model_id", type="bigint", nullable=true)
-     */
-    private $meteringDeviceModelId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getMeteringDeviceModelId(): ?string
-    {
-        return $this->meteringDeviceModelId;
-    }
-
-    public function setMeteringDeviceModelId(?string $meteringDeviceModelId): static
-    {
-        $this->meteringDeviceModelId = $meteringDeviceModelId;
-
-        return $this;
-    }
-
-
 }
