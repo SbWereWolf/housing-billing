@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Housing\AddressCrudController;
+use App\Controller\Housing\ProductCrudController;
 use App\Entity\Address;
 use App\Entity\AddressDistributionPoint;
 use App\Entity\AddressLocationOption;
@@ -18,6 +18,7 @@ use App\Entity\CustomerLegalEntityOption;
 use App\Entity\CustomerNaturalPersonOption;
 use App\Entity\DeviceModelScale;
 use App\Entity\DeviceOption;
+use App\Entity\DistributionPoint;
 use App\Entity\Distributor;
 use App\Entity\LegalEntityOption;
 use App\Entity\LocationOption;
@@ -56,7 +57,7 @@ class DashboardController extends AbstractDashboardController
 
         return $this->redirect(
             $adminUrlGenerator
-                ->setController(AddressCrudController::class)
+                ->setController(ProductCrudController::class)
                 ->generateUrl()
         );
     }
@@ -73,155 +74,185 @@ class DashboardController extends AbstractDashboardController
             'Dashboard',
             'fa fa-home'
         );
-        yield MenuItem::linkToCrud(
-            'Адреса обслуживания',
-            'fas fa-list',
-            Address::class
-        );
-        yield MenuItem::linkToCrud(
-            'Точки поставки на адресах',
-            'fas fa-list',
-            AddressDistributionPoint::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры адресов',
-            'fas fa-list',
-            AddressLocationOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Одобренные показания',
-            'fas fa-list',
-            ApprovedMeterReadings::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры начислений',
-            'fas fa-list',
-            BillingOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Услуги ЖКХ',
-            'fas fa-list',
-            Product::class
-        );
-        yield MenuItem::linkToCrud(
-            'Назначения показаний',
-            'fas fa-list',
-            ReadingsPurpose::class
-        );
-        yield MenuItem::linkToCrud(
-            'Отправители показаний',
-            'fas fa-list',
-            ReadingsSender::class
-        );
-        yield MenuItem::linkToCrud(
-            'Каналы поступления показаний',
-            'fas fa-list',
-            ReadingsWay::class
-        );
-        yield MenuItem::linkToCrud(
-            'Правила проверки показаний',
-            'fas fa-list',
-            TestingRule::class
-        );
-        yield MenuItem::linkToCrud(
-            'Наборы правил для проверки показаний',
-            'fas fa-list',
-            TestingSet::class
-        );
-        yield MenuItem::linkToCrud(
-            'Единицы измерения',
-            'fas fa-list',
-            UnitsOfMeasure::class
-        );
-        yield MenuItem::linkToCrud(
-            'Потребители услуг ЖКХ',
-            'fas fa-list',
-            Customer::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры приборов учёта',
-            'fas fa-list',
-            DeviceOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Поставщики услуг ЖКХ',
-            'fas fa-list',
-            Distributor::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры юридических лиц',
-            'fas fa-list',
-            LegalEntityOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры места',
-            'fas fa-list',
-            LocationOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Шкалы измерений',
-            'fas fa-list',
-            MeasuringScale::class
-        );
-        yield MenuItem::linkToCrud(
-            'Модели приборов учёта',
-            'fas fa-list',
-            MeteringDeviceModel::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры физических лиц',
-            'fas fa-list',
-            NaturalPersonOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры лицевых счетов',
-            'fas fa-list',
-            PersonalAccountOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Расчётные периоды',
-            'fas fa-list',
-            BillingPeriod::class
-        );
-        yield MenuItem::linkToCrud(
-            'Расчётные периоды',
-            'fas fa-list',
-            Contract::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры лицевых счетов для начислений',
-            'fas fa-list',
-            ContractPersonalAccountOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Переводы для единиц измерения',
-            'fas fa-list',
-            ConversionRatio::class
-        );
-        yield MenuItem::linkToCrud(
-            'Взаимосвязанные услуги',
-            'fas fa-list',
-            RelatedProduct::class
-        );
-        yield MenuItem::linkToCrud(
-            'Валюты',
-            'fas fa-list',
-            Currency::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры начислений для юридических лиц',
-            'fas fa-list',
-            CustomerLegalEntityOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Параметры начислений для физических лиц',
-            'fas fa-list',
-            CustomerNaturalPersonOption::class
-        );
-        yield MenuItem::linkToCrud(
-            'Шкалы приборов учёта',
-            'fas fa-list',
-            DeviceModelScale::class
-        );
+        yield MenuItem::section();
+        yield MenuItem::subMenu('Услуги ЖКХ', 'fas fa-list')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Услуги ЖКХ',
+                    'fa-solid fa-apple-whole',
+                    Product::class
+                ),
+                MenuItem::linkToCrud(
+                    'Взаимосвязанные услуги',
+                    'fas fa-list',
+                    RelatedProduct::class
+                ),
+                MenuItem::linkToCrud(
+                    'Поставщики услуг ЖКХ',
+                    'fas fa-list',
+                    Distributor::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Единицы измерения', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Единицы измерения',
+                    'fas fa-list',
+                    UnitsOfMeasure::class
+                ),
+                MenuItem::linkToCrud(
+                    'Валюты',
+                    'fas fa-list',
+                    Currency::class
+                ),
+                MenuItem::linkToCrud(
+                    'Переводы для единиц измерения',
+                    'fas fa-list',
+                    ConversionRatio::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Адреса', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Адреса обслуживания',
+                    'fas fa-list',
+                    Address::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры места',
+                    'fas fa-list',
+                    LocationOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры адресов',
+                    'fas fa-list',
+                    AddressLocationOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Точки поставки',
+                    'fas fa-list',
+                    DistributionPoint::class
+                ),
+                MenuItem::linkToCrud(
+                    'Точки поставки на адресах',
+                    'fas fa-list',
+                    AddressDistributionPoint::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Лицевые счета', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Потребители услуг ЖКХ',
+                    'fas fa-list',
+                    Customer::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры физических лиц',
+                    'fas fa-list',
+                    NaturalPersonOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры начислений для физических лиц',
+                    'fas fa-list',
+                    CustomerNaturalPersonOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры юридических лиц',
+                    'fas fa-list',
+                    LegalEntityOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры начислений для юридических лиц',
+                    'fas fa-list',
+                    CustomerLegalEntityOption::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Лицевые счета', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Договоры',
+                    'fas fa-list',
+                    Contract::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры лицевых счетов',
+                    'fas fa-list',
+                    PersonalAccountOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры лицевых счетов для начислений',
+                    'fas fa-list',
+                    ContractPersonalAccountOption::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Показания приборов', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Назначения показаний',
+                    'fas fa-list',
+                    ReadingsPurpose::class
+                ),
+                MenuItem::linkToCrud(
+                    'Отправители показаний',
+                    'fas fa-list',
+                    ReadingsSender::class
+                ),
+                MenuItem::linkToCrud(
+                    'Каналы поступления показаний',
+                    'fas fa-list',
+                    ReadingsWay::class
+                ),
+                MenuItem::linkToCrud(
+                    'Правила проверки показаний',
+                    'fas fa-list',
+                    TestingRule::class
+                ),
+                MenuItem::linkToCrud(
+                    'Наборы правил для проверки показаний',
+                    'fas fa-list',
+                    TestingSet::class
+                ),
+                MenuItem::linkToCrud(
+                    'Одобренные показания',
+                    'fas fa-list',
+                    ApprovedMeterReadings::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Приборы учёта', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Модели приборов учёта',
+                    'fas fa-list',
+                    MeteringDeviceModel::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры приборов учёта',
+                    'fas fa-list',
+                    DeviceOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Шкалы измерений',
+                    'fas fa-list',
+                    MeasuringScale::class
+                ),
+                MenuItem::linkToCrud(
+                    'Шкалы приборов учёта',
+                    'fas fa-list',
+                    DeviceModelScale::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Начисления', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Расчётные периоды',
+                    'fas fa-list',
+                    BillingPeriod::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры начислений',
+                    'fas fa-list',
+                    BillingOption::class
+                ),
+            ]);
     }
 }
