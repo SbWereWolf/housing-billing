@@ -20,6 +20,7 @@ use App\Entity\DeviceModelScale;
 use App\Entity\DeviceOption;
 use App\Entity\DistributionPoint;
 use App\Entity\Distributor;
+use App\Entity\LegalEntityBillingOption;
 use App\Entity\LegalEntityOption;
 use App\Entity\LocationOption;
 use App\Entity\MeasuringScale;
@@ -161,6 +162,11 @@ class DashboardController extends AbstractDashboardController
                     'Параметры юридических лиц',
                     'fas fa-list',
                     LegalEntityOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры начислений для юридических лиц',
+                    'fas fa-list',
+                    LegalEntityBillingOption::class
                 ),
                 MenuItem::linkToCrud(
                     'Параметры начислений для' .
