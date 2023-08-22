@@ -20,8 +20,12 @@ class NumberDeviceOptionMeteringDeviceModelCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInPlural('Приборы учёта для услуг ЖКХ')
-            ->setEntityLabelInSingular('Прибор учёта для услуги ЖКХ')
+            ->setEntityLabelInPlural(
+                'Числовые значения параметров моделей приборов учёта'
+            )
+            ->setEntityLabelInSingular(
+                'Числовое значение параметра модели приборов учёта'
+            )
             ->setDefaultSort([
                 'model' => 'ASC',
                 'deviceOption' => 'ASC',
