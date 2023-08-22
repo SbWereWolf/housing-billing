@@ -23,6 +23,7 @@ use App\Entity\Distributor;
 use App\Entity\LegalEntity;
 use App\Entity\LegalEntityBillingOption;
 use App\Entity\LegalEntityOption;
+use App\Entity\LocationBillingOption;
 use App\Entity\LocationOption;
 use App\Entity\MeasuringScale;
 use App\Entity\MeteringDeviceModel;
@@ -129,6 +130,11 @@ class DashboardController extends AbstractDashboardController
                     'Параметры начислений для местонахождений',
                     'fas fa-list',
                     LocationBillingOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры начислений для адресов',
+                    'fas fa-list',
+                    AddressLocationOption::class
                 ),
                 MenuItem::linkToCrud(
                     'Точки поставки',
