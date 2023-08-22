@@ -26,6 +26,7 @@ use App\Entity\LegalEntityOption;
 use App\Entity\LocationBillingOption;
 use App\Entity\LocationOption;
 use App\Entity\MeasuringScale;
+use App\Entity\MeteringDevice;
 use App\Entity\MeteringDeviceModel;
 use App\Entity\NaturalPersonOption;
 use App\Entity\PersonalAccountOption;
@@ -259,6 +260,11 @@ class DashboardController extends AbstractDashboardController
                     'Шкалы приборов учёта',
                     'fas fa-list',
                     DeviceModelScale::class
+                ),
+                MenuItem::linkToCrud(
+                    'Приборы учёта',
+                    'fas fa-list',
+                    MeteringDevice::class
                 ),
             ]);
         yield MenuItem::subMenu('Начисления', '')
