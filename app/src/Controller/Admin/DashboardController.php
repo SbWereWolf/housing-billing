@@ -16,6 +16,7 @@ use App\Entity\Currency;
 use App\Entity\Customer;
 use App\Entity\CustomerLegalEntityOption;
 use App\Entity\CustomerNaturalPersonOption;
+use App\Entity\DeviceModelScale;
 use App\Entity\DeviceOption;
 use App\Entity\Distributor;
 use App\Entity\LegalEntityOption;
@@ -216,6 +217,11 @@ class DashboardController extends AbstractDashboardController
             'Параметры начислений для физических лиц',
             'fas fa-list',
             CustomerNaturalPersonOption::class
+        );
+        yield MenuItem::linkToCrud(
+            'Шкалы приборов учёта',
+            'fas fa-list',
+            DeviceModelScale::class
         );
     }
 }
