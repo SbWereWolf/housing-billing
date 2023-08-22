@@ -6,7 +6,8 @@ use App\Controller\Base\EntityWithCaptionController;
 use App\Entity\LegalEntityOption;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class LegalEntityOptionCrudController extends EntityWithCaptionController
+class LegalEntityOptionCrudController
+    extends EntityWithCaptionController
 {
     public static function getEntityFqcn(): string
     {
@@ -19,6 +20,6 @@ class LegalEntityOptionCrudController extends EntityWithCaptionController
 
         return $crud
             ->setEntityLabelInPlural('Параметры юридических лиц')
-            ->setEntityLabelInSingular('Параметр юридического лица');
+            ->setEntityLabelInSingular('Параметр юридических лиц');
     }
 }
