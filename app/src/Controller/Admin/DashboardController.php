@@ -31,6 +31,7 @@ use App\Entity\MeteringDeviceModel;
 use App\Entity\MeteringDeviceModelProduct;
 use App\Entity\MeteringPoint;
 use App\Entity\MeterReadings;
+use App\Entity\MeterUsage;
 use App\Entity\NaturalPersonOption;
 use App\Entity\PersonalAccountOption;
 use App\Entity\Product;
@@ -245,6 +246,11 @@ class DashboardController extends AbstractDashboardController
                     'Показания приборов учёта',
                     'fas fa-list',
                     MeterReadings::class
+                ),
+                MenuItem::linkToCrud(
+                    'Объём потребления услуг ЖКХ',
+                    'fas fa-list',
+                    MeterUsage::class
                 ),
             ]);
         yield MenuItem::subMenu('Модели приборов учёта', '')
