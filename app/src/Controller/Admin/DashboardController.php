@@ -139,7 +139,7 @@ class DashboardController extends AbstractDashboardController
                     AddressDistributionPoint::class
                 ),
             ]);
-        yield MenuItem::subMenu('Лицевые счета', '')
+        yield MenuItem::subMenu('Потребители услуг', '')
             ->setSubItems([
                 MenuItem::linkToCrud(
                     'Потребители услуг ЖКХ',
