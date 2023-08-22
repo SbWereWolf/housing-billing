@@ -30,6 +30,7 @@ use App\Entity\MeteringDevice;
 use App\Entity\MeteringDeviceModel;
 use App\Entity\MeteringDeviceModelProduct;
 use App\Entity\MeteringPoint;
+use App\Entity\MeterReadings;
 use App\Entity\NaturalPersonOption;
 use App\Entity\PersonalAccountOption;
 use App\Entity\Product;
@@ -239,6 +240,11 @@ class DashboardController extends AbstractDashboardController
                     'Одобренные показания',
                     'fas fa-list',
                     ApprovedMeterReadings::class
+                ),
+                MenuItem::linkToCrud(
+                    'Показания приборов учёта',
+                    'fas fa-list',
+                    MeterReadings::class
                 ),
             ]);
         yield MenuItem::subMenu('Модели приборов учёта', '')
