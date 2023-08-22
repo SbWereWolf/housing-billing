@@ -40,7 +40,7 @@ class AddressLocationOptionCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        $fields = $this->getBaseFields($pageName);
+        $fields = parent::configureFields($pageName);
         foreach ($fields as $field) {
             yield $field;
         }

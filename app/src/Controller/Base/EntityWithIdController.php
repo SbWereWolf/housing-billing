@@ -16,18 +16,4 @@ abstract class EntityWithIdController
         return $filters
             ->add(NumericFilter::new('id', '№'));
     }
-
-    protected function getBaseFields(string $pageName): array
-    {
-        $result = [];
-
-        if (
-            $pageName !== Crud::PAGE_NEW &&
-            $pageName !== Crud::PAGE_EDIT
-        ) {
-            $result['id'] = TextField::new('id', '№');
-        }
-
-        return $result;
-    }
 }
