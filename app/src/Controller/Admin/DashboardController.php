@@ -152,7 +152,8 @@ class DashboardController extends AbstractDashboardController
                     NaturalPersonOption::class
                 ),
                 MenuItem::linkToCrud(
-                    'Параметры начислений для физических лиц',
+                    'Параметры начислений для ' .
+                    ' потребителей физических лиц',
                     'fas fa-list',
                     CustomerNaturalPersonOption::class
                 ),
@@ -162,7 +163,8 @@ class DashboardController extends AbstractDashboardController
                     LegalEntityOption::class
                 ),
                 MenuItem::linkToCrud(
-                    'Параметры начислений для юридических лиц',
+                    'Параметры начислений для' .
+                    ' потребителей юридических лиц',
                     'fas fa-list',
                     CustomerLegalEntityOption::class
                 ),
