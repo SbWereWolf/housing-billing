@@ -22,10 +22,10 @@ class CustomerNaturalPersonOptionCrudController
     {
         return $crud
             ->setEntityLabelInPlural(
-                'Параметры начислений для физических лиц'
+                'Параметры начислений для потребителей физических лиц'
             )
             ->setEntityLabelInSingular(
-                'Параметр начислений для физических лиц'
+                'Параметр начислений для потребителя физического лица'
             )
             ->setDefaultSort([
                 'customer' => 'ASC',
