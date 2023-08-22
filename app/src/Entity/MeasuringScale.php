@@ -42,24 +42,24 @@ class MeasuringScale extends CaptionWithCode
         return $this->id;
     }
 
-    public function getReadingsLimit(): ?int
+    public function getReadingsLimit(): ?string
     {
         return $this->readingsLimit;
     }
 
-    public function setReadingsLimit(?int $readingsLimit): static
+    public function setReadingsLimit(?string $readingsLimit): static
     {
         $this->readingsLimit = $readingsLimit;
 
         return $this;
     }
 
-    public function getReadingsResolution(): ?int
+    public function getReadingsResolution(): ?string
     {
         return $this->readingsResolution;
     }
 
-    public function setReadingsResolution(?int $readingsResolution): static
+    public function setReadingsResolution(?string $readingsResolution): static
     {
         $this->readingsResolution = $readingsResolution;
 
