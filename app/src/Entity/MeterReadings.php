@@ -2,7 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasBillingPeriod;
+use App\Entity\Column\HasDistributionPoint;
+use App\Entity\Column\HasDistributor;
+use App\Entity\Column\HasProduct;
+use App\Entity\Column\HasRawReadings;
+use App\Entity\Column\HasTestingRun;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +18,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MeterReadings
 {
+    use HasProduct;
+    use HasDistributor;
+    use HasDistributionPoint;
+    use HasRawReadings;
+    use HasBillingPeriod;
+    use HasTestingRun;
+
     /**
      * @var int
      *
@@ -23,143 +35,8 @@ class MeterReadings
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="raw_readings_id", type="bigint", nullable=true)
-     */
-    private $rawReadingsId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="year", type="integer", nullable=true)
-     */
-    private $year;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="month", type="integer", nullable=true)
-     */
-    private $month;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distributor_id", type="bigint", nullable=true)
-     */
-    private $distributorId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distribution_point_id", type="bigint", nullable=true)
-     */
-    private $distributionPointId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="testing_run_id", type="bigint", nullable=true)
-     */
-    private $testingRunId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getRawReadingsId(): ?string
-    {
-        return $this->rawReadingsId;
-    }
-
-    public function setRawReadingsId(?string $rawReadingsId): static
-    {
-        $this->rawReadingsId = $rawReadingsId;
-
-        return $this;
-    }
-
-    public function getYear(): ?int
-    {
-        return $this->year;
-    }
-
-    public function setYear(?int $year): static
-    {
-        $this->year = $year;
-
-        return $this;
-    }
-
-    public function getMonth(): ?int
-    {
-        return $this->month;
-    }
-
-    public function setMonth(?int $month): static
-    {
-        $this->month = $month;
-
-        return $this;
-    }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getDistributorId(): ?string
-    {
-        return $this->distributorId;
-    }
-
-    public function setDistributorId(?string $distributorId): static
-    {
-        $this->distributorId = $distributorId;
-
-        return $this;
-    }
-
-    public function getDistributionPointId(): ?string
-    {
-        return $this->distributionPointId;
-    }
-
-    public function setDistributionPointId(?string $distributionPointId): static
-    {
-        $this->distributionPointId = $distributionPointId;
-
-        return $this;
-    }
-
-    public function getTestingRunId(): ?string
-    {
-        return $this->testingRunId;
-    }
-
-    public function setTestingRunId(?string $testingRunId): static
-    {
-        $this->testingRunId = $testingRunId;
-
-        return $this;
-    }
-
-
 }
