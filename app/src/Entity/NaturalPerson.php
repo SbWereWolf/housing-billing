@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasCustomer;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class NaturalPerson
 {
+    use HasCustomer;
+
     /**
      * @var int
      *
@@ -23,29 +25,8 @@ class NaturalPerson
      */
     private $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="customer_id", type="bigint", nullable=false)
-     */
-    private $customerId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getCustomerId(): ?string
-    {
-        return $this->customerId;
-    }
-
-    public function setCustomerId(string $customerId): static
-    {
-        $this->customerId = $customerId;
-
-        return $this;
-    }
-
-
 }
