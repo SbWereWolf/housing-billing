@@ -32,6 +32,7 @@ use App\Entity\MeteringDeviceModelProduct;
 use App\Entity\MeteringPoint;
 use App\Entity\MeterReadings;
 use App\Entity\MeterUsage;
+use App\Entity\NaturalPerson;
 use App\Entity\NaturalPersonBillingOption;
 use App\Entity\NaturalPersonOption;
 use App\Entity\PersonalAccountOption;
@@ -159,6 +160,11 @@ class DashboardController extends AbstractDashboardController
                     'Потребители услуг ЖКХ',
                     'fas fa-list',
                     Customer::class
+                ),
+                MenuItem::linkToCrud(
+                    'Физические лица',
+                    'fas fa-list',
+                    NaturalPerson::class
                 ),
                 MenuItem::linkToCrud(
                     'Параметры физических лиц',
