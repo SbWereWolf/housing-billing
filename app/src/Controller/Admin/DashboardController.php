@@ -246,7 +246,7 @@ class DashboardController extends AbstractDashboardController
                     MeteringDeviceModel::class
                 ),
                 MenuItem::linkToCrud(
-                    'Параметры приборов учёта',
+                    'Параметры моделей приборов учёта',
                     'fas fa-list',
                     DeviceOption::class
                 ),
