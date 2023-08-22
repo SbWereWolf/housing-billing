@@ -35,6 +35,7 @@ use App\Entity\MeterUsage;
 use App\Entity\NaturalPerson;
 use App\Entity\NaturalPersonBillingOption;
 use App\Entity\NaturalPersonOption;
+use App\Entity\NumberDeviceOptionMeteringDeviceModel;
 use App\Entity\PersonalAccountOption;
 use App\Entity\Product;
 use App\Entity\ReadingsPurpose;
@@ -238,6 +239,12 @@ class DashboardController extends AbstractDashboardController
                     'Параметры моделей приборов учёта',
                     'fas fa-list',
                     DeviceOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Числовые значения параметров' .
+                    ' моделей приборов учёта',
+                    'fas fa-list',
+                    NumberDeviceOptionMeteringDeviceModel::class
                 ),
                 MenuItem::linkToCrud(
                     'Шкалы измерений',
