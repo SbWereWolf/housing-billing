@@ -16,11 +16,6 @@ trait HasDistributionPoint
      */
     private DistributionPoint $distributionPoint;
 
-    public function getId(): ?string
-    {
-        return $this->id;
-    }
-
     public function getDistributionPoint(): DistributionPoint
     {
         return $this->distributionPoint;
