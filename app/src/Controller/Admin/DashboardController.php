@@ -28,6 +28,7 @@ use App\Entity\LocationOption;
 use App\Entity\MeasuringScale;
 use App\Entity\MeteringDevice;
 use App\Entity\MeteringDeviceModel;
+use App\Entity\MeteringDeviceModelProduct;
 use App\Entity\NaturalPersonOption;
 use App\Entity\PersonalAccountOption;
 use App\Entity\Product;
@@ -239,12 +240,17 @@ class DashboardController extends AbstractDashboardController
                     ApprovedMeterReadings::class
                 ),
             ]);
-        yield MenuItem::subMenu('Приборы учёта', '')
+        yield MenuItem::subMenu('Модели приборов учёта', '')
             ->setSubItems([
                 MenuItem::linkToCrud(
                     'Модели приборов учёта',
                     'fas fa-list',
                     MeteringDeviceModel::class
+                ),
+                MenuItem::linkToCrud(
+                    'Приборы учёта для услуг ЖКХ',
+                    'fas fa-list',
+                    MeteringDeviceModelProduct::class
                 ),
                 MenuItem::linkToCrud(
                     'Параметры моделей приборов учёта',
@@ -261,6 +267,9 @@ class DashboardController extends AbstractDashboardController
                     'fas fa-list',
                     DeviceModelScale::class
                 ),
+            ]);
+        yield MenuItem::subMenu('Приборы учёта', '')
+            ->setSubItems([
                 MenuItem::linkToCrud(
                     'Приборы учёта',
                     'fas fa-list',
