@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasBillingOption;
+use App\Entity\Column\HasLocationOption;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class LocationBillingOption
 {
+    use HasLocationOption;
+    use HasBillingOption;
+
     /**
      * @var int
      *
@@ -23,48 +27,8 @@ class LocationBillingOption
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="billing_option_id", type="bigint", nullable=true)
-     */
-    private $billingOptionId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="location_option_id", type="bigint", nullable=true)
-     */
-    private $locationOptionId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getBillingOptionId(): ?string
-    {
-        return $this->billingOptionId;
-    }
-
-    public function setBillingOptionId(?string $billingOptionId): static
-    {
-        $this->billingOptionId = $billingOptionId;
-
-        return $this;
-    }
-
-    public function getLocationOptionId(): ?string
-    {
-        return $this->locationOptionId;
-    }
-
-    public function setLocationOptionId(?string $locationOptionId): static
-    {
-        $this->locationOptionId = $locationOptionId;
-
-        return $this;
-    }
-
-
 }
