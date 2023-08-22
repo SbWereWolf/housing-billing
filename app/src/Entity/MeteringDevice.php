@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasDistributionPoint;
+use App\Entity\Column\HasDistributor;
+use App\Entity\Column\HasModel;
+use App\Entity\Column\HasProduct;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +16,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MeteringDevice
 {
+    use HasModel;
+    use HasProduct;
+    use HasDistributor;
+    use HasDistributionPoint;
+
     /**
      * @var int
      *
@@ -22,13 +30,6 @@ class MeteringDevice
      * @ORM\SequenceGenerator(sequenceName="metering_device_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="metering_device_model_id", type="bigint", nullable=true)
-     */
-    private $meteringDeviceModelId;
 
     /**
      * @var int|null
@@ -51,50 +52,17 @@ class MeteringDevice
      */
     private $serial;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distributor_id", type="bigint", nullable=true)
-     */
-    private $distributorId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distribution_point_id", type="bigint", nullable=true)
-     */
-    private $distributionPointId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getMeteringDeviceModelId(): ?string
-    {
-        return $this->meteringDeviceModelId;
-    }
-
-    public function setMeteringDeviceModelId(?string $meteringDeviceModelId): static
-    {
-        $this->meteringDeviceModelId = $meteringDeviceModelId;
-
-        return $this;
-    }
-
-    public function getStart(): ?int
+    public function getStart(): ?string
     {
         return $this->start;
     }
 
-    public function setStart(?int $start): static
+    public function setStart(?string $start): static
     {
         $this->start = $start;
 
@@ -124,42 +92,4 @@ class MeteringDevice
 
         return $this;
     }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getDistributorId(): ?string
-    {
-        return $this->distributorId;
-    }
-
-    public function setDistributorId(?string $distributorId): static
-    {
-        $this->distributorId = $distributorId;
-
-        return $this;
-    }
-
-    public function getDistributionPointId(): ?string
-    {
-        return $this->distributionPointId;
-    }
-
-    public function setDistributionPointId(?string $distributionPointId): static
-    {
-        $this->distributionPointId = $distributionPointId;
-
-        return $this;
-    }
-
-
 }
