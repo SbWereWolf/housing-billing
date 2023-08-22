@@ -6,7 +6,8 @@ use App\Controller\Base\EntityWithCaptionController;
 use App\Entity\MeteringDeviceModel;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class MeteringDeviceModelCrudController extends EntityWithCaptionController
+class MeteringDeviceModelCrudController
+    extends EntityWithCaptionController
 {
     public static function getEntityFqcn(): string
     {
