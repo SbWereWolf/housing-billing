@@ -2,7 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasBillingPeriod;
+use App\Entity\Column\HasDistributionPoint;
+use App\Entity\Column\HasDistributor;
+use App\Entity\Column\HasProduct;
+use App\Entity\Column\HasUnitsOfMeasure;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +17,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MeterUsage
 {
+    use HasProduct;
+    use HasDistributor;
+    use HasDistributionPoint;
+    use HasBillingPeriod;
+    use HasUnitsOfMeasure;
+
     /**
      * @var int
      *
@@ -22,27 +32,6 @@ class MeterUsage
      * @ORM\SequenceGenerator(sequenceName="meter_usage_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distributor_id", type="bigint", nullable=true)
-     */
-    private $distributorId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distribution_point_id", type="bigint", nullable=true)
-     */
-    private $distributionPointId;
 
     /**
      * @var int|null
@@ -61,70 +50,13 @@ class MeterUsage
     /**
      * @var int|null
      *
-     * @ORM\Column(name="year", type="integer", nullable=true)
-     */
-    private $year;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="month", type="integer", nullable=true)
-     */
-    private $month;
-
-    /**
-     * @var int|null
-     *
      * @ORM\Column(name="volume", type="bigint", nullable=true)
      */
     private $volume;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="units_of_measure_id", type="bigint", nullable=true)
-     */
-    private $unitsOfMeasureId;
-
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getDistributorId(): ?string
-    {
-        return $this->distributorId;
-    }
-
-    public function setDistributorId(?string $distributorId): static
-    {
-        $this->distributorId = $distributorId;
-
-        return $this;
-    }
-
-    public function getDistributionPointId(): ?string
-    {
-        return $this->distributionPointId;
-    }
-
-    public function setDistributionPointId(?string $distributionPointId): static
-    {
-        $this->distributionPointId = $distributionPointId;
-
-        return $this;
     }
 
     public function getPreviousYear(): ?int
@@ -151,30 +83,6 @@ class MeterUsage
         return $this;
     }
 
-    public function getYear(): ?int
-    {
-        return $this->year;
-    }
-
-    public function setYear(?int $year): static
-    {
-        $this->year = $year;
-
-        return $this;
-    }
-
-    public function getMonth(): ?int
-    {
-        return $this->month;
-    }
-
-    public function setMonth(?int $month): static
-    {
-        $this->month = $month;
-
-        return $this;
-    }
-
     public function getVolume(): ?string
     {
         return $this->volume;
@@ -186,18 +94,4 @@ class MeterUsage
 
         return $this;
     }
-
-    public function getUnitsOfMeasureId(): ?string
-    {
-        return $this->unitsOfMeasureId;
-    }
-
-    public function setUnitsOfMeasureId(?string $unitsOfMeasureId): static
-    {
-        $this->unitsOfMeasureId = $unitsOfMeasureId;
-
-        return $this;
-    }
-
-
 }
