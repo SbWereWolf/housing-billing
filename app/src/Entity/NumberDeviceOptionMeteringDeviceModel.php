@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasDeviceOption;
+use App\Entity\Column\HasModel;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class NumberDeviceOptionMeteringDeviceModel
 {
+    use HasModel;
+    use HasDeviceOption;
+
     /**
      * @var int
      *
@@ -22,20 +26,6 @@ class NumberDeviceOptionMeteringDeviceModel
      * @ORM\SequenceGenerator(sequenceName="number_device_option_metering_device_model_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="device_option_id", type="bigint", nullable=true)
-     */
-    private $deviceOptionId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="metering_device_model_id", type="bigint", nullable=true)
-     */
-    private $meteringDeviceModelId;
 
     /**
      * @var string|null
@@ -49,30 +39,6 @@ class NumberDeviceOptionMeteringDeviceModel
         return $this->id;
     }
 
-    public function getDeviceOptionId(): ?string
-    {
-        return $this->deviceOptionId;
-    }
-
-    public function setDeviceOptionId(?string $deviceOptionId): static
-    {
-        $this->deviceOptionId = $deviceOptionId;
-
-        return $this;
-    }
-
-    public function getMeteringDeviceModelId(): ?string
-    {
-        return $this->meteringDeviceModelId;
-    }
-
-    public function setMeteringDeviceModelId(?string $meteringDeviceModelId): static
-    {
-        $this->meteringDeviceModelId = $meteringDeviceModelId;
-
-        return $this;
-    }
-
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
@@ -84,6 +50,4 @@ class NumberDeviceOptionMeteringDeviceModel
 
         return $this;
     }
-
-
 }
