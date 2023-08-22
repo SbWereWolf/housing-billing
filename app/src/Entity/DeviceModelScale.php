@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasModel;
+use App\Entity\Column\HasPurpose;
+use App\Entity\Column\HasScale;
+use App\Entity\Column\HasUnitsOfMeasure;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +16,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class DeviceModelScale
 {
+    use HasModel;
+    use HasScale;
+    use HasUnitsOfMeasure;
+    use HasPurpose;
+
     /**
      * @var int
      *
@@ -23,86 +31,8 @@ class DeviceModelScale
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="metering_device_model_id", type="bigint", nullable=true)
-     */
-    private $meteringDeviceModelId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="measuring_scale_id", type="bigint", nullable=true)
-     */
-    private $measuringScaleId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="readings_purpose_id", type="bigint", nullable=true)
-     */
-    private $readingsPurposeId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="units_of_measure_id", type="bigint", nullable=true)
-     */
-    private $unitsOfMeasureId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getMeteringDeviceModelId(): ?string
-    {
-        return $this->meteringDeviceModelId;
-    }
-
-    public function setMeteringDeviceModelId(?string $meteringDeviceModelId): static
-    {
-        $this->meteringDeviceModelId = $meteringDeviceModelId;
-
-        return $this;
-    }
-
-    public function getMeasuringScaleId(): ?string
-    {
-        return $this->measuringScaleId;
-    }
-
-    public function setMeasuringScaleId(?string $measuringScaleId): static
-    {
-        $this->measuringScaleId = $measuringScaleId;
-
-        return $this;
-    }
-
-    public function getReadingsPurposeId(): ?string
-    {
-        return $this->readingsPurposeId;
-    }
-
-    public function setReadingsPurposeId(?string $readingsPurposeId): static
-    {
-        $this->readingsPurposeId = $readingsPurposeId;
-
-        return $this;
-    }
-
-    public function getUnitsOfMeasureId(): ?string
-    {
-        return $this->unitsOfMeasureId;
-    }
-
-    public function setUnitsOfMeasureId(?string $unitsOfMeasureId): static
-    {
-        $this->unitsOfMeasureId = $unitsOfMeasureId;
-
-        return $this;
-    }
-
-
 }
