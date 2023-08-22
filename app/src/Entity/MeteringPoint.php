@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasAddress;
+use App\Entity\Column\HasDistributionPoint;
+use App\Entity\Column\HasDistributor;
+use App\Entity\Column\HasProduct;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +16,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MeteringPoint
 {
+    use HasAddress;
+    use HasProduct;
+    use HasDistributor;
+    use HasDistributionPoint;
+
     /**
      * @var int
      *
@@ -23,86 +31,8 @@ class MeteringPoint
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distributor_id", type="bigint", nullable=true)
-     */
-    private $distributorId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distribution_point_id", type="bigint", nullable=true)
-     */
-    private $distributionPointId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="address_id", type="bigint", nullable=true)
-     */
-    private $addressId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getDistributorId(): ?string
-    {
-        return $this->distributorId;
-    }
-
-    public function setDistributorId(?string $distributorId): static
-    {
-        $this->distributorId = $distributorId;
-
-        return $this;
-    }
-
-    public function getDistributionPointId(): ?string
-    {
-        return $this->distributionPointId;
-    }
-
-    public function setDistributionPointId(?string $distributionPointId): static
-    {
-        $this->distributionPointId = $distributionPointId;
-
-        return $this;
-    }
-
-    public function getAddressId(): ?string
-    {
-        return $this->addressId;
-    }
-
-    public function setAddressId(?string $addressId): static
-    {
-        $this->addressId = $addressId;
-
-        return $this;
-    }
-
-
 }
