@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasAccountOption;
+use App\Entity\Column\HasBillingOption;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PersonalAccountBillingOption
 {
+    use HasAccountOption;
+    use HasBillingOption;
+
     /**
      * @var int
      *
@@ -23,48 +27,8 @@ class PersonalAccountBillingOption
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="personal_account_option_id", type="bigint", nullable=true)
-     */
-    private $personalAccountOptionId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="billing_option_id", type="bigint", nullable=true)
-     */
-    private $billingOptionId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getPersonalAccountOptionId(): ?string
-    {
-        return $this->personalAccountOptionId;
-    }
-
-    public function setPersonalAccountOptionId(?string $personalAccountOptionId): static
-    {
-        $this->personalAccountOptionId = $personalAccountOptionId;
-
-        return $this;
-    }
-
-    public function getBillingOptionId(): ?string
-    {
-        return $this->billingOptionId;
-    }
-
-    public function setBillingOptionId(?string $billingOptionId): static
-    {
-        $this->billingOptionId = $billingOptionId;
-
-        return $this;
-    }
-
-
 }
