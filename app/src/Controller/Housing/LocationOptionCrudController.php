@@ -18,7 +18,7 @@ class LocationOptionCrudController extends EntityWithCaptionController
         $crud = parent::configureCrud($crud);
 
         return $crud
-            ->setEntityLabelInPlural('Параметры места')
-            ->setEntityLabelInSingular('Параметр места');
+            ->setEntityLabelInPlural('Параметры местонахождений')
+            ->setEntityLabelInSingular('Параметр местонахождений');
     }
 }

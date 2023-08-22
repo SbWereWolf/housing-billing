@@ -121,14 +121,14 @@ class DashboardController extends AbstractDashboardController
                     Address::class
                 ),
                 MenuItem::linkToCrud(
-                    'Параметры места',
+                    'Параметры местонахождений',
                     'fas fa-list',
                     LocationOption::class
                 ),
                 MenuItem::linkToCrud(
-                    'Параметры адресов',
+                    'Параметры начислений для местонахождений',
                     'fas fa-list',
-                    AddressLocationOption::class
+                    LocationBillingOption::class
                 ),
                 MenuItem::linkToCrud(
                     'Точки поставки',
