@@ -121,39 +121,6 @@ class DashboardController extends AbstractDashboardController
                     ConversionRatio::class
                 ),
             ]);
-        yield MenuItem::subMenu('Адреса', '')
-            ->setSubItems([
-                MenuItem::linkToCrud(
-                    'Адреса обслуживания',
-                    'fas fa-list',
-                    Address::class
-                ),
-                MenuItem::linkToCrud(
-                    'Параметры местонахождений',
-                    'fas fa-list',
-                    LocationOption::class
-                ),
-                MenuItem::linkToCrud(
-                    'Параметры начислений для местонахождений',
-                    'fas fa-list',
-                    LocationBillingOption::class
-                ),
-                MenuItem::linkToCrud(
-                    'Параметры начислений для адресов',
-                    'fas fa-list',
-                    AddressLocationOption::class
-                ),
-                MenuItem::linkToCrud(
-                    'Точки поставки',
-                    'fas fa-list',
-                    DistributionPoint::class
-                ),
-                MenuItem::linkToCrud(
-                    'Точки поставки на адресах',
-                    'fas fa-list',
-                    AddressDistributionPoint::class
-                ),
-            ]);
         yield MenuItem::subMenu('Потребители услуг', '')
             ->setSubItems([
                 MenuItem::linkToCrud(
@@ -222,47 +189,37 @@ class DashboardController extends AbstractDashboardController
                     ContractPersonalAccountOption::class
                 ),
             ]);
-        yield MenuItem::subMenu('Показания приборов', '')
+        yield MenuItem::subMenu('Адреса', '')
             ->setSubItems([
                 MenuItem::linkToCrud(
-                    'Назначения показаний',
+                    'Адреса обслуживания',
                     'fas fa-list',
-                    ReadingsPurpose::class
+                    Address::class
                 ),
                 MenuItem::linkToCrud(
-                    'Отправители показаний',
+                    'Параметры местонахождений',
                     'fas fa-list',
-                    ReadingsSender::class
+                    LocationOption::class
                 ),
                 MenuItem::linkToCrud(
-                    'Каналы поступления показаний',
+                    'Параметры начислений для местонахождений',
                     'fas fa-list',
-                    ReadingsWay::class
+                    LocationBillingOption::class
                 ),
                 MenuItem::linkToCrud(
-                    'Правила проверки показаний',
+                    'Параметры начислений для адресов',
                     'fas fa-list',
-                    TestingRule::class
+                    AddressLocationOption::class
                 ),
                 MenuItem::linkToCrud(
-                    'Наборы правил для проверки показаний',
+                    'Точки поставки',
                     'fas fa-list',
-                    TestingSet::class
+                    DistributionPoint::class
                 ),
                 MenuItem::linkToCrud(
-                    'Одобренные показания',
+                    'Точки поставки на адресах',
                     'fas fa-list',
-                    ApprovedMeterReadings::class
-                ),
-                MenuItem::linkToCrud(
-                    'Показания приборов учёта',
-                    'fas fa-list',
-                    MeterReadings::class
-                ),
-                MenuItem::linkToCrud(
-                    'Объём потребления услуг ЖКХ',
-                    'fas fa-list',
-                    MeterUsage::class
+                    AddressDistributionPoint::class
                 ),
             ]);
         yield MenuItem::subMenu('Модели приборов учёта', '')
@@ -304,6 +261,49 @@ class DashboardController extends AbstractDashboardController
                     'Точки учёта',
                     'fas fa-list',
                     MeteringPoint::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Показания приборов', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Назначения показаний',
+                    'fas fa-list',
+                    ReadingsPurpose::class
+                ),
+                MenuItem::linkToCrud(
+                    'Отправители показаний',
+                    'fas fa-list',
+                    ReadingsSender::class
+                ),
+                MenuItem::linkToCrud(
+                    'Каналы поступления показаний',
+                    'fas fa-list',
+                    ReadingsWay::class
+                ),
+                MenuItem::linkToCrud(
+                    'Правила проверки показаний',
+                    'fas fa-list',
+                    TestingRule::class
+                ),
+                MenuItem::linkToCrud(
+                    'Наборы правил для проверки показаний',
+                    'fas fa-list',
+                    TestingSet::class
+                ),
+                MenuItem::linkToCrud(
+                    'Одобренные показания',
+                    'fas fa-list',
+                    ApprovedMeterReadings::class
+                ),
+                MenuItem::linkToCrud(
+                    'Показания приборов учёта',
+                    'fas fa-list',
+                    MeterReadings::class
+                ),
+                MenuItem::linkToCrud(
+                    'Объём потребления услуг ЖКХ',
+                    'fas fa-list',
+                    MeterUsage::class
                 ),
             ]);
         yield MenuItem::subMenu('Начисления', '')
