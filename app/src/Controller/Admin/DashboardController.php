@@ -40,6 +40,7 @@ use App\Entity\PersonalAccount;
 use App\Entity\PersonalAccountBillingOption;
 use App\Entity\PersonalAccountOption;
 use App\Entity\PersonalAccountShare;
+use App\Entity\PersonalProductUsage;
 use App\Entity\Product;
 use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
@@ -342,6 +343,11 @@ class DashboardController extends AbstractDashboardController
                     'Доли лицевых счётов в потреблении',
                     'fas fa-list',
                     PersonalAccountShare::class
+                ),
+                MenuItem::linkToCrud(
+                    'Объёмы потребления лицевых счётов',
+                    'fas fa-list',
+                    PersonalProductUsage::class
                 ),
             ]);
     }
