@@ -82,7 +82,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('App');
+            ->setTitle('Расчёт стоимость услуг ЖКХ');
     }
 
     public function configureMenuItems(): iterable
