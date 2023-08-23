@@ -43,6 +43,7 @@ use App\Entity\PersonalAccountShare;
 use App\Entity\PersonalProductUsage;
 use App\Entity\Product;
 use App\Entity\ProductDistributor;
+use App\Entity\ProductPersonalAccount;
 use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
 use App\Entity\ReadingsWay;
@@ -112,6 +113,11 @@ class DashboardController extends AbstractDashboardController
                     'Услуги поставщиков',
                     'fas fa-list',
                     ProductDistributor::class
+                ),
+                MenuItem::linkToCrud(
+                    'Услуги для лицевых счётов',
+                    'fas fa-list',
+                    ProductPersonalAccount::class
                 ),
             ]);
         yield MenuItem::subMenu('Единицы измерения', '')
