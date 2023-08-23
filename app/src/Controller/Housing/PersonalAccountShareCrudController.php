@@ -12,7 +12,7 @@ use App\Controller\Fields\ProductField;
 use App\Entity\PersonalAccountShare;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 
 class PersonalAccountShareCrudController
     extends EntityWithIdController
@@ -50,8 +50,8 @@ class PersonalAccountShareCrudController
             ->add(DistributionPointField::getFilter())
             ->add(AddressField::getFilter())
             ->add(CustomerField::getFilter())
-            ->add(TextFilter::new('shareDividend', 'Размер доли'))
-            ->add(TextFilter::new('shareDivisor', 'Всего долей'));
+            ->add(NumericFilter::new('shareDividend', 'Размер доли'))
+            ->add(NumericFilter::new('shareDivisor', 'Всего долей'));
     }
 
     public function configureFields(string $pageName): iterable
