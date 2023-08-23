@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasAccount;
+use App\Entity\Column\HasCustomer;
+use App\Entity\Column\HasProduct;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +15,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProductPersonalAccount
 {
+    use HasProduct;
+    use HasCustomer;
+    use HasAccount;
+
     /**
      * @var int
      *
@@ -23,67 +29,8 @@ class ProductPersonalAccount
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="personal_account_id", type="bigint", nullable=true)
-     */
-    private $personalAccountId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="customer_id", type="bigint", nullable=true)
-     */
-    private $customerId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getPersonalAccountId(): ?string
-    {
-        return $this->personalAccountId;
-    }
-
-    public function setPersonalAccountId(?string $personalAccountId): static
-    {
-        $this->personalAccountId = $personalAccountId;
-
-        return $this;
-    }
-
-    public function getCustomerId(): ?string
-    {
-        return $this->customerId;
-    }
-
-    public function setCustomerId(?string $customerId): static
-    {
-        $this->customerId = $customerId;
-
-        return $this;
-    }
-
-
 }
