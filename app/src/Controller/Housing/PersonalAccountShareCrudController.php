@@ -26,7 +26,7 @@ class PersonalAccountShareCrudController
     {
         return $crud
             ->setEntityLabelInPlural(
-                'Доля лицевого счёта в потреблении'
+                'Доли лицевых счётов в потреблении'
             )
             ->setEntityLabelInSingular(
                 'Доля лицевого счёта в потреблении'

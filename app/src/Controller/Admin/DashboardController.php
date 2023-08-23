@@ -339,7 +339,7 @@ class DashboardController extends AbstractDashboardController
                     BillingOption::class
                 ),
                 MenuItem::linkToCrud(
-                    'Доля лицевого счёта в потреблении',
+                    'Доли лицевых счётов в потреблении',
                     'fas fa-list',
                     PersonalAccountShare::class
                 ),
