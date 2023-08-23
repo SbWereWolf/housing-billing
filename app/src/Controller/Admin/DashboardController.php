@@ -92,6 +92,24 @@ class DashboardController extends AbstractDashboardController
             'fa fa-home'
         );
         yield MenuItem::section();
+        yield MenuItem::subMenu('Единицы измерения', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Единицы измерения',
+                    'fas fa-list',
+                    UnitsOfMeasure::class
+                ),
+                MenuItem::linkToCrud(
+                    'Валюты',
+                    'fas fa-list',
+                    Currency::class
+                ),
+                MenuItem::linkToCrud(
+                    'Переводы для единиц измерения',
+                    'fas fa-list',
+                    ConversionRatio::class
+                ),
+            ]);
         yield MenuItem::subMenu('Услуги ЖКХ', 'fas fa-list')
             ->setSubItems([
                 MenuItem::linkToCrud(
@@ -113,24 +131,6 @@ class DashboardController extends AbstractDashboardController
                     'Услуги поставщиков',
                     'fas fa-list',
                     ProductDistributor::class
-                ),
-            ]);
-        yield MenuItem::subMenu('Единицы измерения', '')
-            ->setSubItems([
-                MenuItem::linkToCrud(
-                    'Единицы измерения',
-                    'fas fa-list',
-                    UnitsOfMeasure::class
-                ),
-                MenuItem::linkToCrud(
-                    'Валюты',
-                    'fas fa-list',
-                    Currency::class
-                ),
-                MenuItem::linkToCrud(
-                    'Переводы для единиц измерения',
-                    'fas fa-list',
-                    ConversionRatio::class
                 ),
             ]);
         yield MenuItem::section();
