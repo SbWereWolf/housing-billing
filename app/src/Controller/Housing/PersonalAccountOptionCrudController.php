@@ -6,7 +6,8 @@ use App\Controller\Base\EntityWithCaptionController;
 use App\Entity\PersonalAccountOption;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class PersonalAccountOptionCrudController extends EntityWithCaptionController
+class PersonalAccountOptionCrudController
+    extends EntityWithCaptionController
 {
     public static function getEntityFqcn(): string
     {
