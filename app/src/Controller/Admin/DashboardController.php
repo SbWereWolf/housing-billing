@@ -114,11 +114,6 @@ class DashboardController extends AbstractDashboardController
                     'fas fa-list',
                     ProductDistributor::class
                 ),
-                MenuItem::linkToCrud(
-                    'Услуги для лицевых счётов',
-                    'fas fa-list',
-                    ProductPersonalAccount::class
-                ),
             ]);
         yield MenuItem::subMenu('Единицы измерения', '')
             ->setSubItems([
@@ -248,6 +243,11 @@ class DashboardController extends AbstractDashboardController
                     'Лицевые счета',
                     'fas fa-list',
                     PersonalAccount::class
+                ),
+                MenuItem::linkToCrud(
+                    'Услуги для лицевых счётов',
+                    'fas fa-list',
+                    ProductPersonalAccount::class
                 ),
                 MenuItem::linkToCrud(
                     'Параметры лицевых счетов',
