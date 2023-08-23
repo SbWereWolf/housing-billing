@@ -126,6 +126,55 @@ class DashboardController extends AbstractDashboardController
                     ConversionRatio::class
                 ),
             ]);
+        yield MenuItem::section();
+        yield MenuItem::subMenu('Модели приборов учёта', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Модели приборов учёта',
+                    'fas fa-list',
+                    MeteringDeviceModel::class
+                ),
+                MenuItem::linkToCrud(
+                    'Приборы учёта для услуг ЖКХ',
+                    'fas fa-list',
+                    MeteringDeviceModelProduct::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры моделей приборов учёта',
+                    'fas fa-list',
+                    DeviceOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Числовые значения параметров' .
+                    ' моделей приборов учёта',
+                    'fas fa-list',
+                    NumberDeviceOptionMeteringDeviceModel::class
+                ),
+                MenuItem::linkToCrud(
+                    'Шкалы измерений',
+                    'fas fa-list',
+                    MeasuringScale::class
+                ),
+                MenuItem::linkToCrud(
+                    'Шкалы приборов учёта',
+                    'fas fa-list',
+                    DeviceModelScale::class
+                ),
+            ]);
+        yield MenuItem::subMenu('Приборы учёта', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Приборы учёта',
+                    'fas fa-list',
+                    MeteringDevice::class
+                ),
+                MenuItem::linkToCrud(
+                    'Точки учёта',
+                    'fas fa-list',
+                    MeteringPoint::class
+                ),
+            ]);
+        yield MenuItem::section();
         yield MenuItem::subMenu('Потребители услуг', '')
             ->setSubItems([
                 MenuItem::linkToCrud(
@@ -237,53 +286,7 @@ class DashboardController extends AbstractDashboardController
                     AddressDistributionPoint::class
                 ),
             ]);
-        yield MenuItem::subMenu('Модели приборов учёта', '')
-            ->setSubItems([
-                MenuItem::linkToCrud(
-                    'Модели приборов учёта',
-                    'fas fa-list',
-                    MeteringDeviceModel::class
-                ),
-                MenuItem::linkToCrud(
-                    'Приборы учёта для услуг ЖКХ',
-                    'fas fa-list',
-                    MeteringDeviceModelProduct::class
-                ),
-                MenuItem::linkToCrud(
-                    'Параметры моделей приборов учёта',
-                    'fas fa-list',
-                    DeviceOption::class
-                ),
-                MenuItem::linkToCrud(
-                    'Числовые значения параметров' .
-                    ' моделей приборов учёта',
-                    'fas fa-list',
-                    NumberDeviceOptionMeteringDeviceModel::class
-                ),
-                MenuItem::linkToCrud(
-                    'Шкалы измерений',
-                    'fas fa-list',
-                    MeasuringScale::class
-                ),
-                MenuItem::linkToCrud(
-                    'Шкалы приборов учёта',
-                    'fas fa-list',
-                    DeviceModelScale::class
-                ),
-            ]);
-        yield MenuItem::subMenu('Приборы учёта', '')
-            ->setSubItems([
-                MenuItem::linkToCrud(
-                    'Приборы учёта',
-                    'fas fa-list',
-                    MeteringDevice::class
-                ),
-                MenuItem::linkToCrud(
-                    'Точки учёта',
-                    'fas fa-list',
-                    MeteringPoint::class
-                ),
-            ]);
+        yield MenuItem::section();
         yield MenuItem::subMenu('Показания приборов', '')
             ->setSubItems([
                 MenuItem::linkToCrud(
