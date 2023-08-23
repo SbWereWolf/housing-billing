@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasDistributor;
+use App\Entity\Column\HasProduct;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProductDistributor
 {
+    use HasProduct;
+    use HasDistributor;
+
     /**
      * @var int
      *
@@ -23,48 +27,8 @@ class ProductDistributor
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distributor_id", type="bigint", nullable=true)
-     */
-    private $distributorId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getDistributorId(): ?string
-    {
-        return $this->distributorId;
-    }
-
-    public function setDistributorId(?string $distributorId): static
-    {
-        $this->distributorId = $distributorId;
-
-        return $this;
-    }
-
-
 }
