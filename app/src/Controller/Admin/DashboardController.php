@@ -36,6 +36,7 @@ use App\Entity\NaturalPerson;
 use App\Entity\NaturalPersonBillingOption;
 use App\Entity\NaturalPersonOption;
 use App\Entity\NumberDeviceOptionMeteringDeviceModel;
+use App\Entity\PersonalAccount;
 use App\Entity\PersonalAccountBillingOption;
 use App\Entity\PersonalAccountOption;
 use App\Entity\Product;
@@ -179,6 +180,11 @@ class DashboardController extends AbstractDashboardController
                     'Договоры',
                     'fas fa-list',
                     Contract::class
+                ),
+                MenuItem::linkToCrud(
+                    'Лицевые счета',
+                    'fas fa-list',
+                    PersonalAccount::class
                 ),
                 MenuItem::linkToCrud(
                     'Параметры лицевых счетов',
