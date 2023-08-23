@@ -39,6 +39,7 @@ use App\Entity\NumberDeviceOptionMeteringDeviceModel;
 use App\Entity\PersonalAccount;
 use App\Entity\PersonalAccountBillingOption;
 use App\Entity\PersonalAccountOption;
+use App\Entity\PersonalAccountShare;
 use App\Entity\Product;
 use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
@@ -336,6 +337,11 @@ class DashboardController extends AbstractDashboardController
                     'Параметры начислений',
                     'fas fa-list',
                     BillingOption::class
+                ),
+                MenuItem::linkToCrud(
+                    'Доля лицевого счёта в потреблении',
+                    'fas fa-list',
+                    PersonalAccountShare::class
                 ),
             ]);
     }
