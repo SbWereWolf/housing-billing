@@ -2,6 +2,7 @@
 
 namespace App\Controller\Housing;
 
+use App\Controller\Base\EntityWithIdController;
 use App\Controller\Fields\AccountField;
 use App\Controller\Fields\AddressField;
 use App\Controller\Fields\BillingPeriodField;
@@ -13,10 +14,10 @@ use App\Controller\Fields\UnitsOfMeasureField;
 use App\Entity\PersonalProductUsage;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
 
-class PersonalProductUsageCrudController extends AbstractCrudController
+class PersonalProductUsageCrudController
+    extends EntityWithIdController
 {
     public static function getEntityFqcn(): string
     {
