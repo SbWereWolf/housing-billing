@@ -50,6 +50,7 @@ use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
 use App\Entity\ReadingsSenderReadingsWay;
 use App\Entity\ReadingsWay;
+use App\Entity\ReasonOfWeededOut;
 use App\Entity\RelatedProduct;
 use App\Entity\TestingRule;
 use App\Entity\TestingSet;
@@ -347,6 +348,11 @@ class DashboardController extends AbstractDashboardController
                     'Наборы правил для отбора показаний',
                     'fas fa-list',
                     TestingSet::class
+                ),
+                MenuItem::linkToCrud(
+                    'Причины отклонения показаний',
+                    'fas fa-list',
+                    ReasonOfWeededOut::class
                 ),
                 MenuItem::linkToCrud(
                     'Одобренные показания',
