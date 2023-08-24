@@ -55,6 +55,7 @@ use App\Entity\RelatedProduct;
 use App\Entity\SharedProduct;
 use App\Entity\TestingRule;
 use App\Entity\TestingRuleSet;
+use App\Entity\TestingRun;
 use App\Entity\TestingSet;
 use App\Entity\UnitsOfMeasure;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -360,6 +361,11 @@ class DashboardController extends AbstractDashboardController
                     'Список правил для отбора показаний',
                     'fas fa-list',
                     TestingRuleSet::class
+                ),
+                MenuItem::linkToCrud(
+                    'Прогоны отбора показаний',
+                    'fas fa-list',
+                    TestingRun::class
                 ),
                 MenuItem::linkToCrud(
                     'Причины отклонения показаний',
