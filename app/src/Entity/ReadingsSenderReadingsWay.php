@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasSender;
+use App\Entity\Column\HasWay;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ReadingsSenderReadingsWay
 {
+    use HasSender;
+    use HasWay;
+
     /**
      * @var int
      *
@@ -23,48 +27,8 @@ class ReadingsSenderReadingsWay
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="readings_sender_id", type="bigint", nullable=true)
-     */
-    private $readingsSenderId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="readings_way_id", type="bigint", nullable=true)
-     */
-    private $readingsWayId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getReadingsSenderId(): ?string
-    {
-        return $this->readingsSenderId;
-    }
-
-    public function setReadingsSenderId(?string $readingsSenderId): static
-    {
-        $this->readingsSenderId = $readingsSenderId;
-
-        return $this;
-    }
-
-    public function getReadingsWayId(): ?string
-    {
-        return $this->readingsWayId;
-    }
-
-    public function setReadingsWayId(?string $readingsWayId): static
-    {
-        $this->readingsWayId = $readingsWayId;
-
-        return $this;
-    }
-
-
 }
