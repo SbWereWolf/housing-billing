@@ -306,7 +306,7 @@ class DashboardController extends AbstractDashboardController
                 ),
             ]);
         yield MenuItem::section();
-        yield MenuItem::subMenu('Показания приборов учёта', '')
+        yield MenuItem::subMenu('Полученные показания', '')
             ->setSubItems([
                 MenuItem::linkToCrud(
                     'Назначения показаний',
@@ -319,24 +319,28 @@ class DashboardController extends AbstractDashboardController
                     ReadingsSender::class
                 ),
                 MenuItem::linkToCrud(
-                    'Каналы поступления показаний',
+                    'Источники поступления показаний',
                     'fas fa-list',
                     ReadingsWay::class
-                ),
-                MenuItem::linkToCrud(
-                    'Правила проверки показаний',
-                    'fas fa-list',
-                    TestingRule::class
-                ),
-                MenuItem::linkToCrud(
-                    'Наборы правил для проверки показаний',
-                    'fas fa-list',
-                    TestingSet::class
                 ),
                 MenuItem::linkToCrud(
                     'Полученные показания',
                     'fas fa-list',
                     RawReadings::class
+                ),
+            ]);
+        yield MenuItem::section();
+        yield MenuItem::subMenu('Отбор показаний для начислений', '')
+            ->setSubItems([
+                MenuItem::linkToCrud(
+                    'Правила отбора показаний',
+                    'fas fa-list',
+                    TestingRule::class
+                ),
+                MenuItem::linkToCrud(
+                    'Наборы правил для отбора показаний',
+                    'fas fa-list',
+                    TestingSet::class
                 ),
                 MenuItem::linkToCrud(
                     'Одобренные показания',
@@ -344,14 +348,9 @@ class DashboardController extends AbstractDashboardController
                     ApprovedMeterReadings::class
                 ),
                 MenuItem::linkToCrud(
-                    'Показания приборов учёта',
+                    'Отобранные показания приборов учёта',
                     'fas fa-list',
                     MeterReadings::class
-                ),
-                MenuItem::linkToCrud(
-                    'Объём потребления услуг ЖКХ',
-                    'fas fa-list',
-                    MeterUsage::class
                 ),
             ]);
         yield MenuItem::subMenu('Начисления', '')
@@ -362,9 +361,9 @@ class DashboardController extends AbstractDashboardController
                     BillingPeriod::class
                 ),
                 MenuItem::linkToCrud(
-                    'Параметры начислений',
+                    'Объёмы потребления услуг ЖКХ',
                     'fas fa-list',
-                    BillingOption::class
+                    MeterUsage::class
                 ),
                 MenuItem::linkToCrud(
                     'Доли лицевых счётов в потреблении',
@@ -375,6 +374,11 @@ class DashboardController extends AbstractDashboardController
                     'Объёмы потребления лицевых счётов',
                     'fas fa-list',
                     PersonalProductUsage::class
+                ),
+                MenuItem::linkToCrud(
+                    'Параметры начислений',
+                    'fas fa-list',
+                    BillingOption::class
                 ),
             ]);
     }
