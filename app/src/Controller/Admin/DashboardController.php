@@ -48,6 +48,7 @@ use App\Entity\ProductUnitsOfMeasure;
 use App\Entity\RawReadings;
 use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
+use App\Entity\ReadingsSenderReadingsWay;
 use App\Entity\ReadingsWay;
 use App\Entity\RelatedProduct;
 use App\Entity\TestingRule;
@@ -322,6 +323,11 @@ class DashboardController extends AbstractDashboardController
                     'Источники поступления показаний',
                     'fas fa-list',
                     ReadingsWay::class
+                ),
+                MenuItem::linkToCrud(
+                    'Способы отправки показаний для отправителей',
+                    'fas fa-list',
+                    ReadingsSenderReadingsWay::class
                 ),
                 MenuItem::linkToCrud(
                     'Полученные показания',
