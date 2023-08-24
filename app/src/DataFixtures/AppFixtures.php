@@ -82,13 +82,13 @@ class AppFixtures extends Fixture
         }
 
         $obj = new RelatedProduct();
-        $obj->setParent($products['related_product1']->getId());
-        $obj->setChild($products['related_product2']->getId());
+        $obj->setParent($products['related_product1']);
+        $obj->setChild($products['related_product2']);
         $manager->persist($obj);
 
         $obj = new SharedProduct();
-        $obj->setSharedProductId($products['shared_product1']->getId());
-        $obj->setIndividualProductId($products['shared_product2']->getId());
+        $obj->setShared($products['shared_product1']);
+        $obj->setIndividual($products['shared_product2']);
         $manager->persist($obj);
 
         /** @var UnitsOfMeasure[] $products */
@@ -124,13 +124,13 @@ class AppFixtures extends Fixture
         }
 
         $obj = new ConversionRatio();
-        $obj->setSource($units['units_of_measure1']->getId());
-        $obj->setTarget($units['units_of_measure2']->getId());
+        $obj->setSource($units['units_of_measure1']);
+        $obj->setTarget($units['units_of_measure2']);
         $manager->persist($obj);
 
         $obj = new ConversionRatio();
-        $obj->setSource($units['currency1']->getId());
-        $obj->setTarget($units['currency2']->getId());
+        $obj->setSource($units['currency1']);
+        $obj->setTarget($units['currency2']);
         $manager->persist($obj);
 
         /** @var ProductUnitsOfMeasure[] $productUnits */
