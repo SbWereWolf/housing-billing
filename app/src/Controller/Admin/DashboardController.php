@@ -58,6 +58,7 @@ use App\Entity\TestingRuleSet;
 use App\Entity\TestingRun;
 use App\Entity\TestingSet;
 use App\Entity\UnitsOfMeasure;
+use App\Entity\WeedOutMeterReadings;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -371,6 +372,11 @@ class DashboardController extends AbstractDashboardController
                     'Причины отклонения показаний',
                     'fas fa-list',
                     ReasonOfWeededOut::class
+                ),
+                MenuItem::linkToCrud(
+                    'Отклонённые показания',
+                    'fas fa-list',
+                    WeedOutMeterReadings::class
                 ),
                 MenuItem::linkToCrud(
                     'Одобренные показания',
