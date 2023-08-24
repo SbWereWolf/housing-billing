@@ -2,24 +2,49 @@
 
 namespace App\Controller\Housing;
 
+use App\Controller\Base\EntityWithIdController;
 use App\Entity\TransitMeteringPoint;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 
-class TransitMeteringPointCrudController extends AbstractCrudController
+class TransitMeteringPointCrudController
+    extends EntityWithIdController
 {
     public static function getEntityFqcn(): string
     {
         return TransitMeteringPoint::class;
     }
 
-    /*
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInPlural('Транзитные точки измерения')
+            ->setEntityLabelInSingular('Транзитная точки измерения')
+            ->setDefaultSort([
+                'primary' => 'ASC',
+                'secondary' => 'ASC',
+            ]);
+    }
+
+    public function configureFilters(Filters $filters): Filters
+    {
+        return parent::configureFilters($filters)
+            ->add(EntityFilter::new('primary', 'Первичная'))
+            ->add(EntityFilter::new('secondary', 'Вторичная'));
+    }
+
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        $fields = parent::configureFields($pageName);
+        foreach ($fields as $field) {
+            yield $field;
+        }
+
+        yield AssociationField::new('primary', 'Первичная')
+            ->setCrudController(ProductCrudController::class);
+        yield AssociationField::new('secondary', 'Вторичная')
+            ->setCrudController(ProductCrudController::class);
     }
-    */
 }
