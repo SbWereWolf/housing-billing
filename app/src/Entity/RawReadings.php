@@ -2,8 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasDistributionPoint;
+use App\Entity\Column\HasDistributor;
+use App\Entity\Column\HasModel;
+use App\Entity\Column\HasProduct;
+use App\Entity\Column\HasSender;
+use App\Entity\Column\HasWay;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 /**
  * RawReadings
@@ -11,8 +18,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="raw_readings", uniqueConstraints={@ORM\UniqueConstraint(name="raw_readings_product_id_distributor_id_point_id_id_ux", columns={"product_id", "distributor_id", "distribution_point_id", "id"})})
  * @ORM\Entity(repositoryClass="App\Repository\RawReadingsRepository")
  */
-class RawReadings implements \Stringable
+class RawReadings implements Stringable
 {
+    use HasModel;
+    use HasProduct;
+    use HasDistributor;
+    use HasDistributionPoint;
+    use HasSender;
+    use HasWay;
+
     /**
      * @var int
      *
@@ -38,53 +52,12 @@ class RawReadings implements \Stringable
     private $uploadTime;
 
     /**
-     * @var int|null
+     * @var DeviceModelScale
      *
-     * @ORM\Column(name="device_model_scale_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\DeviceModelScale")
+     * @ORM\JoinColumn(name="device_model_scale_id")
      */
-    private $deviceModelScaleId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="metering_device_model_id", type="bigint", nullable=true)
-     */
-    private $meteringDeviceModelId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="readings_sender_id", type="bigint", nullable=true)
-     */
-    private $readingsSenderId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="readings_way_id", type="bigint", nullable=true)
-     */
-    private $readingsWayId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distributor_id", type="bigint", nullable=true)
-     */
-    private $distributorId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="distribution_point_id", type="bigint", nullable=true)
-     */
-    private $distributionPointId;
+    private $modelScale;
 
     /**
      * @var int|null
@@ -117,108 +90,36 @@ class RawReadings implements \Stringable
         return $this;
     }
 
-    public function getUploadTime(): ?\DateTimeInterface
+    public function getUploadTime(): ?DateTimeInterface
     {
         return $this->uploadTime;
     }
 
-    public function setUploadTime(?\DateTimeInterface $uploadTime): static
+    public function setUploadTime(?DateTimeInterface $uploadTime): static
     {
         $this->uploadTime = $uploadTime;
 
         return $this;
     }
 
-    public function getDeviceModelScaleId(): ?string
+    public function getModelScale(): DeviceModelScale
     {
-        return $this->deviceModelScaleId;
+        return $this->modelScale;
     }
 
-    public function setDeviceModelScaleId(?string $deviceModelScaleId): static
+    public function setModelScale(DeviceModelScale $modelScale): static
     {
-        $this->deviceModelScaleId = $deviceModelScaleId;
+        $this->modelScale = $modelScale;
 
         return $this;
     }
 
-    public function getMeteringDeviceModelId(): ?string
-    {
-        return $this->meteringDeviceModelId;
-    }
-
-    public function setMeteringDeviceModelId(?string $meteringDeviceModelId): static
-    {
-        $this->meteringDeviceModelId = $meteringDeviceModelId;
-
-        return $this;
-    }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getReadingsSenderId(): ?string
-    {
-        return $this->readingsSenderId;
-    }
-
-    public function setReadingsSenderId(?string $readingsSenderId): static
-    {
-        $this->readingsSenderId = $readingsSenderId;
-
-        return $this;
-    }
-
-    public function getReadingsWayId(): ?string
-    {
-        return $this->readingsWayId;
-    }
-
-    public function setReadingsWayId(?string $readingsWayId): static
-    {
-        $this->readingsWayId = $readingsWayId;
-
-        return $this;
-    }
-
-    public function getDistributorId(): ?string
-    {
-        return $this->distributorId;
-    }
-
-    public function setDistributorId(?string $distributorId): static
-    {
-        $this->distributorId = $distributorId;
-
-        return $this;
-    }
-
-    public function getDistributionPointId(): ?string
-    {
-        return $this->distributionPointId;
-    }
-
-    public function setDistributionPointId(?string $distributionPointId): static
-    {
-        $this->distributionPointId = $distributionPointId;
-
-        return $this;
-    }
-
-    public function getStart(): ?int
+    public function getStart(): ?string
     {
         return $this->start;
     }
 
-    public function setStart(?int $start): static
+    public function setStart(?string $start): static
     {
         $this->start = $start;
 
@@ -236,7 +137,6 @@ class RawReadings implements \Stringable
 
         return $this;
     }
-
 
     public function __toString(): string
     {
