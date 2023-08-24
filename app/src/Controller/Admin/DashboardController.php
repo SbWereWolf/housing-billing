@@ -54,6 +54,7 @@ use App\Entity\ReasonOfWeededOut;
 use App\Entity\RelatedProduct;
 use App\Entity\SharedProduct;
 use App\Entity\TestingRule;
+use App\Entity\TestingRuleSet;
 use App\Entity\TestingSet;
 use App\Entity\UnitsOfMeasure;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -354,6 +355,11 @@ class DashboardController extends AbstractDashboardController
                     'Наборы правил для отбора показаний',
                     'fas fa-list',
                     TestingSet::class
+                ),
+                MenuItem::linkToCrud(
+                    'Список правил для отбора показаний',
+                    'fas fa-list',
+                    TestingRuleSet::class
                 ),
                 MenuItem::linkToCrud(
                     'Причины отклонения показаний',
