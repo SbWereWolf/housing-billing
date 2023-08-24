@@ -45,6 +45,7 @@ use App\Entity\Product;
 use App\Entity\ProductDistributor;
 use App\Entity\ProductPersonalAccount;
 use App\Entity\ProductUnitsOfMeasure;
+use App\Entity\RawReadings;
 use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
 use App\Entity\ReadingsWay;
@@ -331,6 +332,11 @@ class DashboardController extends AbstractDashboardController
                     'Наборы правил для проверки показаний',
                     'fas fa-list',
                     TestingSet::class
+                ),
+                MenuItem::linkToCrud(
+                    'Полученные показания',
+                    'fas fa-list',
+                    RawReadings::class
                 ),
                 MenuItem::linkToCrud(
                     'Одобренные показания',
