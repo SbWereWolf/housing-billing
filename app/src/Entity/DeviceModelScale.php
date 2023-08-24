@@ -7,6 +7,7 @@ use App\Entity\Column\HasPurpose;
 use App\Entity\Column\HasScale;
 use App\Entity\Column\HasUnitsOfMeasure;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 /**
  * DeviceModelScale
@@ -14,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="device_model_scale", uniqueConstraints={@ORM\UniqueConstraint(name="device_model_scale_metering_device_model_id_id_ux", columns={"metering_device_model_id", "id"})})
  * @ORM\Entity(repositoryClass="App\Repository\DeviceModelScaleRepository")
  */
-class DeviceModelScale
+class DeviceModelScale implements Stringable
 {
     use HasModel;
     use HasScale;
@@ -34,5 +35,13 @@ class DeviceModelScale
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    public function __toString(): string
+    {
+        return
+            "{$this->getUnitsOfMeasure()->getCode()}," .
+            " {$this->getPurpose()->getCode()}," .
+            " #{$this->getScale()->getCode()}";
     }
 }
