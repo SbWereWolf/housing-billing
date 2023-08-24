@@ -305,7 +305,7 @@ class DashboardController extends AbstractDashboardController
                 ),
             ]);
         yield MenuItem::section();
-        yield MenuItem::subMenu('Показания приборов', '')
+        yield MenuItem::subMenu('Показания приборов учёта', '')
             ->setSubItems([
                 MenuItem::linkToCrud(
                     'Назначения показаний',
