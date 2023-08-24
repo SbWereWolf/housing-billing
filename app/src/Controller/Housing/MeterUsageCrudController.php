@@ -24,8 +24,8 @@ class MeterUsageCrudController extends EntityWithIdController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInPlural('Показания приборов учёта')
-            ->setEntityLabelInSingular('Показания прибора учёта')
+            ->setEntityLabelInPlural('Объёмы потребления услуг ЖКХ')
+            ->setEntityLabelInSingular('Объём потребления услуги ЖКХ')
             ->setDefaultSort([
                 'product' => 'ASC',
                 'distributor' => 'ASC',
