@@ -2,14 +2,15 @@
 
 namespace App\Controller\Housing;
 
+use App\Controller\Base\EntityWithIdController;
 use App\Controller\Fields\ProductField;
 use App\Controller\Fields\UnitsOfMeasureField;
 use App\Entity\ProductUnitsOfMeasure;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class ProductUnitsOfMeasureCrudController extends AbstractCrudController
+class ProductUnitsOfMeasureCrudController
+    extends EntityWithIdController
 {
     public static function getEntityFqcn(): string
     {
