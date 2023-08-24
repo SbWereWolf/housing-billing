@@ -671,7 +671,7 @@ class AppFixtures extends Fixture
 
                                 $readings = new RawReadings();
                                 $readings->setMeteringDeviceModelId($scale->getMeteringDeviceModelId());
-                                $readings->setDeviceModelScaleId($scale->getId());
+                                $readings->setModelScale($scale);
 
                                 $readings->setProductId($device->getProductId());
                                 $readings->setDistributorId($device->getDistributorId());
