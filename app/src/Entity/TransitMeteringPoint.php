@@ -24,44 +24,46 @@ class TransitMeteringPoint
     private $id;
 
     /**
-     * @var int|null
+     * @var MeteringPoint
      *
-     * @ORM\Column(name="primary_metering_point_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\MeteringPoint")
+     * @ORM\JoinColumn(name="primary_metering_point_id")
      */
-    private $primaryMeteringPointId;
+    private MeteringPoint $primary;
 
     /**
-     * @var int|null
+     * @var MeteringPoint
      *
-     * @ORM\Column(name="secondary_metering_point_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\MeteringPoint")
+     * @ORM\JoinColumn(name="secondary_metering_point_id")
      */
-    private $secondaryMeteringPointId;
+    private MeteringPoint $secondary;
 
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getPrimaryMeteringPointId(): ?string
+    public function getPrimary(): MeteringPoint
     {
-        return $this->primaryMeteringPointId;
+        return $this->primary;
     }
 
-    public function setPrimaryMeteringPointId(?string $primaryMeteringPointId): static
+    public function setPrimary(MeteringPoint $primary): static
     {
-        $this->primaryMeteringPointId = $primaryMeteringPointId;
+        $this->primary = $primary;
 
         return $this;
     }
 
-    public function getSecondaryMeteringPointId(): ?string
+    public function getSecondary(): MeteringPoint
     {
-        return $this->secondaryMeteringPointId;
+        return $this->secondary;
     }
 
-    public function setSecondaryMeteringPointId(?string $secondaryMeteringPointId): static
+    public function setSecondary(MeteringPoint $secondary): static
     {
-        $this->secondaryMeteringPointId = $secondaryMeteringPointId;
+        $this->secondary = $secondary;
 
         return $this;
     }
