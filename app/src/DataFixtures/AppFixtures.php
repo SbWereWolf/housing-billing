@@ -54,9 +54,13 @@ use DateInterval;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Exception;
 
 class AppFixtures extends Fixture
 {
+    /**
+     * @throws Exception
+     */
     public function load(ObjectManager $manager): void
     {
         ## Install
@@ -117,7 +121,7 @@ class AppFixtures extends Fixture
             ] as $code
         ) {
             $currency = new Currency();
-            $currency->setUnitsOfMeasureId($units[$code]->getId());
+            $currency->setUnitsOfMeasure($units[$code]);
 
             $manager->persist($currency);
             $currencies[] = $currency;
@@ -143,8 +147,8 @@ class AppFixtures extends Fixture
         ) {
             foreach ($products as $product) {
                 $productUnit = new ProductUnitsOfMeasure();
-                $productUnit->setUnitsOfMeasureId($units[$code]->getId());
-                $productUnit->setProductId($product->getId());
+                $productUnit->setUnitsOfMeasure($units[$code]);
+                $productUnit->setProduct($product);
 
                 $manager->persist($productUnit);
                 $productUnits[] = $productUnit;
@@ -169,8 +173,8 @@ class AppFixtures extends Fixture
             $product = $productsWithDigitIndex[$productIndex];
 
             $modelProduct = new MeteringDeviceModelProduct();
-            $modelProduct->setMeteringDeviceModelId($model->getId());
-            $modelProduct->setProductId($product->getId());
+            $modelProduct->setModel($model);
+            $modelProduct->setProduct($product);
 
             $manager->persist($modelProduct);
             $modelsProduct[] = $modelProduct;
@@ -189,8 +193,8 @@ class AppFixtures extends Fixture
         foreach ($models as $model) {
             foreach ($deviceOptions as $option) {
                 $numberOption = new NumberDeviceOptionMeteringDeviceModel();
-                $numberOption->setMeteringDeviceModelId($model->getId());
-                $numberOption->setDeviceOptionId($option->getId());
+                $numberOption->setModel($model);
+                $numberOption->setDeviceOption($option);
                 $numberOption->setNumberValue(random_int(-1, 999));
 
                 $manager->persist($numberOption);
@@ -228,14 +232,14 @@ class AppFixtures extends Fixture
         foreach ($models as $model) {
             foreach ($measuringScales as $scale) {
                 $modelScale = new DeviceModelScale();
-                $modelScale->setMeteringDeviceModelId($model->getId());
-                $modelScale->setMeasuringScaleId($scale->getId());
+                $modelScale->setModel($model);
+                $modelScale->setScale($scale);
 
                 $purposesIndex = $index % $purposesTotal;
-                $modelScale->setReadingsPurposeId($readingsPurposes[$purposesIndex]->getId());
+                $modelScale->setPurpose($readingsPurposes[$purposesIndex]);
 
                 $unitIndex = $index % $unitsNumber;
-                $modelScale->setUnitsOfMeasureId($productUnits[$unitIndex]->getUnitsOfMeasureId());
+                $modelScale->setUnitsOfMeasure($productUnits[$unitIndex]->getUnitsOfMeasure());
 
                 $manager->persist($modelScale);
                 $modelScales[] = $modelScale;
@@ -270,8 +274,8 @@ class AppFixtures extends Fixture
         foreach ($senders as $sender) {
             foreach ($ways as $way) {
                 $senderWay = new ReadingsSenderReadingsWay();
-                $senderWay->setReadingsSenderId($sender->getId());
-                $senderWay->setReadingsWayId($way->getId());
+                $senderWay->setSender($sender);
+                $senderWay->setWay($way);
 
                 $manager->persist($senderWay);
                 $sendersWays[] = $senderWay;
@@ -303,8 +307,8 @@ class AppFixtures extends Fixture
         foreach ($testingSets as $set) {
             foreach ($testingRules as $rule) {
                 $ruleSet = new TestingRuleSet();
-                $ruleSet->setTestingSetId($set->getId());
-                $ruleSet->setTestingRuleId($rule->getId());
+                $ruleSet->setTestingSet($set);
+                $ruleSet->setRule($rule);
 
                 $manager->persist($ruleSet);
                 $ruleSets[] = $ruleSet;
@@ -365,8 +369,8 @@ class AppFixtures extends Fixture
             $billingOptions[$code] = $billingOption;
 
             $mapping = new LocationBillingOption();
-            $mapping->setBillingOptionId($billingOption->getId());
-            $mapping->setLocationOptionId($option->getId());
+            $mapping->setBillingOption($billingOption);
+            $mapping->setLocationOption($option);
 
             $manager->persist($mapping);
             $locationBillingOptions[] = $mapping;
@@ -383,8 +387,8 @@ class AppFixtures extends Fixture
             $billingOptions[$code] = $billingOption;
 
             $mapping = new PersonalAccountBillingOption();
-            $mapping->setBillingOptionId($billingOption->getId());
-            $mapping->setPersonalAccountOptionId($option->getId());
+            $mapping->setBillingOption($billingOption);
+            $mapping->setAccountOption($option);
 
             $manager->persist($mapping);
             $accountBillingOptions[] = $mapping;
@@ -401,8 +405,8 @@ class AppFixtures extends Fixture
             $billingOptions[$code] = $billingOption;
 
             $mapping = new LegalEntityBillingOption();
-            $mapping->setBillingOptionId($billingOption->getId());
-            $mapping->setLegalEntityOptionId($option->getId());
+            $mapping->setBillingOption($billingOption);
+            $mapping->setEntityOption($option);
 
             $manager->persist($mapping);
             $entityBillingOptions[] = $mapping;
@@ -419,8 +423,8 @@ class AppFixtures extends Fixture
             $billingOptions[$code] = $billingOption;
 
             $mapping = new NaturalPersonBillingOption();
-            $mapping->setBillingOptionId($billingOption->getId());
-            $mapping->setNaturalPersonOptionId($option->getId());
+            $mapping->setBillingOption($billingOption);
+            $mapping->setPersonOption($option);
 
             $manager->persist($mapping);
             $personBillingOptions[] = $mapping;
@@ -443,10 +447,10 @@ class AppFixtures extends Fixture
         $distributorsTotal = count($distributors);
         foreach ($productsWithDigitIndex as $index => $product) {
             $productDistributor = new ProductDistributor();
-            $productDistributor->setProductId($product->getId());
+            $productDistributor->setProduct($product);
 
             $distributorIndex = $index % $distributorsTotal;
-            $productDistributor->setDistributorId($distributors[$distributorIndex]->getId());
+            $productDistributor->setDistributor($distributors[$distributorIndex]);
 
             $manager->persist($productDistributor);
             $productDistributors[] = $productDistributor;
@@ -462,14 +466,13 @@ class AppFixtures extends Fixture
             $manager->persist($customer);
 
             $person = new NaturalPerson();
-            $customerId = $customer->getId();
-            $person->setCustomerId($customerId);
+            $person->setCustomer($customer);
 
             $manager->persist($person);
 
             for ($j = 0; $j < 2; $j++) {
                 $contract = new Contract();
-                $contract->setCustomerId($customerId);
+                $contract->setCustomer($customer);
 
                 $manager->persist($contract);
                 $contracts[] = $contract;
@@ -477,9 +480,9 @@ class AppFixtures extends Fixture
 
             foreach ($personBillingOptions as $option) {
                 $customerOption = new CustomerNaturalPersonOption();
-                $customerOption->setCustomerId($customerId);
-                $customerOption->setBillingOptionId($option->getBillingOptionId());
-                $customerOption->setNaturalPersonOptionId($option->getNaturalPersonOptionId());
+                $customerOption->setCustomer($customer);
+                $customerOption->setBillingOption($option->getBillingOption());
+                $customerOption->setPersonOption($option->getPersonOption());
 
                 $manager->persist($customerOption);
             }
@@ -492,14 +495,13 @@ class AppFixtures extends Fixture
             $manager->persist($customer);
 
             $entity = new LegalEntity();
-            $customerId = $customer->getId();
-            $entity->setCustomerId($customerId);
+            $entity->setCustomer($customer);
 
             $manager->persist($entity);
 
             for ($j = 0; $j < 2; $j++) {
                 $contract = new Contract();
-                $contract->setCustomerId($customerId);
+                $contract->setCustomer($customer);
 
                 $manager->persist($contract);
                 $contracts[] = $contract;
@@ -507,9 +509,9 @@ class AppFixtures extends Fixture
 
             foreach ($entityBillingOptions as $option) {
                 $customerOption = new CustomerLegalEntityOption();
-                $customerOption->setCustomerId($customerId);
-                $customerOption->setBillingOptionId($option->getBillingOptionId());
-                $customerOption->setLegalEntityOptionId($option->getLegalEntityOptionId());
+                $customerOption->setCustomer($customer);
+                $customerOption->setBillingOption($option->getBillingOption());
+                $customerOption->setEntityOption($option->getEntityOption());
 
                 $manager->persist($customerOption);
             }
@@ -519,8 +521,8 @@ class AppFixtures extends Fixture
         foreach ($contracts as $contract) {
             for ($i = 0; $i < 2; $i++) {
                 $account = new PersonalAccount();
-                $account->setCustomerId($contract->getCustomerId());
-                $account->setContractId($contract->getId());
+                $account->setCustomer($contract->getCustomer());
+                $account->setContract($contract);
                 $account->setPublicAccount(md5(microtime()));
 
                 $manager->persist($account);
@@ -531,9 +533,9 @@ class AppFixtures extends Fixture
         foreach ($accounts as $account) {
             foreach ($products as $product) {
                 $productAccount = new ProductPersonalAccount();
-                $productAccount->setProductId($product->getId());
-                $productAccount->setPersonalAccountId($account->getId());
-                $productAccount->setCustomerId($account->getCustomerId());
+                $productAccount->setProduct($product);
+                $productAccount->setAccount($account);
+                $productAccount->setCustomer($account->getCustomer());
 
                 $manager->persist($productAccount);
             }
@@ -542,9 +544,9 @@ class AppFixtures extends Fixture
         foreach ($accounts as $account) {
             foreach ($accountBillingOptions as $accountOption) {
                 $contractOption = new ContractPersonalAccountOption();
-                $contractOption->setPersonalAccountId($account->getId());
-                $contractOption->setBillingOptionId($accountOption->getBillingOptionId());
-                $contractOption->setPersonalAccountOptionId($accountOption->getPersonalAccountOptionId());
+                $contractOption->setAccount($account);
+                $contractOption->setBillingOption($accountOption->getBillingOption());
+                $contractOption->setAccountOption($accountOption->getAccountOption());
 
                 $manager->persist($contractOption);
             }
@@ -579,9 +581,9 @@ class AppFixtures extends Fixture
         foreach ($addresses as $address) {
             foreach ($locationBillingOptions as $locationOption) {
                 $addressOption = new AddressLocationOption();
-                $addressOption->setAddressId($address->getId());
-                $addressOption->setLocationOptionId($locationOption->getLocationOptionId());
-                $addressOption->setBillingOptionId($locationOption->getBillingOptionId());
+                $addressOption->setAddress($address);
+                $addressOption->setLocationOption($locationOption->getLocationOption());
+                $addressOption->setBillingOption($locationOption->getBillingOption());
 
                 $manager->persist($addressOption);
             }
@@ -592,10 +594,10 @@ class AppFixtures extends Fixture
         foreach ($productDistributors as $distributor) {
             foreach ($addressesPoints as $point) {
                 $meteringPoint = new MeteringPoint();
-                $meteringPoint->setProductId($distributor->getProductId());
-                $meteringPoint->setDistributorId($distributor->getDistributorId());
-                $meteringPoint->setAddressId($point->getAddress()->getId());
-                $meteringPoint->setDistributionPointId($point->getDistributionPoint()->getId());
+                $meteringPoint->setProduct($distributor->getProduct());
+                $meteringPoint->setDistributor($distributor->getDistributor());
+                $meteringPoint->setAddress($point->getAddress());
+                $meteringPoint->setDistributionPoint($point->getDistributionPoint());
 
                 $manager->persist($meteringPoint);
                 $meteringPoints[] = $meteringPoint;
@@ -607,14 +609,14 @@ class AppFixtures extends Fixture
         $accountsShares = [];
         foreach ($meteringPoints as $index => $point) {
             $share = new PersonalAccountShare();
-            $share->setProductId($point->getProductId());
-            $share->setDistributorId($point->getDistributorId());
-            $share->setAddressId($point->getAddressId());
-            $share->setDistributionPointId($point->getDistributionPointId());
+            $share->setProduct($point->getProduct());
+            $share->setDistributor($point->getDistributor());
+            $share->setAddress($point->getAddress());
+            $share->setDistributionPoint($point->getDistributionPoint());
 
             $accountIndex = $index % $accountsNumber;
-            $share->setCustomerId($accounts[$accountIndex]->getCustomerId());
-            $share->setPersonalAccountId($accounts[$accountIndex]->getId());
+            $share->setCustomer($accounts[$accountIndex]->getCustomer());
+            $share->setAccount($accounts[$accountIndex]);
 
             $share->setShareDividend(1);
             $share->setShareDivisor(1);
@@ -627,13 +629,13 @@ class AppFixtures extends Fixture
         $devices = [];
         foreach ($meteringPoints as $point) {
             foreach ($modelsProduct as $model) {
-                $isSameProduct = $point->getProductId() == $model->getProductId();
+                $isSameProduct = $point->getProduct()->getId() == $model->getProduct()->getId();
                 if ($isSameProduct) {
                     $meteringDevice = new MeteringDevice();
-                    $meteringDevice->setProductId($point->getProductId());
-                    $meteringDevice->setDistributorId($point->getDistributorId());
-                    $meteringDevice->setDistributionPointId($point->getDistributionPointId());
-                    $meteringDevice->setMeteringDeviceModelId($model->getId());
+                    $meteringDevice->setProduct($point->getProduct());
+                    $meteringDevice->setDistributor($point->getDistributor());
+                    $meteringDevice->setDistributionPoint($point->getDistributionPoint());
+                    $meteringDevice->setModel($model->getModel());
 
                     $meteringDevice->setSerial(md5(microtime()));
 
@@ -666,20 +668,20 @@ class AppFixtures extends Fixture
                 if (random_int(0, 2) === 0) {
                     foreach ($sendersWays as $senderWay) {
                         foreach ($devices as $device) {
-                            foreach ($deviceScales[$device->getMeteringDeviceModelId()] as $scale) {
+                            foreach ($deviceScales[$device->getModel()->getId()] as $scale) {
                                 /** @var DeviceModelScale $scale */
 
                                 $readings = new RawReadings();
-                                $readings->setMeteringDeviceModelId($scale->getMeteringDeviceModelId());
+                                $readings->setModel($scale->getModel());
                                 $readings->setModelScale($scale);
 
-                                $readings->setProductId($device->getProductId());
-                                $readings->setDistributorId($device->getDistributorId());
-                                $readings->setDistributionPointId($device->getDistributionPointId());
+                                $readings->setProduct($device->getProduct());
+                                $readings->setDistributor($device->getDistributor());
+                                $readings->setDistributionPoint($device->getDistributionPoint());
                                 $readings->setStart($device->getStart());
 
-                                $readings->setReadingsWayId($senderWay->getReadingsWayId());
-                                $readings->setReadingsSenderId($senderWay->getReadingsSenderId());
+                                $readings->setWay($senderWay->getWay());
+                                $readings->setSender($senderWay->getSender());
 
                                 $readings->setReadings(random_int($start, $start + 100));
 
