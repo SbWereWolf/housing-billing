@@ -24,44 +24,46 @@ class SharedProduct
     private $id;
 
     /**
-     * @var int
+     * @var Product
      *
-     * @ORM\Column(name="shared_product_id", type="bigint", nullable=false)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
+     * @ORM\JoinColumn(name="shared_product_id")
      */
-    private $sharedProductId;
+    private Product $shared;
 
     /**
-     * @var int|null
+     * @var Product
      *
-     * @ORM\Column(name="individual_product_id", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
+     * @ORM\JoinColumn(name="individual_product_id")
      */
-    private $individualProductId;
+    private Product $individual;
 
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getSharedProductId(): ?string
+    public function getShared(): Product
     {
-        return $this->sharedProductId;
+        return $this->shared;
     }
 
-    public function setSharedProductId(string $sharedProductId): static
+    public function setShared(Product $shared): static
     {
-        $this->sharedProductId = $sharedProductId;
+        $this->shared = $shared;
 
         return $this;
     }
 
-    public function getIndividualProductId(): ?string
+    public function getIndividual(): Product
     {
-        return $this->individualProductId;
+        return $this->individual;
     }
 
-    public function setIndividualProductId(?string $individualProductId): static
+    public function setIndividual(Product $individual): static
     {
-        $this->individualProductId = $individualProductId;
+        $this->individual = $individual;
 
         return $this;
     }
