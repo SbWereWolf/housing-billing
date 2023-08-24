@@ -52,6 +52,7 @@ use App\Entity\ReadingsSenderReadingsWay;
 use App\Entity\ReadingsWay;
 use App\Entity\ReasonOfWeededOut;
 use App\Entity\RelatedProduct;
+use App\Entity\SharedProduct;
 use App\Entity\TestingRule;
 use App\Entity\TestingSet;
 use App\Entity\UnitsOfMeasure;
@@ -125,6 +126,11 @@ class DashboardController extends AbstractDashboardController
                     'Взаимосвязанные услуги',
                     'fas fa-list',
                     RelatedProduct::class
+                ),
+                MenuItem::linkToCrud(
+                    'Услуги по содержанию общего имущества',
+                    'fas fa-list',
+                    SharedProduct::class
                 ),
                 MenuItem::linkToCrud(
                     'Единицы измерения для услуг ЖКХ',
