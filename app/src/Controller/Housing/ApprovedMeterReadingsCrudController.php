@@ -26,7 +26,7 @@ class ApprovedMeterReadingsCrudController
     {
         return $crud
             ->setEntityLabelInPlural('Одобренные показания')
-            ->setEntityLabelInSingular('Одобренные показания')
+            ->setEntityLabelInSingular('Одобренное показание')
             ->setDefaultSort([
                 'year' => 'ASC',
                 'month' => 'ASC',
