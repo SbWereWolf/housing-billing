@@ -44,6 +44,7 @@ use App\Entity\PersonalProductUsage;
 use App\Entity\Product;
 use App\Entity\ProductDistributor;
 use App\Entity\ProductPersonalAccount;
+use App\Entity\ProductUnitsOfMeasure;
 use App\Entity\ReadingsPurpose;
 use App\Entity\ReadingsSender;
 use App\Entity\ReadingsWay;
@@ -121,6 +122,11 @@ class DashboardController extends AbstractDashboardController
                     'Взаимосвязанные услуги',
                     'fas fa-list',
                     RelatedProduct::class
+                ),
+                MenuItem::linkToCrud(
+                    'Единицы измерения для услуг ЖКХ',
+                    'fas fa-list',
+                    ProductUnitsOfMeasure::class
                 ),
                 MenuItem::linkToCrud(
                     'Поставщики услуг ЖКХ',
