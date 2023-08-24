@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Entity\Column\HasProduct;
+use App\Entity\Column\HasUnitsOfMeasure;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProductUnitsOfMeasure
 {
+    use HasProduct;
+    use HasUnitsOfMeasure;
+
     /**
      * @var int
      *
@@ -23,48 +27,8 @@ class ProductUnitsOfMeasure
      */
     private $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
-     */
-    private $productId;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="units_of_measure_id", type="bigint", nullable=true)
-     */
-    private $unitsOfMeasureId;
-
     public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function getProductId(): ?string
-    {
-        return $this->productId;
-    }
-
-    public function setProductId(?string $productId): static
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    public function getUnitsOfMeasureId(): ?string
-    {
-        return $this->unitsOfMeasureId;
-    }
-
-    public function setUnitsOfMeasureId(?string $unitsOfMeasureId): static
-    {
-        $this->unitsOfMeasureId = $unitsOfMeasureId;
-
-        return $this;
-    }
-
-
 }
