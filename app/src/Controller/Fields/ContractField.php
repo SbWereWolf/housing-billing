@@ -12,13 +12,16 @@ class ContractField
 {
     public static function getFilter(): FilterInterface
     {
-        return EntityFilter::new('contract','Договор');
+        return EntityFilter::new('contract', 'Договор');
     }
 
     public static function getField(): FieldInterface
     {
         return AssociationField::
-        new('contract','Договор')
+        new(
+            'contract',
+            'Договор'
+        )
             ->setCrudController(ContractCrudController::class);
     }
 }

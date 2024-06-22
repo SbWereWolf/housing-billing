@@ -9,6 +9,7 @@ use App\Entity\Column\HasProduct;
 use App\Entity\Column\HasRawReadings;
 use App\Entity\Column\HasTestingRun;
 use App\Entity\Column\HasTestingSet;
+use App\Repository\ApprovedMeterReadingsRepository;
 use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
 use Stringable;
@@ -17,8 +18,16 @@ use Stringable;
  * ApprovedMeterReadings
  */
 #[ORM\Table(name: 'approved_meter_readings')]
-#[ORM\UniqueConstraint(name: 'approved_meter_readings_product_distributor_year_month_run_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'year', 'month', 'testing_run_id', 'raw_readings_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\ApprovedMeterReadingsRepository::class)]
+#[ORM\UniqueConstraint(name: 'approved_meter_readings_product_distributor_year_month_run_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'distribution_point_id',
+    'year',
+    'month',
+    'testing_run_id',
+    'raw_readings_id'
+])]
+#[ORM\Entity(repositoryClass: ApprovedMeterReadingsRepository::class)]
 class ApprovedMeterReadings implements Stringable
 {
     use HasRawReadings;

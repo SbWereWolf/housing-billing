@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\CashboxReceiptRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CashboxReceipt
  */
 #[ORM\Table(name: 'cashbox_receipt')]
-#[ORM\Entity(repositoryClass: \App\Repository\CashboxReceiptRepository::class)]
+#[ORM\Entity(repositoryClass: CashboxReceiptRepository::class)]
 class CashboxReceipt
 {
     /**

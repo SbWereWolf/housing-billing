@@ -11,7 +11,7 @@ trait HasAddress
      * @var Address
      */
     #[ORM\JoinColumn(name: 'address_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\Address::class)]
+    #[ORM\ManyToOne(targetEntity: Address::class)]
     protected Address $address;
 
     public function getAddress(): Address

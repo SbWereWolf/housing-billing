@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Column\HasCustomer;
+use App\Repository\NaturalPersonRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'natural_person')]
 #[ORM\UniqueConstraint(name: 'natural_person_customer_id_ux', columns: ['customer_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\NaturalPersonRepository::class)]
+#[ORM\Entity(repositoryClass: NaturalPersonRepository::class)]
 class NaturalPerson
 {
     use HasCustomer;

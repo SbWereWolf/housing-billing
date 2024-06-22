@@ -5,13 +5,14 @@ namespace App\Entity;
 use App\Entity\Column\HasBillingOption;
 use App\Entity\Column\HasCustomer;
 use App\Entity\Column\HasEntityOption;
+use App\Repository\CustomerLegalEntityOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CustomerLegalEntityOption
  */
 #[ORM\Table(name: 'customer_legal_entity_option')]
-#[ORM\Entity(repositoryClass: \App\Repository\CustomerLegalEntityOptionRepository::class)]
+#[ORM\Entity(repositoryClass: CustomerLegalEntityOptionRepository::class)]
 class CustomerLegalEntityOption
 {
     use HasCustomer;

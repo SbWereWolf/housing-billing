@@ -4,15 +4,19 @@ namespace App\Entity;
 
 use App\Entity\Column\HasAccountOption;
 use App\Entity\Column\HasBillingOption;
+use App\Repository\PersonalAccountBillingOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * PersonalAccountBillingOption
  */
 #[ORM\Table(name: 'personal_account_billing_option')]
-#[ORM\UniqueConstraint(name: 'personal_account_billing_option_billing_account_option_ux', columns: ['billing_option_id', 'personal_account_option_id'])]
+#[ORM\UniqueConstraint(name: 'personal_account_billing_option_billing_account_option_ux', columns: [
+    'billing_option_id',
+    'personal_account_option_id'
+])]
 #[ORM\UniqueConstraint(name: 'personal_account_billing_option_billing_option_id_ux', columns: ['billing_option_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\PersonalAccountBillingOptionRepository::class)]
+#[ORM\Entity(repositoryClass: PersonalAccountBillingOptionRepository::class)]
 class PersonalAccountBillingOption
 {
     use HasAccountOption;

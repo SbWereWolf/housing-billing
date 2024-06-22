@@ -660,7 +660,7 @@ class AppFixtures extends Fixture
 
         $start = 999_000;
 
-        $intervals = ['P1D','P1M','P1D','P1M','P1D','P1M','P1D','P1M',];
+        $intervals = ['P1D', 'P1M', 'P1D', 'P1M', 'P1D', 'P1M', 'P1D', 'P1M',];
         while ($current < $end) {
             foreach ($intervals as $interval) {
                 $current = $current->add(new DateInterval($interval));

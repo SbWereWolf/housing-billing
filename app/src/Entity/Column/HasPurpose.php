@@ -11,7 +11,7 @@ trait HasPurpose
      * @var ReadingsPurpose
      */
     #[ORM\JoinColumn(name: 'readings_purpose_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\ReadingsPurpose::class)]
+    #[ORM\ManyToOne(targetEntity: ReadingsPurpose::class)]
     protected ReadingsPurpose $purpose;
 
     public function getPurpose(): ReadingsPurpose

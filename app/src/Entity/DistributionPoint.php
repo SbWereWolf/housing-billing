@@ -2,15 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\DistributionPointRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 /**
  * DistributionPoint
  */
 #[ORM\Table(name: 'distribution_point')]
-#[ORM\Entity(repositoryClass: \App\Repository\DistributionPointRepository::class)]
-class DistributionPoint implements \Stringable
+#[ORM\Entity(repositoryClass: DistributionPointRepository::class)]
+class DistributionPoint implements Stringable
 {
     /**
      * @var int

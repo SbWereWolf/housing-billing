@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\ControlPanelMeteringDeviceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ControlPanelMeteringDevice
  */
 #[ORM\Table(name: 'control_panel_metering_device')]
-#[ORM\Entity(repositoryClass: \App\Repository\ControlPanelMeteringDeviceRepository::class)]
+#[ORM\Entity(repositoryClass: ControlPanelMeteringDeviceRepository::class)]
 class ControlPanelMeteringDevice
 {
     /**

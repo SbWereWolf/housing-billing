@@ -2,7 +2,6 @@
 
 namespace App\Controller\Fields;
 
-use App\Controller\Housing\LegalEntityOptionCrudController;
 use App\Controller\Housing\NaturalPersonOptionCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterInterface;

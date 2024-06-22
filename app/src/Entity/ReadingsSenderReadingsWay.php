@@ -4,14 +4,18 @@ namespace App\Entity;
 
 use App\Entity\Column\HasSender;
 use App\Entity\Column\HasWay;
+use App\Repository\ReadingsSenderReadingsWayRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ReadingsSenderReadingsWay
  */
 #[ORM\Table(name: 'readings_sender_readings_way')]
-#[ORM\UniqueConstraint(name: 'readings_sender_readings_way_readings_sender_id_readings_way_id', columns: ['readings_sender_id', 'readings_way_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\ReadingsSenderReadingsWayRepository::class)]
+#[ORM\UniqueConstraint(name: 'readings_sender_readings_way_readings_sender_id_readings_way_id', columns: [
+    'readings_sender_id',
+    'readings_way_id'
+])]
+#[ORM\Entity(repositoryClass: ReadingsSenderReadingsWayRepository::class)]
 class ReadingsSenderReadingsWay
 {
     use HasSender;

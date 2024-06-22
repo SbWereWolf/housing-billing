@@ -4,7 +4,11 @@ namespace App\Entity;
 
 use App\Entity\Column\HasBillingPeriod;
 use App\Entity\Column\HasTestingSet;
+use App\Repository\TestingRunRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 /**
  * TestingRun
@@ -12,8 +16,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'testing_run')]
 #[ORM\UniqueConstraint(name: 'testing_run_year_month_id_ux', columns: ['year', 'month', 'id'])]
 #[ORM\UniqueConstraint(name: 'testing_run_id_testing_set_id_ux', columns: ['id', 'testing_set_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\TestingRunRepository::class)]
-class TestingRun implements \Stringable
+#[ORM\Entity(repositoryClass: TestingRunRepository::class)]
+class TestingRun implements Stringable
 {
     use HasBillingPeriod;
     use HasTestingSet;
@@ -28,7 +32,7 @@ class TestingRun implements \Stringable
     private $id;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'start_time', type: 'datetimetz', nullable: true)]
     private $startTime;
@@ -44,12 +48,12 @@ class TestingRun implements \Stringable
         return $this->id;
     }
 
-    public function getStartTime(): ?\DateTimeInterface
+    public function getStartTime(): ?DateTimeInterface
     {
         return $this->startTime;
     }
 
-    public function setStartTime(?\DateTimeInterface $startTime): static
+    public function setStartTime(?DateTimeInterface $startTime): static
     {
         $this->startTime = $startTime;
 

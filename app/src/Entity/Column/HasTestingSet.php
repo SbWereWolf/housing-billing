@@ -2,7 +2,6 @@
 
 namespace App\Entity\Column;
 
-use App\Entity\RawReadings;
 use App\Entity\TestingSet;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,7 +11,7 @@ trait HasTestingSet
      * @var TestingSet
      */
     #[ORM\JoinColumn(name: 'testing_set_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\TestingSet::class)]
+    #[ORM\ManyToOne(targetEntity: TestingSet::class)]
     protected TestingSet $testingSet;
 
     public function getTestingSet(): TestingSet

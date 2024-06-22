@@ -5,14 +5,19 @@ namespace App\Entity;
 use App\Entity\Column\HasTestingRule;
 use App\Entity\Column\HasTestingRun;
 use App\Entity\Column\HasTestingSet;
+use App\Repository\ReasonOfWeededOutRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ReasonOfWeededOut
  */
 #[ORM\Table(name: 'reason_of_weeded_out')]
-#[ORM\UniqueConstraint(name: 'reason_for_weed_out_testing_run_id_testing_set_id_rule_id_ux', columns: ['testing_run_id', 'testing_set_id', 'testing_rule_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\ReasonOfWeededOutRepository::class)]
+#[ORM\UniqueConstraint(name: 'reason_for_weed_out_testing_run_id_testing_set_id_rule_id_ux', columns: [
+    'testing_run_id',
+    'testing_set_id',
+    'testing_rule_id'
+])]
+#[ORM\Entity(repositoryClass: ReasonOfWeededOutRepository::class)]
 class ReasonOfWeededOut
 {
     use HasTestingRun;

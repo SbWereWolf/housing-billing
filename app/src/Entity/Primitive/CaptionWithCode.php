@@ -3,8 +3,9 @@
 namespace App\Entity\Primitive;
 
 use JetBrains\PhpStorm\Pure;
+use Stringable;
 
-class CaptionWithCode implements \Stringable
+class CaptionWithCode implements Stringable
 {
     use HasCode;
 

@@ -2,15 +2,23 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\InvoiceProductUsageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * InvoiceProductUsage
  */
 #[ORM\Table(name: 'invoice_product_usage')]
-#[ORM\UniqueConstraint(name: 'invoice_product_usage_product_distributor_point_year_month_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'year', 'month', 'personal_account_id', 'units_of_measure_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\InvoiceProductUsageRepository::class)]
+#[ORM\UniqueConstraint(name: 'invoice_product_usage_product_distributor_point_year_month_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'distribution_point_id',
+    'year',
+    'month',
+    'personal_account_id',
+    'units_of_measure_id'
+])]
+#[ORM\Entity(repositoryClass: InvoiceProductUsageRepository::class)]
 class InvoiceProductUsage
 {
     /**

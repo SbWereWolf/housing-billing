@@ -2,7 +2,6 @@
 
 namespace App\Entity\Column;
 
-use App\Entity\Address;
 use Doctrine\ORM\Mapping as ORM;
 
 trait HasBillingPeriod

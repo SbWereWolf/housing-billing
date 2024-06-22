@@ -39,9 +39,9 @@ class MeteringDeviceCrudController extends EntityWithIdController
     public function configureFilters(Filters $filters): Filters
     {
         return parent::configureFilters($filters)
-            ->add(TextFilter::new('start','Поверка'))
-            ->add(DateTimeFilter::new('finish','Окончание'))
-            ->add(TextFilter::new('serial','Серийный номер'))
+            ->add(TextFilter::new('start', 'Поверка'))
+            ->add(DateTimeFilter::new('finish', 'Окончание'))
+            ->add(TextFilter::new('serial', 'Серийный номер'))
             ->add(ModelField::getFilter())
             ->add(ProductField::getFilter())
             ->add(DistributorField::getFilter())
@@ -57,7 +57,7 @@ class MeteringDeviceCrudController extends EntityWithIdController
             yield $field;
         }
 
-        yield TextField::new('serial','Серийный номер');
+        yield TextField::new('serial', 'Серийный номер');
         yield ModelField::getField();
         yield ProductField::getField();
         yield DistributorField::getField();

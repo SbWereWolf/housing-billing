@@ -9,13 +9,14 @@ use App\Entity\Column\HasRawReadings;
 use App\Entity\Column\HasTestingRule;
 use App\Entity\Column\HasTestingRun;
 use App\Entity\Column\HasTestingSet;
+use App\Repository\WeedOutMeterReadingsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * WeedOutMeterReadings
  */
 #[ORM\Table(name: 'weed_out_meter_readings')]
-#[ORM\Entity(repositoryClass: \App\Repository\WeedOutMeterReadingsRepository::class)]
+#[ORM\Entity(repositoryClass: WeedOutMeterReadingsRepository::class)]
 class WeedOutMeterReadings
 {
     use HasTestingRun;

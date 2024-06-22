@@ -5,14 +5,16 @@ namespace App\Entity;
 use App\Entity\Column\HasAddress;
 use App\Entity\Column\HasBillingOption;
 use App\Entity\Column\HasLocationOption;
+use App\Repository\AddressLocationOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 /**
  * AddressLocationOption
  */
 #[ORM\Table(name: 'address_location_option')]
-#[ORM\Entity(repositoryClass: \App\Repository\AddressLocationOptionRepository::class)]
-class AddressLocationOption implements \Stringable
+#[ORM\Entity(repositoryClass: AddressLocationOptionRepository::class)]
+class AddressLocationOption implements Stringable
 {
     use HasAddress;
     use HasBillingOption;

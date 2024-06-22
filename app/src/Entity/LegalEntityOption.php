@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\LegalEntityOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * LegalEntityOption
  */
 #[ORM\Table(name: 'legal_entity_option')]
-#[ORM\Entity(repositoryClass: \App\Repository\LegalEntityOptionRepository::class)]
+#[ORM\Entity(repositoryClass: LegalEntityOptionRepository::class)]
 class LegalEntityOption extends CaptionWithCode
 {
     /**

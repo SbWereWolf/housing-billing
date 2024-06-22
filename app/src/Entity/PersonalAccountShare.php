@@ -8,15 +8,29 @@ use App\Entity\Column\HasCustomer;
 use App\Entity\Column\HasDistributionPoint;
 use App\Entity\Column\HasDistributor;
 use App\Entity\Column\HasProduct;
+use App\Repository\PersonalAccountShareRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * PersonalAccountShare
  */
 #[ORM\Table(name: 'personal_account_share')]
-#[ORM\UniqueConstraint(name: 'personal_account_share_product_point_customer_account_ux', columns: ['product_id', 'distributor_id', 'address_id', 'distribution_point_id', 'customer_id', 'personal_account_id'])]
-#[ORM\UniqueConstraint(name: 'personal_account_share_product_address_account_id_ux', columns: ['product_id', 'distributor_id', 'address_id', 'personal_account_id', 'distribution_point_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\PersonalAccountShareRepository::class)]
+#[ORM\UniqueConstraint(name: 'personal_account_share_product_point_customer_account_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'address_id',
+    'distribution_point_id',
+    'customer_id',
+    'personal_account_id'
+])]
+#[ORM\UniqueConstraint(name: 'personal_account_share_product_address_account_id_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'address_id',
+    'personal_account_id',
+    'distribution_point_id'
+])]
+#[ORM\Entity(repositoryClass: PersonalAccountShareRepository::class)]
 class PersonalAccountShare
 {
     use HasAccount;
@@ -44,7 +58,10 @@ class PersonalAccountShare
     /**
      * @var int|null
      */
-    #[ORM\Column(name: 'share_divisor', type: 'integer', nullable: true, options: ['default' => '1', 'comment' => 'Делитель'])]
+    #[ORM\Column(name: 'share_divisor', type: 'integer', nullable: true, options: [
+        'default' => '1',
+        'comment' => 'Делитель'
+    ])]
     private $shareDivisor = 1;
 
     public function getId(): ?string

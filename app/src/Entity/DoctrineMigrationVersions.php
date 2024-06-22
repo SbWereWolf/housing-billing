@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,7 +23,7 @@ class DoctrineMigrationVersions
     private $version;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'executed_at', type: 'datetime', nullable: true)]
     private $executedAt;
@@ -38,12 +39,12 @@ class DoctrineMigrationVersions
         return $this->version;
     }
 
-    public function getExecutedAt(): ?\DateTimeInterface
+    public function getExecutedAt(): ?DateTimeInterface
     {
         return $this->executedAt;
     }
 
-    public function setExecutedAt(?\DateTimeInterface $executedAt): static
+    public function setExecutedAt(?DateTimeInterface $executedAt): static
     {
         $this->executedAt = $executedAt;
 

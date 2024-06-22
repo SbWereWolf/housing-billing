@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\ConversionRatioRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ConversionRatio
  */
 #[ORM\Table(name: 'conversion_ratio')]
-#[ORM\Entity(repositoryClass: \App\Repository\ConversionRatioRepository::class)]
+#[ORM\Entity(repositoryClass: ConversionRatioRepository::class)]
 class ConversionRatio
 {
     /**
@@ -25,14 +25,14 @@ class ConversionRatio
      * @var UnitsOfMeasure
      */
     #[ORM\JoinColumn(name: 'source_units_of_measure_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\UnitsOfMeasure::class)]
+    #[ORM\ManyToOne(targetEntity: UnitsOfMeasure::class)]
     private UnitsOfMeasure $source;
 
     /**
      * @var UnitsOfMeasure
      */
     #[ORM\JoinColumn(name: 'target_units_of_measure_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\UnitsOfMeasure::class)]
+    #[ORM\ManyToOne(targetEntity: UnitsOfMeasure::class)]
     private UnitsOfMeasure $target;
 
     public function getId(): ?string

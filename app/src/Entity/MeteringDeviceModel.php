@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\MeteringDeviceModelRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'metering_device_model')]
 #[ORM\UniqueConstraint(name: 'metering_device_model_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\MeteringDeviceModelRepository::class)]
+#[ORM\Entity(repositoryClass: MeteringDeviceModelRepository::class)]
 class MeteringDeviceModel extends CaptionWithCode
 {
     /**

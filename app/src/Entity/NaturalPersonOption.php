@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\NaturalPersonOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * NaturalPersonOption
  */
 #[ORM\Table(name: 'natural_person_option')]
-#[ORM\Entity(repositoryClass: \App\Repository\NaturalPersonOptionRepository::class)]
+#[ORM\Entity(repositoryClass: NaturalPersonOptionRepository::class)]
 class NaturalPersonOption extends CaptionWithCode
 {
     /**

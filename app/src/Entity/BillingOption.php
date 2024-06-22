@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\BillingOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'billing_option')]
 #[ORM\UniqueConstraint(name: 'billing_option_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\BillingOptionRepository::class)]
+#[ORM\Entity(repositoryClass: BillingOptionRepository::class)]
 class BillingOption extends CaptionWithCode
 {
     /**

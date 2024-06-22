@@ -5,13 +5,14 @@ namespace App\Entity;
 use App\Entity\Column\HasBillingOption;
 use App\Entity\Column\HasCustomer;
 use App\Entity\Column\HasPersonOption;
+use App\Repository\CustomerNaturalPersonOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CustomerNaturalPersonOption
  */
 #[ORM\Table(name: 'customer_natural_person_option')]
-#[ORM\Entity(repositoryClass: \App\Repository\CustomerNaturalPersonOptionRepository::class)]
+#[ORM\Entity(repositoryClass: CustomerNaturalPersonOptionRepository::class)]
 class CustomerNaturalPersonOption
 {
     use HasCustomer;

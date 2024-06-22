@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\InvoiceProductUsageDetailRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * InvoiceProductUsageDetail
  */
 #[ORM\Table(name: 'invoice_product_usage_detail')]
-#[ORM\Entity(repositoryClass: \App\Repository\InvoiceProductUsageDetailRepository::class)]
+#[ORM\Entity(repositoryClass: InvoiceProductUsageDetailRepository::class)]
 class InvoiceProductUsageDetail
 {
     /**

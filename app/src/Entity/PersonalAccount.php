@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use App\Entity\Column\HasContract;
 use App\Entity\Column\HasCustomer;
+use App\Repository\PersonalAccountRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 /**
  * PersonalAccount
@@ -12,11 +14,12 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'personal_account')]
 #[ORM\UniqueConstraint(name: 'personal_account_customer_id_id_ux', columns: ['customer_id', 'id'])]
 #[ORM\UniqueConstraint(name: 'personal_account_contract_id_id_ux', columns: ['contract_id', 'id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\PersonalAccountRepository::class)]
-class PersonalAccount implements \Stringable
+#[ORM\Entity(repositoryClass: PersonalAccountRepository::class)]
+class PersonalAccount implements Stringable
 {
     use HasCustomer;
     use HasContract;
+
     /**
      * @var int
      */

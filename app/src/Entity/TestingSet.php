@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\TestingSetRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'testing_set')]
 #[ORM\UniqueConstraint(name: 'testing_set_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\TestingSetRepository::class)]
+#[ORM\Entity(repositoryClass: TestingSetRepository::class)]
 class TestingSet extends CaptionWithCode
 {
     /**

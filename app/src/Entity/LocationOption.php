@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\LocationOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'location_option')]
 #[ORM\UniqueConstraint(name: 'address_option_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\LocationOptionRepository::class)]
+#[ORM\Entity(repositoryClass: LocationOptionRepository::class)]
 class LocationOption
     extends CaptionWithCode
 {

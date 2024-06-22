@@ -11,7 +11,7 @@ trait HasBillingOption
      * @var BillingOption
      */
     #[ORM\JoinColumn(name: 'billing_option_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\BillingOption::class)]
+    #[ORM\ManyToOne(targetEntity: BillingOption::class)]
     protected BillingOption $billingOption;
 
     public function getBillingOption(): BillingOption

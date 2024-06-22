@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\SharedProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * SharedProduct
  */
 #[ORM\Table(name: 'shared_product')]
-#[ORM\Entity(repositoryClass: \App\Repository\SharedProductRepository::class)]
+#[ORM\Entity(repositoryClass: SharedProductRepository::class)]
 class SharedProduct
 {
     /**
@@ -25,14 +25,14 @@ class SharedProduct
      * @var Product
      */
     #[ORM\JoinColumn(name: 'shared_product_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
+    #[ORM\ManyToOne(targetEntity: Product::class)]
     private Product $shared;
 
     /**
      * @var Product
      */
     #[ORM\JoinColumn(name: 'individual_product_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
+    #[ORM\ManyToOne(targetEntity: Product::class)]
     private Product $individual;
 
     public function getId(): ?string

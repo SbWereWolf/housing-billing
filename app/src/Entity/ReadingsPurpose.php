@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\ReadingsPurposeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'readings_purpose')]
 #[ORM\UniqueConstraint(name: 'readings_purpose_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\ReadingsPurposeRepository::class)]
+#[ORM\Entity(repositoryClass: ReadingsPurposeRepository::class)]
 class ReadingsPurpose extends CaptionWithCode
 {
     /**

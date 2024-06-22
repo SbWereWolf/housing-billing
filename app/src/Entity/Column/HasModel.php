@@ -11,7 +11,7 @@ trait HasModel
      * @var MeteringDeviceModel
      */
     #[ORM\JoinColumn(name: 'metering_device_model_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\MeteringDeviceModel::class)]
+    #[ORM\ManyToOne(targetEntity: MeteringDeviceModel::class)]
     protected MeteringDeviceModel $model;
 
     public function getModel(): MeteringDeviceModel

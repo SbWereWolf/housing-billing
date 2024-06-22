@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'address')]
 #[ORM\UniqueConstraint(name: 'address_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\AddressRepository::class)]
+#[ORM\Entity(repositoryClass: AddressRepository::class)]
 class Address extends CaptionWithCode
 {
     /**
@@ -109,18 +110,6 @@ class Address extends CaptionWithCode
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function getRegion(): ?int
-    {
-        return $this->region;
-    }
-
-    public function setRegion(int $region): static
-    {
-        $this->region = $region;
-
-        return $this;
     }
 
     public function getSteadsObjectguid(): ?string
@@ -279,8 +268,20 @@ class Address extends CaptionWithCode
         return $this;
     }
 
-    public function __toString():string
+    public function __toString(): string
     {
         return "{$this->getRegion()}, {$this->getTitle()}";
+    }
+
+    public function getRegion(): ?int
+    {
+        return $this->region;
+    }
+
+    public function setRegion(int $region): static
+    {
+        $this->region = $region;
+
+        return $this;
     }
 }

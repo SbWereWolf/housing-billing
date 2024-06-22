@@ -2,16 +2,27 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\InvoiceRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Invoice
  */
 #[ORM\Table(name: 'invoice')]
-#[ORM\UniqueConstraint(name: 'invoice_personal_account_id_units_of_measure_id_year_month_ux', columns: ['personal_account_id', 'units_of_measure_id', 'year', 'month'])]
-#[ORM\UniqueConstraint(name: 'invoice_personal_account_id_year_month_ux', columns: ['personal_account_id', 'year', 'month'])]
-#[ORM\Entity(repositoryClass: \App\Repository\InvoiceRepository::class)]
+#[ORM\UniqueConstraint(name: 'invoice_personal_account_id_units_of_measure_id_year_month_ux', columns: [
+    'personal_account_id',
+    'units_of_measure_id',
+    'year',
+    'month'
+])]
+#[ORM\UniqueConstraint(name: 'invoice_personal_account_id_year_month_ux', columns: [
+    'personal_account_id',
+    'year',
+    'month'
+])]
+#[ORM\Entity(repositoryClass: InvoiceRepository::class)]
 class Invoice
 {
     /**
@@ -42,7 +53,7 @@ class Invoice
     private $month;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'billed', type: 'datetimetz', nullable: true)]
     private $billed;
@@ -100,12 +111,12 @@ class Invoice
         return $this;
     }
 
-    public function getBilled(): ?\DateTimeInterface
+    public function getBilled(): ?DateTimeInterface
     {
         return $this->billed;
     }
 
-    public function setBilled(?\DateTimeInterface $billed): static
+    public function setBilled(?DateTimeInterface $billed): static
     {
         $this->billed = $billed;
 

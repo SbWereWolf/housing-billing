@@ -8,6 +8,8 @@ use App\Entity\Column\HasModel;
 use App\Entity\Column\HasProduct;
 use App\Entity\Column\HasSender;
 use App\Entity\Column\HasWay;
+use App\Repository\RawReadingsRepository;
+use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Stringable;
@@ -16,8 +18,13 @@ use Stringable;
  * RawReadings
  */
 #[ORM\Table(name: 'raw_readings')]
-#[ORM\UniqueConstraint(name: 'raw_readings_product_id_distributor_id_point_id_id_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\RawReadingsRepository::class)]
+#[ORM\UniqueConstraint(name: 'raw_readings_product_id_distributor_id_point_id_id_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'distribution_point_id',
+    'id'
+])]
+#[ORM\Entity(repositoryClass: RawReadingsRepository::class)]
 class RawReadings implements Stringable
 {
     use HasModel;
@@ -43,7 +50,7 @@ class RawReadings implements Stringable
     private $readings;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'upload_time', type: 'datetimetz', nullable: true)]
     private $uploadTime;
@@ -52,7 +59,7 @@ class RawReadings implements Stringable
      * @var DeviceModelScale
      */
     #[ORM\JoinColumn(name: 'device_model_scale_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\DeviceModelScale::class)]
+    #[ORM\ManyToOne(targetEntity: DeviceModelScale::class)]
     private $modelScale;
 
     /**

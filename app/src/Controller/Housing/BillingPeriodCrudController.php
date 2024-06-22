@@ -35,9 +35,9 @@ class BillingPeriodCrudController extends EntityWithIdController
         return parent::configureFilters($filters)
             ->add(BillingPeriodField::getYearFilter())
             ->add(BillingPeriodField::getMonthFilter())
-            ->add(TextFilter::new('title','Название'))
-            ->add(DateTimeFilter::new('start','Начало'))
-            ->add(DateTimeFilter::new('finish','Окончание'))
+            ->add(TextFilter::new('title', 'Название'))
+            ->add(DateTimeFilter::new('start', 'Начало'))
+            ->add(DateTimeFilter::new('finish', 'Окончание'))
             ;
     }
 }

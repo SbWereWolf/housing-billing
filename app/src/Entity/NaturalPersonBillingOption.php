@@ -4,15 +4,19 @@ namespace App\Entity;
 
 use App\Entity\Column\HasBillingOption;
 use App\Entity\Column\HasPersonOption;
+use App\Repository\NaturalPersonBillingOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * NaturalPersonBillingOption
  */
 #[ORM\Table(name: 'natural_person_billing_option')]
-#[ORM\UniqueConstraint(name: 'natural_person_billing_option_billing_option_natural_option_ux', columns: ['billing_option_id', 'natural_person_option_id'])]
+#[ORM\UniqueConstraint(name: 'natural_person_billing_option_billing_option_natural_option_ux', columns: [
+    'billing_option_id',
+    'natural_person_option_id'
+])]
 #[ORM\UniqueConstraint(name: 'natural_person_billing_option_billing_option_id_ux', columns: ['billing_option_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\NaturalPersonBillingOptionRepository::class)]
+#[ORM\Entity(repositoryClass: NaturalPersonBillingOptionRepository::class)]
 class NaturalPersonBillingOption
 {
     use HasPersonOption;

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\DeviceOptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'device_option')]
 #[ORM\UniqueConstraint(name: 'device_option_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\DeviceOptionRepository::class)]
+#[ORM\Entity(repositoryClass: DeviceOptionRepository::class)]
 class DeviceOption extends CaptionWithCode
 {
     /**

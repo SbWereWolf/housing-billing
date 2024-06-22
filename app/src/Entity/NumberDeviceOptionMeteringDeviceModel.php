@@ -4,13 +4,14 @@ namespace App\Entity;
 
 use App\Entity\Column\HasDeviceOption;
 use App\Entity\Column\HasModel;
+use App\Repository\NumberDeviceOptionMeteringDeviceModelRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * NumberDeviceOptionMeteringDeviceModel
  */
 #[ORM\Table(name: 'number_device_option_metering_device_model')]
-#[ORM\Entity(repositoryClass: \App\Repository\NumberDeviceOptionMeteringDeviceModelRepository::class)]
+#[ORM\Entity(repositoryClass: NumberDeviceOptionMeteringDeviceModelRepository::class)]
 class NumberDeviceOptionMeteringDeviceModel
 {
     use HasModel;

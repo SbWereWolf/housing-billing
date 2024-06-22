@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\DistributorRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'distributor')]
 #[ORM\UniqueConstraint(name: 'distributor_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\DistributorRepository::class)]
+#[ORM\Entity(repositoryClass: DistributorRepository::class)]
 class Distributor extends CaptionWithCode
 {
     /**

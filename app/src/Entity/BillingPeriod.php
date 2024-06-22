@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\BillingPeriodRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'billing_period')]
 #[ORM\UniqueConstraint(name: 'billing_period_year_month_ux', columns: ['year', 'month'])]
-#[ORM\Entity(repositoryClass: \App\Repository\BillingPeriodRepository::class)]
+#[ORM\Entity(repositoryClass: BillingPeriodRepository::class)]
 class BillingPeriod
 {
     /**
@@ -41,13 +43,13 @@ class BillingPeriod
     private $title;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'start', type: 'datetimetz', nullable: true)]
     private $start;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'finish', type: 'datetimetz', nullable: true)]
     private $finish;
@@ -93,24 +95,24 @@ class BillingPeriod
         return $this;
     }
 
-    public function getStart(): ?\DateTimeInterface
+    public function getStart(): ?DateTimeInterface
     {
         return $this->start;
     }
 
-    public function setStart(?\DateTimeInterface $start): static
+    public function setStart(?DateTimeInterface $start): static
     {
         $this->start = $start;
 
         return $this;
     }
 
-    public function getFinish(): ?\DateTimeInterface
+    public function getFinish(): ?DateTimeInterface
     {
         return $this->finish;
     }
 
-    public function setFinish(?\DateTimeInterface $finish): static
+    public function setFinish(?DateTimeInterface $finish): static
     {
         $this->finish = $finish;
 

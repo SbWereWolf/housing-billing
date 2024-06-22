@@ -11,7 +11,7 @@ trait HasLocationOption
      * @var LocationOption
      */
     #[ORM\JoinColumn(name: 'location_option_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\LocationOption::class)]
+    #[ORM\ManyToOne(targetEntity: LocationOption::class)]
     protected LocationOption $locationOption;
 
     public function getLocationOption(): LocationOption

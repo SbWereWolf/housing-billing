@@ -4,14 +4,18 @@ namespace App\Entity;
 
 use App\Entity\Column\HasAddress;
 use App\Entity\Column\HasDistributionPoint;
+use App\Repository\AddressDistributionPointRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AddressDistributionPoint
  */
 #[ORM\Table(name: 'address_distribution_point')]
-#[ORM\UniqueConstraint(name: 'address_distribution_point_address_id_distribution_point_id_ux', columns: ['address_id', 'distribution_point_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\AddressDistributionPointRepository::class)]
+#[ORM\UniqueConstraint(name: 'address_distribution_point_address_id_distribution_point_id_ux', columns: [
+    'address_id',
+    'distribution_point_id'
+])]
+#[ORM\Entity(repositoryClass: AddressDistributionPointRepository::class)]
 class AddressDistributionPoint
 {
     use HasAddress;

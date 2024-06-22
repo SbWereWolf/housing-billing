@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\ControlPanelRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ControlPanel
  */
 #[ORM\Table(name: 'control_panel')]
-#[ORM\Entity(repositoryClass: \App\Repository\ControlPanelRepository::class)]
+#[ORM\Entity(repositoryClass: ControlPanelRepository::class)]
 class ControlPanel
 {
     /**

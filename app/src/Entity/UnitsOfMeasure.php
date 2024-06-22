@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\UnitsOfMeasureRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'units_of_measure')]
 #[ORM\UniqueConstraint(name: 'units_of_measure_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\UnitsOfMeasureRepository::class)]
+#[ORM\Entity(repositoryClass: UnitsOfMeasureRepository::class)]
 class UnitsOfMeasure extends CaptionWithCode
 {
     /**

@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\TransitMeteringPointRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TransitMeteringPoint
  */
 #[ORM\Table(name: 'transit_metering_point')]
-#[ORM\Entity(repositoryClass: \App\Repository\TransitMeteringPointRepository::class)]
+#[ORM\Entity(repositoryClass: TransitMeteringPointRepository::class)]
 class TransitMeteringPoint
 {
     /**
@@ -25,14 +25,14 @@ class TransitMeteringPoint
      * @var MeteringPoint
      */
     #[ORM\JoinColumn(name: 'primary_metering_point_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\MeteringPoint::class)]
+    #[ORM\ManyToOne(targetEntity: MeteringPoint::class)]
     private MeteringPoint $primary;
 
     /**
      * @var MeteringPoint
      */
     #[ORM\JoinColumn(name: 'secondary_metering_point_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\MeteringPoint::class)]
+    #[ORM\ManyToOne(targetEntity: MeteringPoint::class)]
     private MeteringPoint $secondary;
 
     public function getId(): ?string

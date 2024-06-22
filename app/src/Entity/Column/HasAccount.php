@@ -11,8 +11,7 @@ trait HasAccount
      * @var PersonalAccount
      */
     #[ORM\JoinColumn(name: 'personal_account_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\PersonalAccount::class)]
-
+    #[ORM\ManyToOne(targetEntity: PersonalAccount::class)]
     protected PersonalAccount $account;
 
     public function getAccount(): PersonalAccount

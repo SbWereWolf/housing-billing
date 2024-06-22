@@ -12,12 +12,12 @@ class AccountField
 {
     public static function getFilter(): FilterInterface
     {
-        return EntityFilter::new('account','Лицевой счёт');
+        return EntityFilter::new('account', 'Лицевой счёт');
     }
 
     public static function getField(): FieldInterface
     {
-        return AssociationField::new('account','Лицевой счёт')
+        return AssociationField::new('account', 'Лицевой счёт')
             ->setCrudController(PersonalAccountCrudController::class);
     }
 }

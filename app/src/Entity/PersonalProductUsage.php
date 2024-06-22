@@ -10,15 +10,33 @@ use App\Entity\Column\HasDistributionPoint;
 use App\Entity\Column\HasDistributor;
 use App\Entity\Column\HasProduct;
 use App\Entity\Column\HasUnitsOfMeasure;
+use App\Repository\PersonalProductUsageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * PersonalProductUsage
  */
 #[ORM\Table(name: 'personal_product_usage')]
-#[ORM\UniqueConstraint(name: 'personal_product_usage_product_address_customer_account_ux', columns: ['product_id', 'distributor_id', 'address_id', 'distribution_point_id', 'customer_id', 'personal_account_id', 'year', 'month'])]
-#[ORM\UniqueConstraint(name: 'personal_product_usage_product_address_account_year_month_ux', columns: ['product_id', 'distributor_id', 'address_id', 'personal_account_id', 'distribution_point_id', 'year', 'month'])]
-#[ORM\Entity(repositoryClass: \App\Repository\PersonalProductUsageRepository::class)]
+#[ORM\UniqueConstraint(name: 'personal_product_usage_product_address_customer_account_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'address_id',
+    'distribution_point_id',
+    'customer_id',
+    'personal_account_id',
+    'year',
+    'month'
+])]
+#[ORM\UniqueConstraint(name: 'personal_product_usage_product_address_account_year_month_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'address_id',
+    'personal_account_id',
+    'distribution_point_id',
+    'year',
+    'month'
+])]
+#[ORM\Entity(repositoryClass: PersonalProductUsageRepository::class)]
 class PersonalProductUsage
 {
     use HasProduct;

@@ -6,14 +6,23 @@ use App\Entity\Column\HasDistributionPoint;
 use App\Entity\Column\HasDistributor;
 use App\Entity\Column\HasModel;
 use App\Entity\Column\HasProduct;
+use App\Repository\MeteringDeviceRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MeteringDevice
  */
 #[ORM\Table(name: 'metering_device')]
-#[ORM\UniqueConstraint(name: 'metering_device_product_distributor_point_model_start_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'metering_device_model_id', 'start'])]
-#[ORM\Entity(repositoryClass: \App\Repository\MeteringDeviceRepository::class)]
+#[ORM\UniqueConstraint(name: 'metering_device_product_distributor_point_model_start_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'distribution_point_id',
+    'metering_device_model_id',
+    'start'
+])]
+#[ORM\Entity(repositoryClass: MeteringDeviceRepository::class)]
 class MeteringDevice
 {
     use HasModel;
@@ -37,7 +46,7 @@ class MeteringDevice
     private $start;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'finish', type: 'datetimetz', nullable: true)]
     private $finish;
@@ -65,12 +74,12 @@ class MeteringDevice
         return $this;
     }
 
-    public function getFinish(): ?\DateTimeInterface
+    public function getFinish(): ?DateTimeInterface
     {
         return $this->finish;
     }
 
-    public function setFinish(?\DateTimeInterface $finish): static
+    public function setFinish(?DateTimeInterface $finish): static
     {
         $this->finish = $finish;
 

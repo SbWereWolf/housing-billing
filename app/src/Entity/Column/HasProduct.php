@@ -2,7 +2,6 @@
 
 namespace App\Entity\Column;
 
-use App\Entity\Address;
 use App\Entity\Product;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,7 +11,7 @@ trait HasProduct
      * @var Product
      */
     #[ORM\JoinColumn(name: 'product_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
+    #[ORM\ManyToOne(targetEntity: Product::class)]
     protected Product $product;
 
     public function getProduct(): Product

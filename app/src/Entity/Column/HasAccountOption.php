@@ -11,7 +11,7 @@ trait HasAccountOption
      * @var PersonalAccountOption
      */
     #[ORM\JoinColumn(name: 'personal_account_option_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\PersonalAccountOption::class)]
+    #[ORM\ManyToOne(targetEntity: PersonalAccountOption::class)]
     protected PersonalAccountOption $accountOption;
 
     public function getAccountOption(): PersonalAccountOption

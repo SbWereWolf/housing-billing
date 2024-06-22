@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\ReadingsSenderRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'readings_sender')]
 #[ORM\UniqueConstraint(name: 'readings_sender_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\ReadingsSenderRepository::class)]
+#[ORM\Entity(repositoryClass: ReadingsSenderRepository::class)]
 class ReadingsSender extends CaptionWithCode
 {
     /**

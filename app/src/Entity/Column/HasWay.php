@@ -11,7 +11,7 @@ trait HasWay
      * @var ReadingsWay
      */
     #[ORM\JoinColumn(name: 'readings_way_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\ReadingsWay::class)]
+    #[ORM\ManyToOne(targetEntity: ReadingsWay::class)]
     protected ReadingsWay $way;
 
     public function getWay(): ReadingsWay

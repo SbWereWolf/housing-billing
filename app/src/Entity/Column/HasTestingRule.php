@@ -11,7 +11,7 @@ trait HasTestingRule
      * @var TestingRule
      */
     #[ORM\JoinColumn(name: 'testing_rule_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\TestingRule::class)]
+    #[ORM\ManyToOne(targetEntity: TestingRule::class)]
     protected TestingRule $rule;
 
     public function getRule(): TestingRule

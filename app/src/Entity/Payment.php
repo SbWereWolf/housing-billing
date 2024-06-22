@@ -2,14 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\PaymentRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Payment
  */
 #[ORM\Table(name: 'payment')]
-#[ORM\Entity(repositoryClass: \App\Repository\PaymentRepository::class)]
+#[ORM\Entity(repositoryClass: PaymentRepository::class)]
 class Payment
 {
     /**
@@ -28,7 +30,7 @@ class Payment
     private $personalAccountId;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     #[ORM\Column(name: 'paid_at', type: 'datetimetz', nullable: true)]
     private $paidAt;
@@ -62,12 +64,12 @@ class Payment
         return $this;
     }
 
-    public function getPaidAt(): ?\DateTimeInterface
+    public function getPaidAt(): ?DateTimeInterface
     {
         return $this->paidAt;
     }
 
-    public function setPaidAt(?\DateTimeInterface $paidAt): static
+    public function setPaidAt(?DateTimeInterface $paidAt): static
     {
         $this->paidAt = $paidAt;
 

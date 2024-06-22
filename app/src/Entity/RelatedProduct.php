@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\RelatedProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * RelatedProduct
  */
 #[ORM\Table(name: 'related_product')]
-#[ORM\Entity(repositoryClass: \App\Repository\RelatedProductRepository::class)]
+#[ORM\Entity(repositoryClass: RelatedProductRepository::class)]
 class RelatedProduct
 {
     /**
@@ -25,14 +25,14 @@ class RelatedProduct
      * @var Product
      */
     #[ORM\JoinColumn(name: 'parent_product_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
+    #[ORM\ManyToOne(targetEntity: Product::class)]
     private Product $parent;
 
     /**
      * @var Product
      */
     #[ORM\JoinColumn(name: 'child_product_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
+    #[ORM\ManyToOne(targetEntity: Product::class)]
     private Product $child;
 
     public function getId(): ?string

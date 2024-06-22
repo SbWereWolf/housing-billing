@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\TestingRuleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'testing_rule')]
 #[ORM\UniqueConstraint(name: 'testing_rule_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\TestingRuleRepository::class)]
+#[ORM\Entity(repositoryClass: TestingRuleRepository::class)]
 class TestingRule extends CaptionWithCode
 {
     /**

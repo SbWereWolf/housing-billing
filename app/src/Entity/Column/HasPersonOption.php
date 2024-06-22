@@ -2,7 +2,6 @@
 
 namespace App\Entity\Column;
 
-use App\Entity\LegalEntityOption;
 use App\Entity\NaturalPersonOption;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,7 +11,7 @@ trait HasPersonOption
      * @var NaturalPersonOption
      */
     #[ORM\JoinColumn(name: 'natural_person_option_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\NaturalPersonOption::class)]
+    #[ORM\ManyToOne(targetEntity: NaturalPersonOption::class)]
     protected NaturalPersonOption $personOption;
 
     public function getPersonOption(): NaturalPersonOption

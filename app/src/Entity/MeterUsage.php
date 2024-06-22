@@ -7,14 +7,22 @@ use App\Entity\Column\HasDistributionPoint;
 use App\Entity\Column\HasDistributor;
 use App\Entity\Column\HasProduct;
 use App\Entity\Column\HasUnitsOfMeasure;
+use App\Repository\MeterUsageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MeterUsage
  */
 #[ORM\Table(name: 'meter_usage')]
-#[ORM\UniqueConstraint(name: 'meter_usage_product_distributor_point_year_month_units_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'year', 'month', 'units_of_measure_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\MeterUsageRepository::class)]
+#[ORM\UniqueConstraint(name: 'meter_usage_product_distributor_point_year_month_units_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'distribution_point_id',
+    'year',
+    'month',
+    'units_of_measure_id'
+])]
+#[ORM\Entity(repositoryClass: MeterUsageRepository::class)]
 class MeterUsage
 {
     use HasProduct;

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Primitive\CaptionWithCode;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'product')]
 #[ORM\UniqueConstraint(name: 'product_code_ux', columns: ['code'])]
-#[ORM\Entity(repositoryClass: \App\Repository\ProductRepository::class)]
+#[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product extends CaptionWithCode
 {
     /**

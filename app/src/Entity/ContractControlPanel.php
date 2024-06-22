@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
+use App\Repository\ContractControlPanelRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ContractControlPanel
  */
 #[ORM\Table(name: 'contract_control_panel')]
-#[ORM\Entity(repositoryClass: \App\Repository\ContractControlPanelRepository::class)]
+#[ORM\Entity(repositoryClass: ContractControlPanelRepository::class)]
 class ContractControlPanel
 {
     /**

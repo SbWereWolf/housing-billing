@@ -12,12 +12,12 @@ class PurposeField
 {
     public static function getFilter(): FilterInterface
     {
-        return EntityFilter::new('purpose','Назначение показаний');
+        return EntityFilter::new('purpose', 'Назначение показаний');
     }
 
     public static function getField(): FieldInterface
     {
-        return AssociationField::new('purpose','Назначение показаний')
+        return AssociationField::new('purpose', 'Назначение показаний')
             ->setCrudController(ReadingsPurposeCrudController::class);
     }
 }

@@ -11,7 +11,7 @@ trait HasSender
      * @var ReadingsSender
      */
     #[ORM\JoinColumn(name: 'readings_sender_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\ReadingsSender::class)]
+    #[ORM\ManyToOne(targetEntity: ReadingsSender::class)]
     protected ReadingsSender $sender;
 
     public function getSender(): ReadingsSender

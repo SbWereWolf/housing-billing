@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Column\HasUnitsOfMeasure;
+use App\Repository\CurrencyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,10 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ORM\Table(name: 'currency')]
 #[ORM\UniqueConstraint(name: 'currency_units_of_measure_id_ux', columns: ['units_of_measure_id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\CurrencyRepository::class)]
+#[ORM\Entity(repositoryClass: CurrencyRepository::class)]
 class Currency
 {
     use HasUnitsOfMeasure;
+
     /**
      * @var int
      */

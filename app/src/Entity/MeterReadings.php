@@ -8,14 +8,21 @@ use App\Entity\Column\HasDistributor;
 use App\Entity\Column\HasProduct;
 use App\Entity\Column\HasRawReadings;
 use App\Entity\Column\HasTestingRun;
+use App\Repository\MeterReadingsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MeterReadings
  */
 #[ORM\Table(name: 'meter_readings')]
-#[ORM\UniqueConstraint(name: 'meter_readings_product_distributor_point_year_month_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'year', 'month'])]
-#[ORM\Entity(repositoryClass: \App\Repository\MeterReadingsRepository::class)]
+#[ORM\UniqueConstraint(name: 'meter_readings_product_distributor_point_year_month_ux', columns: [
+    'product_id',
+    'distributor_id',
+    'distribution_point_id',
+    'year',
+    'month'
+])]
+#[ORM\Entity(repositoryClass: MeterReadingsRepository::class)]
 class MeterReadings
 {
     use HasProduct;

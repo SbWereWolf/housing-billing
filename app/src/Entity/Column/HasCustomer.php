@@ -11,7 +11,7 @@ trait HasCustomer
      * @var Customer
      */
     #[ORM\JoinColumn(name: 'customer_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\Customer::class)]
+    #[ORM\ManyToOne(targetEntity: Customer::class)]
     protected Customer $customer;
 
     public function getCustomer(): Customer

@@ -11,7 +11,7 @@ trait HasEntityOption
      * @var LegalEntityOption
      */
     #[ORM\JoinColumn(name: 'legal_entity_option_id')]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\LegalEntityOption::class)]
+    #[ORM\ManyToOne(targetEntity: LegalEntityOption::class)]
     protected LegalEntityOption $entityOption;
 
     public function getEntityOption(): LegalEntityOption

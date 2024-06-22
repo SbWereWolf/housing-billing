@@ -3,17 +3,20 @@
 namespace App\Entity;
 
 use App\Entity\Column\HasCustomer;
+use App\Repository\ContractRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 /**
  * Contract
  */
 #[ORM\Table(name: 'contract')]
 #[ORM\UniqueConstraint(name: 'contract_customer_id_id_ux', columns: ['customer_id', 'id'])]
-#[ORM\Entity(repositoryClass: \App\Repository\ContractRepository::class)]
-class Contract implements \Stringable
+#[ORM\Entity(repositoryClass: ContractRepository::class)]
+class Contract implements Stringable
 {
     use HasCustomer;
+
     /**
      * @var int
      */
