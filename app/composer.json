@@ -87,13 +87,14 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "7.*"
         }
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "phpunit/phpunit": "^9.5",
+        "rector/rector": "^1.1",
         "symfony/browser-kit": "7.*",
         "symfony/css-selector": "7.*",
         "symfony/debug-bundle": "7.*",
