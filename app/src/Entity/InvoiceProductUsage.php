@@ -7,76 +7,67 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * InvoiceProductUsage
- *
- * @ORM\Table(name="invoice_product_usage", uniqueConstraints={@ORM\UniqueConstraint(name="invoice_product_usage_product_distributor_point_year_month_ux", columns={"product_id", "distributor_id", "distribution_point_id", "year", "month", "personal_account_id", "units_of_measure_id"})})
- * @ORM\Entity(repositoryClass="App\Repository\InvoiceProductUsageRepository")
  */
+#[ORM\Table(name: 'invoice_product_usage')]
+#[ORM\UniqueConstraint(name: 'invoice_product_usage_product_distributor_point_year_month_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'year', 'month', 'personal_account_id', 'units_of_measure_id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\InvoiceProductUsageRepository::class)]
 class InvoiceProductUsage
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="invoice_product_usage_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'invoice_product_usage_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="personal_account_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'personal_account_id', type: 'bigint', nullable: true)]
     private $personalAccountId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="year", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'year', type: 'integer', nullable: true)]
     private $year;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="month", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'month', type: 'integer', nullable: true)]
     private $month;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="product_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'product_id', type: 'bigint', nullable: true)]
     private $productId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="distributor_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'distributor_id', type: 'bigint', nullable: true)]
     private $distributorId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="distribution_point_id", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'distribution_point_id', type: 'integer', nullable: true)]
     private $distributionPointId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="amount", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'amount', type: 'bigint', nullable: true)]
     private $amount;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="units_of_measure_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'units_of_measure_id', type: 'bigint', nullable: true)]
     private $unitsOfMeasureId;
 
     public function getId(): ?string

@@ -7,62 +7,56 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Invoice
- *
- * @ORM\Table(name="invoice", uniqueConstraints={@ORM\UniqueConstraint(name="invoice_personal_account_id_units_of_measure_id_year_month_ux", columns={"personal_account_id", "units_of_measure_id", "year", "month"}), @ORM\UniqueConstraint(name="invoice_personal_account_id_year_month_ux", columns={"personal_account_id", "year", "month"})})
- * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
  */
+#[ORM\Table(name: 'invoice')]
+#[ORM\UniqueConstraint(name: 'invoice_personal_account_id_units_of_measure_id_year_month_ux', columns: ['personal_account_id', 'units_of_measure_id', 'year', 'month'])]
+#[ORM\UniqueConstraint(name: 'invoice_personal_account_id_year_month_ux', columns: ['personal_account_id', 'year', 'month'])]
+#[ORM\Entity(repositoryClass: \App\Repository\InvoiceRepository::class)]
 class Invoice
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="invoice_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'invoice_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="personal_account_id", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'personal_account_id', type: 'integer', nullable: true)]
     private $personalAccountId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="year", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'year', type: 'integer', nullable: true)]
     private $year;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="month", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'month', type: 'integer', nullable: true)]
     private $month;
 
     /**
      * @var \DateTime|null
-     *
-     * @ORM\Column(name="billed", type="datetimetz", nullable=true)
      */
+    #[ORM\Column(name: 'billed', type: 'datetimetz', nullable: true)]
     private $billed;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="amount", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'amount', type: 'bigint', nullable: true)]
     private $amount;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="units_of_measure_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'units_of_measure_id', type: 'bigint', nullable: true)]
     private $unitsOfMeasureId;
 
     public function getId(): ?string

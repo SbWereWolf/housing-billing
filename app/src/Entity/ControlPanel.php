@@ -7,34 +7,30 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ControlPanel
- *
- * @ORM\Table(name="control_panel")
- * @ORM\Entity(repositoryClass="App\Repository\ControlPanelRepository")
  */
+#[ORM\Table(name: 'control_panel')]
+#[ORM\Entity(repositoryClass: \App\Repository\ControlPanelRepository::class)]
 class ControlPanel
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="control_panel_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'control_panel_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="login", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'login', type: 'text', nullable: true)]
     private $login;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="password_hash", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'password_hash', type: 'text', nullable: true)]
     private $passwordHash;
 
     public function getId(): ?string

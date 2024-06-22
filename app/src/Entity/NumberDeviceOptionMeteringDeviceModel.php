@@ -8,10 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * NumberDeviceOptionMeteringDeviceModel
- *
- * @ORM\Table(name="number_device_option_metering_device_model")
- * @ORM\Entity(repositoryClass="App\Repository\NumberDeviceOptionMeteringDeviceModelRepository")
  */
+#[ORM\Table(name: 'number_device_option_metering_device_model')]
+#[ORM\Entity(repositoryClass: \App\Repository\NumberDeviceOptionMeteringDeviceModelRepository::class)]
 class NumberDeviceOptionMeteringDeviceModel
 {
     use HasModel;
@@ -19,19 +18,17 @@ class NumberDeviceOptionMeteringDeviceModel
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="number_device_option_metering_device_model_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'number_device_option_metering_device_model_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="number_value", type="decimal", precision=18, scale=6, nullable=true)
      */
+    #[ORM\Column(name: 'number_value', type: 'decimal', precision: 18, scale: 6, nullable: true)]
     private $numberValue;
 
     public function getId(): ?string

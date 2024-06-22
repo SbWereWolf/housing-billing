@@ -9,10 +9,10 @@ trait HasAccount
 {
     /**
      * @var PersonalAccount
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\PersonalAccount")
-     * @ORM\JoinColumn(name="personal_account_id")
      */
+    #[ORM\JoinColumn(name: 'personal_account_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\PersonalAccount::class)]
+
     protected PersonalAccount $account;
 
     public function getAccount(): PersonalAccount

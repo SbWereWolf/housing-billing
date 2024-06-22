@@ -11,10 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MeterUsage
- *
- * @ORM\Table(name="meter_usage", uniqueConstraints={@ORM\UniqueConstraint(name="meter_usage_product_distributor_point_year_month_units_ux", columns={"product_id", "distributor_id", "distribution_point_id", "year", "month", "units_of_measure_id"})})
- * @ORM\Entity(repositoryClass="App\Repository\MeterUsageRepository")
  */
+#[ORM\Table(name: 'meter_usage')]
+#[ORM\UniqueConstraint(name: 'meter_usage_product_distributor_point_year_month_units_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'year', 'month', 'units_of_measure_id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\MeterUsageRepository::class)]
 class MeterUsage
 {
     use HasProduct;
@@ -25,33 +25,29 @@ class MeterUsage
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="meter_usage_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'meter_usage_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="previous_year", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'previous_year', type: 'integer', nullable: true)]
     private $previousYear;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="previous_month", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'previous_month', type: 'integer', nullable: true)]
     private $previousMonth;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="volume", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'volume', type: 'bigint', nullable: true)]
     private $volume;
 
     public function getId(): ?string

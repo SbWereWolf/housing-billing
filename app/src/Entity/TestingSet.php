@@ -7,20 +7,19 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TestingSet
- *
- * @ORM\Table(name="testing_set", uniqueConstraints={@ORM\UniqueConstraint(name="testing_set_code_ux", columns={"code"})})
- * @ORM\Entity(repositoryClass="App\Repository\TestingSetRepository")
  */
+#[ORM\Table(name: 'testing_set')]
+#[ORM\UniqueConstraint(name: 'testing_set_code_ux', columns: ['code'])]
+#[ORM\Entity(repositoryClass: \App\Repository\TestingSetRepository::class)]
 class TestingSet extends CaptionWithCode
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="testing_set_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'testing_set_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string

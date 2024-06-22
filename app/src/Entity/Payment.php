@@ -7,48 +7,42 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Payment
- *
- * @ORM\Table(name="payment")
- * @ORM\Entity(repositoryClass="App\Repository\PaymentRepository")
  */
+#[ORM\Table(name: 'payment')]
+#[ORM\Entity(repositoryClass: \App\Repository\PaymentRepository::class)]
 class Payment
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="payment_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'payment_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="personal_account_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'personal_account_id', type: 'bigint', nullable: true)]
     private $personalAccountId;
 
     /**
      * @var \DateTime|null
-     *
-     * @ORM\Column(name="paid_at", type="datetimetz", nullable=true)
      */
+    #[ORM\Column(name: 'paid_at', type: 'datetimetz', nullable: true)]
     private $paidAt;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="amount", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'amount', type: 'bigint', nullable: true)]
     private $amount;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="units_of_measure_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'units_of_measure_id', type: 'bigint', nullable: true)]
     private $unitsOfMeasureId;
 
     public function getId(): ?string

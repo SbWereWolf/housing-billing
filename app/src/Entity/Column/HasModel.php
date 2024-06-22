@@ -9,10 +9,9 @@ trait HasModel
 {
     /**
      * @var MeteringDeviceModel
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\MeteringDeviceModel")
-     * @ORM\JoinColumn(name="metering_device_model_id")
      */
+    #[ORM\JoinColumn(name: 'metering_device_model_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\MeteringDeviceModel::class)]
     protected MeteringDeviceModel $model;
 
     public function getModel(): MeteringDeviceModel

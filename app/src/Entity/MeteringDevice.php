@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MeteringDevice
- *
- * @ORM\Table(name="metering_device", uniqueConstraints={@ORM\UniqueConstraint(name="metering_device_product_distributor_point_model_start_ux", columns={"product_id", "distributor_id", "distribution_point_id", "metering_device_model_id", "start"})})
- * @ORM\Entity(repositoryClass="App\Repository\MeteringDeviceRepository")
  */
+#[ORM\Table(name: 'metering_device')]
+#[ORM\UniqueConstraint(name: 'metering_device_product_distributor_point_model_start_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'metering_device_model_id', 'start'])]
+#[ORM\Entity(repositoryClass: \App\Repository\MeteringDeviceRepository::class)]
 class MeteringDevice
 {
     use HasModel;
@@ -23,33 +23,29 @@ class MeteringDevice
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="metering_device_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'metering_device_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="start", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'start', type: 'bigint', nullable: true)]
     private $start;
 
     /**
      * @var \DateTime|null
-     *
-     * @ORM\Column(name="finish", type="datetimetz", nullable=true)
      */
+    #[ORM\Column(name: 'finish', type: 'datetimetz', nullable: true)]
     private $finish;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="serial", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'serial', type: 'text', nullable: true)]
     private $serial;
 
     public function getId(): ?string

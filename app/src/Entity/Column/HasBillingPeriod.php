@@ -9,16 +9,14 @@ trait HasBillingPeriod
 {
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="year", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'year', type: 'integer', nullable: true)]
     private $year;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="month", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'month', type: 'integer', nullable: true)]
     private $month;
 
     public function getYear(): ?int

@@ -9,10 +9,9 @@ trait HasRawReadings
 {
     /**
      * @var RawReadings
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\RawReadings")
-     * @ORM\JoinColumn(name="raw_readings_id")
      */
+    #[ORM\JoinColumn(name: 'raw_readings_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\RawReadings::class)]
     protected RawReadings $rawReadings;
 
     public function getRawReadings(): RawReadings

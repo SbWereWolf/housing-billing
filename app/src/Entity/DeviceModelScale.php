@@ -11,10 +11,10 @@ use Stringable;
 
 /**
  * DeviceModelScale
- *
- * @ORM\Table(name="device_model_scale", uniqueConstraints={@ORM\UniqueConstraint(name="device_model_scale_metering_device_model_id_id_ux", columns={"metering_device_model_id", "id"})})
- * @ORM\Entity(repositoryClass="App\Repository\DeviceModelScaleRepository")
  */
+#[ORM\Table(name: 'device_model_scale')]
+#[ORM\UniqueConstraint(name: 'device_model_scale_metering_device_model_id_id_ux', columns: ['metering_device_model_id', 'id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\DeviceModelScaleRepository::class)]
 class DeviceModelScale implements Stringable
 {
     use HasModel;
@@ -24,12 +24,11 @@ class DeviceModelScale implements Stringable
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="device_model_scale_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'device_model_scale_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string

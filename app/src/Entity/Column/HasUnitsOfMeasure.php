@@ -10,10 +10,9 @@ trait HasUnitsOfMeasure
 {
     /**
      * @var UnitsOfMeasure
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\UnitsOfMeasure")
-     * @ORM\JoinColumn(name="units_of_measure_id")
      */
+    #[ORM\JoinColumn(name: 'units_of_measure_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\UnitsOfMeasure::class)]
     protected UnitsOfMeasure $unitsOfMeasure;
 
     public function getUnitsOfMeasure(): UnitsOfMeasure

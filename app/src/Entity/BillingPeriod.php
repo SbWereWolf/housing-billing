@@ -7,55 +7,49 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * BillingPeriod
- *
- * @ORM\Table(name="billing_period", uniqueConstraints={@ORM\UniqueConstraint(name="billing_period_year_month_ux", columns={"year", "month"})})
- * @ORM\Entity(repositoryClass="App\Repository\BillingPeriodRepository")
  */
+#[ORM\Table(name: 'billing_period')]
+#[ORM\UniqueConstraint(name: 'billing_period_year_month_ux', columns: ['year', 'month'])]
+#[ORM\Entity(repositoryClass: \App\Repository\BillingPeriodRepository::class)]
 class BillingPeriod
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="billing_period_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'billing_period_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="year", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'year', type: 'integer', nullable: true)]
     private $year;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="month", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'month', type: 'integer', nullable: true)]
     private $month;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="title", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'title', type: 'text', nullable: true)]
     private $title;
 
     /**
      * @var \DateTime|null
-     *
-     * @ORM\Column(name="start", type="datetimetz", nullable=true)
      */
+    #[ORM\Column(name: 'start', type: 'datetimetz', nullable: true)]
     private $start;
 
     /**
      * @var \DateTime|null
-     *
-     * @ORM\Column(name="finish", type="datetimetz", nullable=true)
      */
+    #[ORM\Column(name: 'finish', type: 'datetimetz', nullable: true)]
     private $finish;
 
     public function getId(): ?string

@@ -7,20 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * LegalEntityOption
- *
- * @ORM\Table(name="legal_entity_option")
- * @ORM\Entity(repositoryClass="App\Repository\LegalEntityOptionRepository")
  */
+#[ORM\Table(name: 'legal_entity_option')]
+#[ORM\Entity(repositoryClass: \App\Repository\LegalEntityOptionRepository::class)]
 class LegalEntityOption extends CaptionWithCode
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="legal_entity_option_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'legal_entity_option_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string

@@ -7,21 +7,20 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * LocationOption
- *
- * @ORM\Table(name="location_option", uniqueConstraints={@ORM\UniqueConstraint(name="address_option_code_ux", columns={"code"})})
- * @ORM\Entity(repositoryClass="App\Repository\LocationOptionRepository")
  */
+#[ORM\Table(name: 'location_option')]
+#[ORM\UniqueConstraint(name: 'address_option_code_ux', columns: ['code'])]
+#[ORM\Entity(repositoryClass: \App\Repository\LocationOptionRepository::class)]
 class LocationOption
     extends CaptionWithCode
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="location_option_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'location_option_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string

@@ -14,10 +14,10 @@ use Stringable;
 
 /**
  * RawReadings
- *
- * @ORM\Table(name="raw_readings", uniqueConstraints={@ORM\UniqueConstraint(name="raw_readings_product_id_distributor_id_point_id_id_ux", columns={"product_id", "distributor_id", "distribution_point_id", "id"})})
- * @ORM\Entity(repositoryClass="App\Repository\RawReadingsRepository")
  */
+#[ORM\Table(name: 'raw_readings')]
+#[ORM\UniqueConstraint(name: 'raw_readings_product_id_distributor_id_point_id_id_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\RawReadingsRepository::class)]
 class RawReadings implements Stringable
 {
     use HasModel;
@@ -29,48 +29,42 @@ class RawReadings implements Stringable
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="raw_readings_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'raw_readings_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="readings", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'readings', type: 'text', nullable: true)]
     private $readings;
 
     /**
      * @var \DateTime|null
-     *
-     * @ORM\Column(name="upload_time", type="datetimetz", nullable=true)
      */
+    #[ORM\Column(name: 'upload_time', type: 'datetimetz', nullable: true)]
     private $uploadTime;
 
     /**
      * @var DeviceModelScale
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\DeviceModelScale")
-     * @ORM\JoinColumn(name="device_model_scale_id")
      */
+    #[ORM\JoinColumn(name: 'device_model_scale_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\DeviceModelScale::class)]
     private $modelScale;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="start", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'start', type: 'bigint', nullable: true)]
     private $start;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="is_scale_overflow", type="integer", nullable=true)
      */
+    #[ORM\Column(name: 'is_scale_overflow', type: 'integer', nullable: true)]
     private $isScaleOverflow;
 
     public function getId(): ?string

@@ -9,10 +9,9 @@ trait HasScale
 {
     /**
      * @var MeasuringScale
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\MeasuringScale")
-     * @ORM\JoinColumn(name="measuring_scale_id")
      */
+    #[ORM\JoinColumn(name: 'measuring_scale_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\MeasuringScale::class)]
     protected MeasuringScale $scale;
 
     public function getScale(): MeasuringScale

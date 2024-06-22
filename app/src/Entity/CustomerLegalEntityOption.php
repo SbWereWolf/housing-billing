@@ -9,10 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CustomerLegalEntityOption
- *
- * @ORM\Table(name="customer_legal_entity_option")
- * @ORM\Entity(repositoryClass="App\Repository\CustomerLegalEntityOptionRepository")
  */
+#[ORM\Table(name: 'customer_legal_entity_option')]
+#[ORM\Entity(repositoryClass: \App\Repository\CustomerLegalEntityOptionRepository::class)]
 class CustomerLegalEntityOption
 {
     use HasCustomer;
@@ -21,12 +20,11 @@ class CustomerLegalEntityOption
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="customer_legal_entity_option_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'customer_legal_entity_option_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string

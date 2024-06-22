@@ -9,10 +9,9 @@ trait HasDeviceOption
 {
     /**
      * @var DeviceOption
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\DeviceOption")
-     * @ORM\JoinColumn(name="device_option_id")
      */
+    #[ORM\JoinColumn(name: 'device_option_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\DeviceOption::class)]
     protected DeviceOption $deviceOption;
 
     public function getDeviceOption(): DeviceOption

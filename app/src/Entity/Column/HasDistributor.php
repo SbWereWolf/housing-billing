@@ -10,10 +10,9 @@ trait HasDistributor
 {
     /**
      * @var Distributor
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Distributor")
-     * @ORM\JoinColumn(name="distributor_id")
      */
+    #[ORM\JoinColumn(name: 'distributor_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Distributor::class)]
     protected Distributor $distributor;
 
     public function getDistributor(): Distributor

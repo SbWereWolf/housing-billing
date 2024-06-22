@@ -10,10 +10,9 @@ trait HasTestingSet
 {
     /**
      * @var TestingSet
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\TestingSet")
-     * @ORM\JoinColumn(name="testing_set_id")
      */
+    #[ORM\JoinColumn(name: 'testing_set_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\TestingSet::class)]
     protected TestingSet $testingSet;
 
     public function getTestingSet(): TestingSet

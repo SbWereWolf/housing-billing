@@ -10,10 +10,9 @@ trait HasPersonOption
 {
     /**
      * @var NaturalPersonOption
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\NaturalPersonOption")
-     * @ORM\JoinColumn(name="natural_person_option_id")
      */
+    #[ORM\JoinColumn(name: 'natural_person_option_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\NaturalPersonOption::class)]
     protected NaturalPersonOption $personOption;
 
     public function getPersonOption(): NaturalPersonOption

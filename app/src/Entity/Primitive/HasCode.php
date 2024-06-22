@@ -9,23 +9,20 @@ trait HasCode
 {
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="title", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'title', type: 'text', nullable: true)]
     protected $title;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="code", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'code', type: 'text', nullable: true)]
     protected $code;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="remark", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'remark', type: 'text', nullable: true)]
     protected $remark;
 
     public function getTitle(): ?string

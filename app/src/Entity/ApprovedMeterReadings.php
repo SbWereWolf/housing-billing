@@ -15,10 +15,10 @@ use Stringable;
 
 /**
  * ApprovedMeterReadings
- *
- * @ORM\Table(name="approved_meter_readings", uniqueConstraints={@ORM\UniqueConstraint(name="approved_meter_readings_product_distributor_year_month_run_ux", columns={"product_id", "distributor_id", "distribution_point_id", "year", "month", "testing_run_id", "raw_readings_id"})})
- * @ORM\Entity(repositoryClass="App\Repository\ApprovedMeterReadingsRepository")
  */
+#[ORM\Table(name: 'approved_meter_readings')]
+#[ORM\UniqueConstraint(name: 'approved_meter_readings_product_distributor_year_month_run_ux', columns: ['product_id', 'distributor_id', 'distribution_point_id', 'year', 'month', 'testing_run_id', 'raw_readings_id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\ApprovedMeterReadingsRepository::class)]
 class ApprovedMeterReadings implements Stringable
 {
     use HasRawReadings;
@@ -31,12 +31,11 @@ class ApprovedMeterReadings implements Stringable
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="approved_meter_readings_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'approved_meter_readings_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string

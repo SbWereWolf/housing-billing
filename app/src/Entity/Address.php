@@ -7,118 +7,103 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Address
- *
- * @ORM\Table(name="address", uniqueConstraints={@ORM\UniqueConstraint(name="address_code_ux", columns={"code"})})
- * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
  */
+#[ORM\Table(name: 'address')]
+#[ORM\UniqueConstraint(name: 'address_code_ux', columns: ['code'])]
+#[ORM\Entity(repositoryClass: \App\Repository\AddressRepository::class)]
 class Address extends CaptionWithCode
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="address_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'address_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="region", type="integer", nullable=false)
      */
+    #[ORM\Column(name: 'region', type: 'integer', nullable: false)]
     private $region;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="steads_objectguid", type="guid", nullable=true)
      */
+    #[ORM\Column(name: 'steads_objectguid', type: 'guid', nullable: true)]
     private $steadsObjectguid;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="carplaces_objectguid", type="guid", nullable=true)
      */
+    #[ORM\Column(name: 'carplaces_objectguid', type: 'guid', nullable: true)]
     private $carplacesObjectguid;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="houses_objectguid", type="guid", nullable=true)
      */
+    #[ORM\Column(name: 'houses_objectguid', type: 'guid', nullable: true)]
     private $housesObjectguid;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="apartments_objectguid", type="guid", nullable=true)
      */
+    #[ORM\Column(name: 'apartments_objectguid', type: 'guid', nullable: true)]
     private $apartmentsObjectguid;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="rooms_objectguid", type="guid", nullable=true)
      */
+    #[ORM\Column(name: 'rooms_objectguid', type: 'guid', nullable: true)]
     private $roomsObjectguid;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="level_1_object_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'level_1_object_id', type: 'bigint', nullable: true)]
     private $level1ObjectId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="level_2_object_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'level_2_object_id', type: 'bigint', nullable: true)]
     private $level2ObjectId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="level_3_object_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'level_3_object_id', type: 'bigint', nullable: true)]
     private $level3ObjectId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="level_4_object_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'level_4_object_id', type: 'bigint', nullable: true)]
     private $level4ObjectId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="level_5_object_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'level_5_object_id', type: 'bigint', nullable: true)]
     private $level5ObjectId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="level_6_object_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'level_6_object_id', type: 'bigint', nullable: true)]
     private $level6ObjectId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="level_7_object_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'level_7_object_id', type: 'bigint', nullable: true)]
     private $level7ObjectId;
 
     /**
      * @var int|null
-     *
-     * @ORM\Column(name="level_8_object_id", type="bigint", nullable=true)
      */
+    #[ORM\Column(name: 'level_8_object_id', type: 'bigint', nullable: true)]
     private $level8ObjectId;
 
     public function getId(): ?string

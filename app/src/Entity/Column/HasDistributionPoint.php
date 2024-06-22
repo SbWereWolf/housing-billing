@@ -10,10 +10,9 @@ trait HasDistributionPoint
 
     /**
      * @var DistributionPoint
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\DistributionPoint")
-     * @ORM\JoinColumn(name="distribution_point_id")
      */
+    #[ORM\JoinColumn(name: 'distribution_point_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\DistributionPoint::class)]
     private DistributionPoint $distributionPoint;
 
     public function getDistributionPoint(): DistributionPoint

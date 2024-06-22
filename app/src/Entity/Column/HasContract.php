@@ -9,10 +9,9 @@ trait HasContract
 {
     /**
      * @var Contract
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Contract")
-     * @ORM\JoinColumn(name="contract_id")
      */
+    #[ORM\JoinColumn(name: 'contract_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Contract::class)]
     protected Contract $contract;
 
     public function getContract(): Contract

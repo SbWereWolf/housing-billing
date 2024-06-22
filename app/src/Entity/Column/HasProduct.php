@@ -10,10 +10,9 @@ trait HasProduct
 {
     /**
      * @var Product
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
-     * @ORM\JoinColumn(name="product_id")
      */
+    #[ORM\JoinColumn(name: 'product_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
     protected Product $product;
 
     public function getProduct(): Product

@@ -9,10 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AddressLocationOption
- *
- * @ORM\Table(name="address_location_option")
- * @ORM\Entity(repositoryClass="App\Repository\AddressLocationOptionRepository")
  */
+#[ORM\Table(name: 'address_location_option')]
+#[ORM\Entity(repositoryClass: \App\Repository\AddressLocationOptionRepository::class)]
 class AddressLocationOption implements \Stringable
 {
     use HasAddress;
@@ -21,12 +20,11 @@ class AddressLocationOption implements \Stringable
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="address_location_option_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'address_location_option_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string

@@ -9,10 +9,9 @@ trait HasCustomer
 {
     /**
      * @var Customer
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Customer")
-     * @ORM\JoinColumn(name="customer_id")
      */
+    #[ORM\JoinColumn(name: 'customer_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Customer::class)]
     protected Customer $customer;
 
     public function getCustomer(): Customer

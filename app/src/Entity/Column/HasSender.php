@@ -9,10 +9,9 @@ trait HasSender
 {
     /**
      * @var ReadingsSender
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\ReadingsSender")
-     * @ORM\JoinColumn(name="readings_sender_id")
      */
+    #[ORM\JoinColumn(name: 'readings_sender_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\ReadingsSender::class)]
     protected ReadingsSender $sender;
 
     public function getSender(): ReadingsSender

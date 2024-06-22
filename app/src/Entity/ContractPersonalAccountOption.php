@@ -10,10 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ContractPersonalAccountOption
- *
- * @ORM\Table(name="contract_personal_account_option")
- * @ORM\Entity(repositoryClass="App\Repository\ContractPersonalAccountOptionRepository")
  */
+#[ORM\Table(name: 'contract_personal_account_option')]
+#[ORM\Entity(repositoryClass: \App\Repository\ContractPersonalAccountOptionRepository::class)]
 class ContractPersonalAccountOption
 {
     use HasBillingOption;
@@ -22,12 +21,11 @@ class ContractPersonalAccountOption
     use HasAccount;
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="contract_personal_account_option_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'contract_personal_account_option_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string

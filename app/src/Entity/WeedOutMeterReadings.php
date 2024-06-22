@@ -13,10 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * WeedOutMeterReadings
- *
- * @ORM\Table(name="weed_out_meter_readings")
- * @ORM\Entity(repositoryClass="App\Repository\WeedOutMeterReadingsRepository")
  */
+#[ORM\Table(name: 'weed_out_meter_readings')]
+#[ORM\Entity(repositoryClass: \App\Repository\WeedOutMeterReadingsRepository::class)]
 class WeedOutMeterReadings
 {
     use HasTestingRun;
@@ -29,19 +28,17 @@ class WeedOutMeterReadings
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="weed_out_meter_readings_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'weed_out_meter_readings_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(name="remark", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'remark', type: 'text', nullable: true)]
     private $remark;
 
     public function getId(): ?string

@@ -7,36 +7,32 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * RelatedProduct
- *
- * @ORM\Table(name="related_product")
- * @ORM\Entity(repositoryClass="App\Repository\RelatedProductRepository")
  */
+#[ORM\Table(name: 'related_product')]
+#[ORM\Entity(repositoryClass: \App\Repository\RelatedProductRepository::class)]
 class RelatedProduct
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="related_product_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'related_product_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var Product
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
-     * @ORM\JoinColumn(name="parent_product_id")
      */
+    #[ORM\JoinColumn(name: 'parent_product_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
     private Product $parent;
 
     /**
      * @var Product
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
-     * @ORM\JoinColumn(name="child_product_id")
      */
+    #[ORM\JoinColumn(name: 'child_product_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
     private Product $child;
 
     public function getId(): ?string

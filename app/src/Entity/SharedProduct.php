@@ -7,36 +7,32 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * SharedProduct
- *
- * @ORM\Table(name="shared_product")
- * @ORM\Entity(repositoryClass="App\Repository\SharedProductRepository")
  */
+#[ORM\Table(name: 'shared_product')]
+#[ORM\Entity(repositoryClass: \App\Repository\SharedProductRepository::class)]
 class SharedProduct
 {
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="shared_product_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'shared_product_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     /**
      * @var Product
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
-     * @ORM\JoinColumn(name="shared_product_id")
      */
+    #[ORM\JoinColumn(name: 'shared_product_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
     private Product $shared;
 
     /**
      * @var Product
-     *
-     * @ORM\ManyToOne(targetEntity="\App\Entity\Product")
-     * @ORM\JoinColumn(name="individual_product_id")
      */
+    #[ORM\JoinColumn(name: 'individual_product_id')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Product::class)]
     private Product $individual;
 
     public function getId(): ?string

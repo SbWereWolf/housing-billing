@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ProductPersonalAccount
- *
- * @ORM\Table(name="product_personal_account", uniqueConstraints={@ORM\UniqueConstraint(name="product_personal_account_product_customer_account_id_ux", columns={"customer_id", "personal_account_id", "product_id"})})
- * @ORM\Entity(repositoryClass="App\Repository\ProductPersonalAccountRepository")
  */
+#[ORM\Table(name: 'product_personal_account')]
+#[ORM\UniqueConstraint(name: 'product_personal_account_product_customer_account_id_ux', columns: ['customer_id', 'personal_account_id', 'product_id'])]
+#[ORM\Entity(repositoryClass: \App\Repository\ProductPersonalAccountRepository::class)]
 class ProductPersonalAccount
 {
     use HasProduct;
@@ -21,12 +21,11 @@ class ProductPersonalAccount
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="product_personal_account_id_seq", allocationSize=1, initialValue=1)
      */
+    #[ORM\Column(name: 'id', type: 'bigint', nullable: false)]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'product_personal_account_id_seq', allocationSize: 1, initialValue: 1)]
     private $id;
 
     public function getId(): ?string
